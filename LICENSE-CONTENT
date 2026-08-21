@@ -1,0 +1,24 @@
+# Licence du contenu éditorial
+
+Copyright (c) 2026 Florian Boulestreau
+
+Le **contenu éditorial** de ce dépôt — les articles de `src/content/`, les textes
+des pages, les descriptions de projets et toute image originale de `public/` — est
+mis à disposition sous licence **Creative Commons Attribution 4.0 International
+(CC BY 4.0)**.
+
+- Résumé lisible : https://creativecommons.org/licenses/by/4.0/deed.fr
+- Texte juridique complet : https://creativecommons.org/licenses/by/4.0/legalcode.fr
+
+Vous êtes libre de partager et d'adapter ce contenu, y compris commercialement,
+à condition de créditer l'auteur, d'indiquer si des modifications ont été
+apportées, et de fournir un lien vers la licence.
+
+## Ce que cette licence ne couvre pas
+
+- **Le code du site** (composants Astro, CSS, TypeScript, configuration, workflows) :
+  il est sous licence MIT, voir [`LICENSE`](./LICENSE).
+- **Les citations** reproduites sur la page « Citations » : elles restent la
+  propriété de leurs auteurs respectifs et sont reproduites au titre du droit de
+  citation, avec attribution.
+- **Les marques, logos et noms de tiers** éventuellement mentionnés.
