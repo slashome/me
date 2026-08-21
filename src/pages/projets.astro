@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+
+const featured = projects.filter((p) => p.featured);
+const rest = projects.filter((p) => !p.featured);
+---
+
+<Base title="Projets" description="Les projets de Florian Boulestreau — des dépôts, pas des produits.">
+  <h1>Projets</h1>
+  <p class="lede">Des dépôts, pas des produits. Certains vivent, d'autres dorment — c'est dit.</p>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>En cours</h2>
+      <a href="https://github.com/slashome">tous les dépôts →</a>
+    </div>
+    <ul class="project-list">
+      {featured.map((project) => <ProjectCard project={project} />)}
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>Le reste de l'atelier</h2>
+    </div>
+    <ul class="project-list">
+      {rest.map((project) => <ProjectCard project={project} />)}
+    </ul>
+  </section>
+</Base>

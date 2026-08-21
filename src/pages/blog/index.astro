@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const dateFormat = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
+---
+
+<Base title="Blog" description="Notes et articles de Florian Boulestreau.">
+  <h1>Blog</h1>
+  <p class="lede">Des notes qui ont assez mûri pour être écrites.</p>
+
+  {
+    posts.length === 0 ? (
+      <p class="empty">Rien de publié pour l'instant.</p>
+    ) : (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li class="post-list__item">
+            <h3>
+              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+            </h3>
+            <time datetime={post.data.date.toISOString()}>{dateFormat.format(post.data.date)}</time>
+            <p>{post.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Base>

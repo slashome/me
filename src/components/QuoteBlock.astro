@@ -1,0 +1,18 @@
+---
+interface Props {
+  text: string;
+  author: string;
+  source?: string;
+}
+
+const { text, author, source } = Astro.props;
+---
+
+<li>
+  <figure class="quote">
+    <p>{text}</p>
+    <figcaption>
+      <cite>{author}</cite>{source && <> · {source}</>}
+    </figcaption>
+  </figure>
+</li>

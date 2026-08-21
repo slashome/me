@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import QuoteBlock from '../components/QuoteBlock.astro';
+import { getCollection } from 'astro:content';
+
+const quotes = await getCollection('quotes');
+---
+
+<Base title="Citations" description="Des phrases que je garde.">
+  <h1>Citations</h1>
+  <p class="lede">Des phrases que je garde, sans commentaire.</p>
+
+  {
+    quotes.length === 0 ? (
+      <p class="empty">
+        Rien pour l'instant — les citations vivent dans <code>src/data/quotes.json</code>.
+      </p>
+    ) : (
+      <ul class="quote-list">
+        {quotes.map(({ data }) => (
+          <QuoteBlock text={data.text} author={data.author} source={data.source} />
+        ))}
+      </ul>
+    )
+  }
+</Base>

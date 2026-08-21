@@ -1,0 +1,27 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<li class="project">
+  <div class="project__head">
+    <h3 class="project__name"><a href={project.repo}>{project.name}</a></h3>
+    <span class={`badge badge--${project.status}`}>{project.status}</span>
+    {project.language && <span class="badge">{project.language}</span>}
+  </div>
+  <p class="project__desc">{project.description}</p>
+  {
+    project.tags.length > 0 && (
+      <ul class="tags">
+        {project.tags.map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+    )
+  }
+</li>
