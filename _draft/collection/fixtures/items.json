@@ -1,0 +1,77 @@
+{
+  "_comment": "Fixtures de travail. La clé EST le slug. ⚠️ Le CONTENU n'est pas vérifié : citations, dates et attributions sont à contrôler par Florian avant toute publication. Ces items existent pour exercer le modèle, pas pour être publiés.",
+
+  "weil-attention-generosite": {
+    "type": "citation",
+    "title": "L'attention, forme de la générosité",
+    "credits": [{ "agent": "simone-weil", "roles": ["author"] }],
+    "text": "L'attention est la forme la plus rare et la plus pure de la générosité.",
+    "note": "⚠️ fixture : attribution très répandue mais à sourcer avant publication.",
+    "added": "2026-08-28",
+    "tags": ["attention", "morale"]
+  },
+
+  "paroles-de-philosophes-simone-weil": {
+    "type": "video",
+    "title": "Paroles de philosophes — Simone Weil",
+    "credits": [{ "agent": "simone-weil", "roles": ["subject"] }],
+    "note": "⚠️ fixture : le cas qui commande tout le modèle. Elle n'a pas contribué à cette vidéo, elle en est le SUJET — et pourtant elle doit apparaître sur sa page à côté de ses citations.",
+    "added": "2026-08-28",
+    "tags": ["philosophie"]
+  },
+
+  "la-pesanteur-et-la-grace": {
+    "type": "livre",
+    "title": "La Pesanteur et la Grâce",
+    "credits": [{ "agent": "simone-weil", "roles": ["author"] }],
+    "published": "1947",
+    "cover": { "src": "covers/la-pesanteur-et-la-grace.jpg", "alt": "" },
+    "note": "⚠️ fixture. Démontre `published` à l'année seule : posthume, on ne connaît que 1947 — un timestamp aurait inventé un mois et un jour.",
+    "added": "2026-08-28",
+    "tags": ["philosophie", "mystique"]
+  },
+
+  "dany-bill-citation": {
+    "type": "citation",
+    "title": "Sur l'entraînement",
+    "credits": [{ "agent": "dany-bill", "roles": ["author"] }],
+    "text": "— texte à saisir —",
+    "note": "⚠️ fixture : texte volontairement vide de sens, je n'ai pas de citation sourcée de lui. À remplacer.",
+    "added": "2026-08-28",
+    "tags": ["boxe"]
+  },
+
+  "dany-bill-combat": {
+    "type": "video",
+    "title": "Dany Bill — combat",
+    "credits": [
+      {
+        "agent": "dany-bill",
+        "roles": ["performer"],
+        "note": "⚠️ fixture : c'est ici que se met la précision que l'enum ne porte pas (adversaire, date, lieu)."
+      }
+    ],
+    "added": "2026-08-28",
+    "tags": ["boxe", "muay-thai"]
+  },
+
+  "dany-bill-masterclass": {
+    "type": "video",
+    "title": "Masterclass — technique et vie de combattant",
+    "credits": [{ "agent": "dany-bill", "roles": ["performer", "interviewee"] }],
+    "note": "⚠️ fixture. Démontre `roles: []` au pluriel : il DÉMONTRE (performer) et il PARLE (interviewee) dans la même vidéo. Un rôle unique aurait forcé deux crédits pour le même homme sur le même item, donc l'item deux fois sur sa page.",
+    "added": "2026-08-28",
+    "tags": ["boxe"]
+  },
+
+  "mezzanine": {
+    "type": "vinyl",
+    "title": "Mezzanine",
+    "credits": [{ "agent": "massive-attack", "roles": ["performer"] }],
+    "published": "1998",
+    "cover": { "src": "covers/mezzanine.jpg", "alt": "" },
+    "note": "⚠️ fixture. Démontre le trou de `Person` : Massive Attack est un groupe. Dès qu'il y a des vinyls, la moitié des crédits ne sont pas des personnes.",
+    "added": "2026-08-28",
+    "tags": ["trip-hop"]
+  }
+}

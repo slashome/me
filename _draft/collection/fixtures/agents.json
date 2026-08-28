@@ -1,0 +1,34 @@
+{
+  "_comment": "Fixtures de travail. La clé EST le slug — voir Keyed<T> dans types.ts. Les faits (dates, orthographes) ne sont PAS vérifiés : à contrôler avant toute publication.",
+
+  "simone-weil": {
+    "kind": "person",
+    "name": "Simone Weil",
+    "sortName": "Weil, Simone",
+    "born": "1909",
+    "died": "1943",
+    "gender": "f",
+    "bio": "Philosophe et mystique française."
+  },
+
+  "dany-bill": {
+    "kind": "person",
+    "name": "Dany Bill",
+    "sortName": "Bill, Dany",
+    "gender": "m",
+    "bio": "Boxeur français, multiple champion du monde de muay-thaï."
+  },
+
+  "massive-attack": {
+    "kind": "group",
+    "name": "Massive Attack",
+    "bio": "Groupe britannique de trip-hop, formé à Bristol."
+  },
+
+  "colette": {
+    "kind": "person",
+    "name": "Colette",
+    "gender": "f",
+    "bio": "Mononyme — le cas qui casse firstname/lastname."
+  }
+}
