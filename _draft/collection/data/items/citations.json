@@ -1,0 +1,1805 @@
+{
+  "_comment": "Importé du corpus Notion le 2026-08-29. `title` est l'incipit de la citation (la source n'avait pas de titre). `note` est volontairement vide : ce sont les mots de Florian, il ne les a pas écrits.",
+  "burke-triompher-mal-n-a": {
+    "type": "citation",
+    "title": "Pour triompher, le mal n’a besoin que de…",
+    "credits": [
+      {
+        "agent": "edmund-burke",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Pour triompher, le mal n’a besoin que de l’inaction des gens de bien",
+    "tags": [
+      "Inaction"
+    ],
+    "added": "2026-08-29"
+  },
+  "valery-guerre-c-est-massacre": {
+    "type": "citation",
+    "title": "La guerre, c'est le massacre de gens qui…",
+    "credits": [
+      {
+        "agent": "paul-valery",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La guerre, c'est le massacre de gens qui ne se connaissent pas, au profit de gens qui se connaissent et ne se massacrent pas.",
+    "tags": [
+      "Guerre"
+    ],
+    "added": "2026-08-29"
+  },
+  "einstein-n-existe-deux-choses": {
+    "type": "citation",
+    "title": "Il n'existe que deux choses infinies, l'univers et…",
+    "credits": [
+      {
+        "agent": "albert-einstein",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Il n'existe que deux choses infinies, l'univers et la bêtise humaine... mais pour l'univers, je n'ai pas de certitude absolue.",
+    "tags": [
+      "Bêtise"
+    ],
+    "added": "2026-08-29"
+  },
+  "c-est-permissivite-societe": {
+    "type": "citation",
+    "title": "C'est la permissivité de la société qui incite…",
+    "credits": [
+      {
+        "agent": "ra-s-al-ghul",
+        "roles": [
+          "speaker"
+        ]
+      }
+    ],
+    "text": "C'est la permissivité de la société qui incite les criminels à s'épanouir.",
+    "context": "Ras Al Gul dans Batman Begins",
+    "tags": [
+      "Société"
+    ],
+    "added": "2026-08-29"
+  },
+  "arendt-mort-l-empathie-humaine": {
+    "type": "citation",
+    "title": "La mort de l'empathie humaine est l'un des…",
+    "credits": [
+      {
+        "agent": "hannah-arendt",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La mort de l'empathie humaine est l'un des premiers signes et le plus révélateur d'une culture sur le point de sombrer dans la barbarie.",
+    "tags": [
+      "Empathie",
+      "Barbarie"
+    ],
+    "added": "2026-08-29"
+  },
+  "arendt-trouver-place-convenable": {
+    "type": "citation",
+    "title": "Pour trouver sa place convenable dans le monde…",
+    "credits": [
+      {
+        "agent": "hannah-arendt",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Pour trouver sa place convenable dans le monde, l'œuvre d'art doit être soigneusement écartée du contexte des objets d'usage ordinaires.",
+    "tags": [
+      "Art"
+    ],
+    "added": "2026-08-29"
+  },
+  "arendt-crise-l-autorite-l-education": {
+    "type": "citation",
+    "title": "La crise de l'autorité dans l'éducation est étroitement…",
+    "credits": [
+      {
+        "agent": "hannah-arendt",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La crise de l'autorité dans l'éducation est étroitement liée à la crise de la tradition, c'est-à-dire à la crise de notre attitude envers tout ce qui touche au passé.",
+    "tags": [
+      "Éducation"
+    ],
+    "added": "2026-08-29"
+  },
+  "arendt-personne-cultivee-devrait": {
+    "type": "citation",
+    "title": "Une personne cultivée devrait être : quelqu'un qui…",
+    "credits": [
+      {
+        "agent": "hannah-arendt",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Une personne cultivée devrait être : quelqu'un qui sait choisir ses compagnons parmi les hommes, les choses, les pensées, dans le présent comme dans le passé.",
+    "added": "2026-08-29"
+  },
+  "arendt-guerre-restaure-droits": {
+    "type": "citation",
+    "title": "La guerre ne restaure pas les droits, elle…",
+    "credits": [
+      {
+        "agent": "hannah-arendt",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La guerre ne restaure pas les droits, elle redéfinit les pouvoirs",
+    "added": "2026-08-29"
+  },
+  "arendt-mensonges-souvent-beaucoup": {
+    "type": "citation",
+    "title": "Les mensonges sont souvent beaucoup plus plausibles, plus…",
+    "credits": [
+      {
+        "agent": "hannah-arendt",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Les mensonges sont souvent beaucoup plus plausibles, plus attrayants pour la raison que la réalité, puisque le menteur a le grand avantage de savoir à l'avance ce que le public souhaite ou s'attend à entendre.",
+    "added": "2026-08-29"
+  },
+  "arendt-pouvoir-total-peut": {
+    "type": "citation",
+    "title": "Le pouvoir total ne peut être achevé et…",
+    "credits": [
+      {
+        "agent": "hannah-arendt",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Le pouvoir total ne peut être achevé et préservé que dans un monde de réflexes conditionnés, de marionnettes ne présentant pas la moindre trace de spontanéité. L'homme ne peut être pleinement dominé qu'à condition de devenir un spécimen de l'espèce animale homme.",
+    "added": "2026-08-29"
+  },
+  "arendt-c-est-justement-preserver": {
+    "type": "citation",
+    "title": "C'est justement pour préserver ce qui est neuf…",
+    "credits": [
+      {
+        "agent": "hannah-arendt",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "C'est justement pour préserver ce qui est neuf et révolutionnaire dans chaque enfant que l'éducation doit être conservatrice, c'est-à-dire assurer ‘la continuité du monde’ : elle doit protéger cette nouveauté et l’introduire comme un ferment nouveau dans un monde déjà vieux.",
+    "added": "2026-08-29"
+  },
+  "bill-secret-c-est-l-amour": {
+    "type": "citation",
+    "title": "Le secret, c’est l’amour. C’est à dire faire…",
+    "credits": [
+      {
+        "agent": "dany-bill",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Le secret, c’est l’amour. C’est à dire faire ce qu’on aime. Celui qui veut faire ce qu’il aime, il se bat pour ça et pour s’en sortir. Il faut aimer ce qu’on fait. c’est que l’amour, il n’y a pas autre chose. Il n’y a pas de génie.",
+    "context": "Dany Bill est appelé le génie technique de la Boxe Thaï. Sont secret serait d’avoir aimé plus ce sport que les autres ? Pour lui combattre à toujours été un jeu, comme le foot.",
+    "added": "2026-08-29"
+  },
+  "roosevelt-grands-etats-d-esprit": {
+    "type": "citation",
+    "title": "Les grands états d'esprit discutent des idées, les…",
+    "credits": [
+      {
+        "agent": "eleanor-roosevelt",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Les grands états d'esprit discutent des idées, les ordinaires discutent des événements et les petites personnes discutent",
+    "added": "2026-08-29"
+  },
+  "kepler-prefere-critiques-severes": {
+    "type": "citation",
+    "title": "Je préfère les critiques sévères d'une personne intelligente…",
+    "credits": [
+      {
+        "agent": "johannes-kepler",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Je préfère les critiques sévères d'une personne intelligente au soutien aveugle des masses",
+    "added": "2026-08-29"
+  },
+  "herodote-temps-difficiles-creent": {
+    "type": "citation",
+    "title": "Les temps difficiles créent des hommes forts, les…",
+    "credits": [
+      {
+        "agent": "herodote",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Les temps difficiles créent des hommes forts, les hommes forts créent des moments bons, les bons moments créent des hommes faibles, les hommes faibles créent des temps difficiles",
+    "context": "Citation modifiee avec le temps",
+    "attribution": "altered",
+    "added": "2026-08-29"
+  },
+  "camus-mal-monde-vient": {
+    "type": "citation",
+    "title": "Le mal qui est dans le monde vient…",
+    "credits": [
+      {
+        "agent": "albert-camus",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Le mal qui est dans le monde vient presque toujours de l’ignorance, et la bonne volonté peut faire autant de dégâts que la méchanceté si elle n’est pas éclairée.",
+    "tags": [
+      "Mal"
+    ],
+    "added": "2026-08-29"
+  },
+  "ricard-avons-besoin-d-un": {
+    "type": "citation",
+    "title": "Nous avons besoin d'un fil d’Ariane qui nous…",
+    "credits": [
+      {
+        "agent": "matthieu-ricard",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Nous avons besoin d'un fil d’Ariane qui nous permette de retrouver notre chemin dans ce dédale de préoccupations graves et complexes.",
+    "added": "2026-08-29"
+  },
+  "aragon-vie-vaut-peine": {
+    "type": "citation",
+    "title": "Que la vie en vaut la peine",
+    "credits": [
+      {
+        "agent": "aragon",
+        "roles": [
+          "author"
+        ]
+      },
+      {
+        "agent": "jean-d-ormesson",
+        "roles": [
+          "speaker"
+        ]
+      }
+    ],
+    "text": "Que la vie en vaut la peine",
+    "context": "Récité par Jean D’Ormesson à la télévision",
+    "tags": [
+      "Vie"
+    ],
+    "added": "2026-08-29"
+  },
+  "eschyle-premiere-victime-guerres": {
+    "type": "citation",
+    "title": "La premiere victime des guerres c’est la vérite",
+    "credits": [
+      {
+        "agent": "eschyle",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La premiere victime des guerres c’est la vérite.",
+    "context": "Dit par Lambda le 18 mai 2024 a 15:15",
+    "added": "2026-08-29"
+  },
+  "fontaine-apprenez-flatteur-vit": {
+    "type": "citation",
+    "title": "Apprenez que tout flatteur, Vit aux dépens de…",
+    "credits": [
+      {
+        "agent": "jean-de-la-fontaine",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Apprenez que tout flatteur,\nVit aux dépens de celui qui l'écoute.",
+    "added": "2026-08-29"
+  },
+  "besson-temps-n-a-d-importance": {
+    "type": "citation",
+    "title": "Le temps n'a pas d'importance, seule la vie…",
+    "credits": [
+      {
+        "agent": "luc-besson",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Le temps n'a pas d'importance, seule la vie est importante.",
+    "context": "Citation de la scène d’introduction du Cinquième Element.",
+    "tags": [
+      "Vie",
+      "Temps"
+    ],
+    "added": "2026-08-29"
+  },
+  "carlin-you-don-t-need": {
+    "type": "citation",
+    "title": "You don’t need a formal conspiracy when interests…",
+    "credits": [
+      {
+        "agent": "george-carlin",
+        "roles": [
+          "interviewee"
+        ]
+      },
+      {
+        "agent": "politically-incorrect-with-bill-maher",
+        "roles": [
+          "publisher"
+        ]
+      }
+    ],
+    "text": "You don’t need a formal conspiracy when interests converge. These people went to the same universities and fraternities, they’re on the same boards of directors, they’re on the same country clubs, they have like-interests. They don’t need to call a meeting; they know what is good for THEM, and they are getting it. And there used to be seven oil companies. There are now three. It will soon be two. The things that matter in this country have been reduced in choice: there are two political parties, there are a handful of insurance companies, there are six or seven information centers. But if you want a bagel there are 23 flavors because you have the ILLUSION, you have the ILLUSION of choice. You don’t get the real important choices. No freedom of choice.",
+    "context": "• “Politically Incorrect with Bill Maher”. Episode aired May 16, 2001. Guest panel: George Carlin, Horace Cooper (to whom Carlin was responding), Julie Warner, Robert Shapiro.",
+    "added": "2026-08-29"
+  },
+  "cousteau-m-a-souvent-pose": {
+    "type": "citation",
+    "title": "On m’a souvent posé cette question et je…",
+    "credits": [
+      {
+        "agent": "jacques-yves-cousteau",
+        "roles": [
+          "interviewee"
+        ]
+      }
+    ],
+    "text": "On m’a souvent posé cette question et je me la pose aussi. Quand j’y réfléchi bien, je suis optimiste parce que j’ai une grande foi en l’être humain et je crois qu’un jour les gens vont se révolter et prendre soin de la planète.",
+    "context": "Reponse a la question d’une journaliste Americaine: Capitaine, etes-vous optimiste sur la facon dont les nations vont gérer cette ressource qui est la notre ?",
+    "tags": [
+      "Ecologie",
+      "Révolte"
+    ],
+    "added": "2026-08-29"
+  },
+  "fragione-notre-philosophie-c-est": {
+    "type": "citation",
+    "title": "Notre philosophie c’est une philosophie",
+    "credits": [
+      {
+        "agent": "philippe-fragione",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Notre philosophie c’est une philosophie.",
+    "context": "Video “”",
+    "tags": [
+      "Démocratie",
+      "Universalité"
+    ],
+    "added": "2026-08-29"
+  },
+  "give-man-gun": {
+    "type": "citation",
+    "title": "Give a man a gun and he can…",
+    "credits": [
+      {
+        "agent": "tyrell-wellick",
+        "roles": [
+          "speaker"
+        ]
+      }
+    ],
+    "text": "Give a man a gun and he can rob a bank, give a man a bank and he can rob the world.",
+    "context": "Tyrell Wellick dans la série Mr. Robot",
+    "added": "2026-08-29"
+  },
+  "reeves-l-homme-fou-adore": {
+    "type": "citation",
+    "title": "L’homme est fou, il adore un Dieu invisible…",
+    "credits": [
+      {
+        "agent": "hubert-reeves",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "L’homme est fou, il adore un Dieu invisible et détruit une nature visible, inconscient que la Nature qu’il détruit est le Dieu qu’il vénère.",
+    "added": "2026-08-29"
+  },
+  "montesquieu-mieux-mortel-ennemi": {
+    "type": "citation",
+    "title": "Le mieux est le mortel ennemi du bien",
+    "credits": [
+      {
+        "agent": "montesquieu",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Le mieux est le mortel ennemi du bien",
+    "added": "2026-08-29"
+  },
+  "duplantier-the-roots-deep": {
+    "type": "citation",
+    "title": "The roots so deep and the head so…",
+    "credits": [
+      {
+        "agent": "joel-duplantier",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "The roots so deep and the head so high",
+    "context": "Song Love from Gojira band",
+    "tags": [
+      "Spiritualité"
+    ],
+    "added": "2026-08-29"
+  },
+  "curie-vie-rien-craindre": {
+    "type": "citation",
+    "title": "Dans la vie rien est à craindre, tout…",
+    "credits": [
+      {
+        "agent": "marie-curie",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Dans la vie rien est à craindre, tout est à comprendre",
+    "tags": [
+      "Connaissance"
+    ],
+    "added": "2026-08-29"
+  },
+  "d-amato-greatness-not-measure": {
+    "type": "citation",
+    "title": "Greatness is not a measure of how great…",
+    "credits": [
+      {
+        "agent": "cus-d-amato",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Greatness is not a measure of how great you are but how great others came to be because of you.",
+    "added": "2026-08-29"
+  },
+  "d-amato-fear-the-greatest": {
+    "type": "citation",
+    "title": "Fear is the greatest obstacle to learning. But…",
+    "credits": [
+      {
+        "agent": "cus-d-amato",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Fear is the greatest obstacle to learning. But fear is your best friend. Fear is like fire. If you learn to control it, you let it work for you. If you don’t learn to control it, it’ll destroy you and everything around you.",
+    "tags": [
+      "Peur"
+    ],
+    "added": "2026-08-29"
+  },
+  "einstein-all-religions-arts": {
+    "type": "citation",
+    "title": "All religions, arts and sciences are branches of…",
+    "credits": [
+      {
+        "agent": "albert-einstein",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "All religions, arts and sciences are branches of the same tree. All these aspirations are directed toward ennobling man's life, lifting it from the sphere of mere physical existence and leading the individual towards freedom.",
+    "added": "2026-08-29"
+  },
+  "ngannou-l-echec-c-est-reussir": {
+    "type": "citation",
+    "title": "L’échec c’est pas de ne pas réussir, l’échec…",
+    "credits": [
+      {
+        "agent": "francis-ngannou",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "L’échec c’est pas de ne pas réussir, l’échec c’est de ne pas entreprendre.",
+    "tags": [
+      "Réussite"
+    ],
+    "added": "2026-08-29"
+  },
+  "ngannou-zero-chance-n-existe": {
+    "type": "citation",
+    "title": "Zéro chance ca n’existe pas",
+    "credits": [
+      {
+        "agent": "francis-ngannou",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Zéro chance ca n’existe pas",
+    "added": "2026-08-29"
+  },
+  "tyson-they-all-have": {
+    "type": "citation",
+    "title": "They all have a plan until they get…",
+    "credits": [
+      {
+        "agent": "mike-tyson",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "They all have a plan until they get hit in the head",
+    "added": "2026-08-29"
+  },
+  "fontaine-solution-nos-problemes": {
+    "type": "citation",
+    "title": "La solution à nos problèmes c’est pas du…",
+    "credits": [
+      {
+        "agent": "jean-de-la-fontaine",
+        "roles": [
+          "author"
+        ]
+      },
+      {
+        "agent": "jean-marc-jancovici",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La solution à nos problèmes c’est pas du tout de rêver d’infini, la solution elle est dans nos cervelles, il faut arriver à trouver de l’espoir et du bonheur avec des limites.",
+    "added": "2026-08-29"
+  },
+  "newton-what-descartes-did": {
+    "type": "citation",
+    "title": "What Descartes did was a good step. You…",
+    "credits": [
+      {
+        "agent": "isaac-newton",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "What Descartes did was a good step. You have added much several ways, & especially in taking the colours of thin plates into philosophical consideration. If I have seen further it is by standing on the shoulders of Giants.",
+    "added": "2026-08-29"
+  },
+  "stiegler-crois-beaute-monde": {
+    "type": "citation",
+    "title": "Je crois à la beauté du monde, de…",
+    "credits": [
+      {
+        "agent": "bernard-stiegler",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Je crois à la beauté du monde, de la nature, à la beauté des machines et je pense que si je suis là, c'est bien pour transformer le devenir en avenir et qu'il y a une voie. Je la connais peut-être pas mais elle existe forcément quelque part. C'est ma responsabilité, et c'est la mienne comme celle de chacun.",
+    "added": "2026-08-29"
+  },
+  "nkrumah-divises-sommes-faibles": {
+    "type": "citation",
+    "title": "Divisés nous sommes faibles. Unie, l’Afrique pourrait devenir…",
+    "credits": [
+      {
+        "agent": "kwame-nkrumah",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Divisés nous sommes faibles. Unie, l’Afrique pourrait devenir, et pour de bon, l’une des plus grandes forces de monde. Dirigée pour le bien de toute l’Humanité.",
+    "added": "2026-08-29"
+  },
+  "benjamin-l-humanite-devenue-assez": {
+    "type": "citation",
+    "title": "L'humanité est devenue assez étrangère à elle-même pour…",
+    "credits": [
+      {
+        "agent": "walter-benjamin",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "L'humanité est devenue assez étrangère à elle-même pour réussir à vivre sa propre destruction comme une jouissance esthétique de premier ordre.",
+    "added": "2026-08-29"
+  },
+  "camus-democratie-n-est-loi": {
+    "type": "citation",
+    "title": "La démocratie ce n’est pas la loi de…",
+    "credits": [
+      {
+        "agent": "albert-camus",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La démocratie ce n’est pas la loi de la majorité mais la protection de la minorité.",
+    "added": "2026-08-29"
+  },
+  "talib-detachement-signifie-devez": {
+    "type": "citation",
+    "title": "Le détachement ne signifie pas que vous ne…",
+    "credits": [
+      {
+        "agent": "ali-ibn-abi-talib",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Le détachement ne signifie pas que vous ne devez rien posséder. Mais que rien ne doit vous posséder.",
+    "added": "2026-08-29"
+  },
+  "hauer-all-those-moments": {
+    "type": "citation",
+    "title": "All those moments will be lost in time…",
+    "credits": [
+      {
+        "agent": "rutger-hauer",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "All those moments will be lost in time like tears in rain. Time to die.",
+    "added": "2026-08-29"
+  },
+  "einstein-hundred-times-day": {
+    "type": "citation",
+    "title": "A hundred times a day, I remind myself…",
+    "credits": [
+      {
+        "agent": "albert-einstein",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "A hundred times a day, I remind myself that my inner and outer lives are based on the labors of other people… living and dead… and that I must exert myself in order to give in the same measure as I have received.",
+    "added": "2026-08-29"
+  },
+  "jung-devenons-lumineux-regardant": {
+    "type": "citation",
+    "title": "Nous ne devenons pas lumineux en regardant la…",
+    "credits": [
+      {
+        "agent": "carl-gustav-jung",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Nous ne devenons pas lumineux en regardant la lumiere mais nous le devenons en traversant nos propres tenebres.",
+    "added": "2026-08-29"
+  },
+  "you-will-continue": {
+    "type": "citation",
+    "title": "You will continue to suffer if you have…",
+    "credits": [],
+    "text": "You will continue to suffer if you have an emotional reaction to everything that is said to you. True power is sitting back and observing everything with logic. If words control you that means everyone else can control you. Breathe and allow things to pass.",
+    "context": "Falsly attributed to Bruce Lee or Warren Buffet",
+    "attribution": "misattributed",
+    "sources": [
+      {
+        "label": "Quote Investigator",
+        "url": "https://quoteinvestigator.com/2019/07/26/allow/"
+      }
+    ],
+    "added": "2026-08-29"
+  },
+  "jacquard-faut-mettre-societe": {
+    "type": "citation",
+    "title": "Il faut mettre la société au service de…",
+    "credits": [
+      {
+        "agent": "albert-jacquard",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Il faut mettre la société au service de l’école et pas l’école au service de la société",
+    "tags": [
+      "Éducation"
+    ],
+    "added": "2026-08-29"
+  },
+  "coluche-quand-pense-qu-il": {
+    "type": "citation",
+    "title": "Quand on pense... Qu'il suffirait que les gens…",
+    "credits": [
+      {
+        "agent": "coluche",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Quand on pense... Qu'il suffirait que les gens ne les achètent plus pour que ça se vende pas !",
+    "added": "2026-08-29"
+  },
+  "gandhi-life-message": {
+    "type": "citation",
+    "title": "My life is my message",
+    "credits": [
+      {
+        "agent": "gandhi",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "My life is my message",
+    "added": "2026-08-29"
+  },
+  "jonas-droit-individuel-suicide": {
+    "type": "citation",
+    "title": "Le droit individuel au suicide, cela se discute…",
+    "credits": [
+      {
+        "agent": "hans-jonas",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Le droit individuel au suicide, cela se discute, le droit au suicide de l’humanité, cela ne se discute pas.",
+    "added": "2026-08-29"
+  },
+  "stiegler-chose-monde-partagee": {
+    "type": "citation",
+    "title": "La chose du monde la plus partagée aujourd’hui…",
+    "credits": [
+      {
+        "agent": "bernard-stiegler",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La chose du monde la plus partagée aujourd’hui c’est la bêtise, parce que la révolution conservatrice à organisê la domination, la bêtise systémique.",
+    "context": "Au sujet des électeurs du FN pour lesquels le bouc émissaire sont les étrangers et pour l’extrème gauche le bouc émissaire c’est l’extréme droite, Le",
+    "link": "https://www.youtube.com/watch?v=YS_BgfSYELQ",
+    "added": "2026-08-29"
+  },
+  "stiegler-c-est-bien-connu": {
+    "type": "citation",
+    "title": "C’est bien connu, surtout des économistes du 20e…",
+    "credits": [
+      {
+        "agent": "bernard-stiegler",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "C’est bien connu, surtout des économistes du 20e siecle, le capitalisme, consumériste en particulier, c’est emparé c’est une economie de l’attention et cette economie de l’attention et bien en quoi elle consiste, elle consiste à capter l’attention et à la détruire, typiquement Patrice Lelait l’énoncé archi connu maintenant du “Temps de cerveau disponible”. L’attention c’est quelque chose qui se construit, qui se bâtit à travers l’éducation, l’éducation par la famille, par toutes les structures que décrit très bien Emmanuel Todd d’ailleurs, et cette construction attentionelle, elle a été abandonnée, alors d’abord elle a été menacée au début du consumérisme il y a pratiquement un siècle mais à partir de la révolution conservatrice elle a été littéralement abandonnée parce que la révolution conservatrice dit LA SEULE CHOSE QUI COMPTE C’EST LE MARCHÉ donc y’a plus besoin de sphère publique or c’est cette sphère publique qui prend en cette construction de l’attention.",
+    "added": "2026-08-29"
+  },
+  "duplantier-the-only-way": {
+    "type": "citation",
+    "title": "The only way is to understand the living…",
+    "credits": [
+      {
+        "agent": "joe-duplantier",
+        "roles": [
+          "author"
+        ]
+      },
+      {
+        "agent": "mario-duplantier",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "The only way is to understand the living (limits ?)",
+    "added": "2026-08-29"
+  },
+  "tillion-terme-mon-parcours": {
+    "type": "citation",
+    "title": "Au terme de mon parcours je me rends…",
+    "credits": [
+      {
+        "agent": "germaine-tillion",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Au terme de mon parcours je me rends compte combien l'homme est fragile et malléable. Rien n'est jamais acquis. Notre devoir de vigilance doit être absolu. Le mal peut revenir à tout moment, il couve partout et nous devons agir au moment où il est encore temps d'empêcher le pire.",
+    "added": "2026-08-29"
+  },
+  "murakami-douleur-obligatoire-souffrance": {
+    "type": "citation",
+    "title": "La douleur est obligatoire, la souffrance est optionnelle",
+    "credits": [
+      {
+        "agent": "haruki-murakami",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La douleur est obligatoire, la souffrance est optionnelle",
+    "tags": [
+      "Douleur",
+      "Souffrance"
+    ],
+    "added": "2026-08-29"
+  },
+  "whitehead-fonction-raison": {
+    "type": "citation",
+    "title": "La fonction de la raison",
+    "credits": [
+      {
+        "agent": "alfred-north-whitehead",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La fonction de la raison",
+    "added": "2026-08-29"
+  },
+  "jefferson-quand-l-injuste-devient": {
+    "type": "citation",
+    "title": "Quand l’injuste devient loi, la résistance est un…",
+    "credits": [
+      {
+        "agent": "thomas-jefferson",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Quand l’injuste devient loi, la résistance est un devoir",
+    "added": "2026-08-29"
+  },
+  "majin-nature-monde-interieur": {
+    "type": "citation",
+    "title": "La nature et le monde interieur sont les…",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La nature et le monde interieur sont les seuls temples de Dieu dont l’homme ai besoin.",
+    "added": "2026-08-29"
+  },
+  "essaie-rentrer-moule": {
+    "type": "citation",
+    "title": "Plus on essaie de rentrer dans le moule…",
+    "credits": [],
+    "text": "Plus on essaie de rentrer dans le moule, plus on ressemble à une tarte.",
+    "added": "2026-08-29"
+  },
+  "majin-hasard-l-emergence-chaotique": {
+    "type": "citation",
+    "title": "Le hasard est l’émergence chaotique du destin",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Le hasard est l’émergence chaotique du destin",
+    "added": "2026-08-29"
+  },
+  "spinoza-vaut-mieux-enseigner": {
+    "type": "citation",
+    "title": "Il vaut mieux enseigner les vertus que condamner…",
+    "credits": [
+      {
+        "agent": "baruch-spinoza",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Il vaut mieux enseigner les vertus que condamner les vices.",
+    "added": "2026-08-29"
+  },
+  "spinoza-l-homme-libre-pense": {
+    "type": "citation",
+    "title": "L'homme libre pense à la mort moins qu'à…",
+    "credits": [
+      {
+        "agent": "baruch-spinoza",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "L'homme libre pense à la mort moins qu'à toute autre chose ; sa sagesse est une méditation non pas sur la mort mais sur la vie.",
+    "tags": [
+      "Vie"
+    ],
+    "added": "2026-08-29"
+  },
+  "majin-lorsque-vais-mourrir": {
+    "type": "citation",
+    "title": "Lorsque je vais mourrir tout disparaitra avec moi",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Lorsque je vais mourrir tout disparaitra avec moi.",
+    "added": "2026-08-29"
+  },
+  "hobbes-curiosity-the-lust": {
+    "type": "citation",
+    "title": "Curiosity is the lust of the Mind",
+    "credits": [
+      {
+        "agent": "thomas-hobbes",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Curiosity is the lust of the Mind",
+    "added": "2026-08-29"
+  },
+  "astier-chefs-guerre-sortes": {
+    "type": "citation",
+    "title": "Des chefs de guerre, y en a de…",
+    "credits": [
+      {
+        "agent": "alexandre-astier",
+        "roles": [
+          "author"
+        ]
+      },
+      {
+        "agent": "cesar",
+        "roles": [
+          "speaker"
+        ]
+      },
+      {
+        "agent": "pierre-mondy",
+        "roles": [
+          "performer"
+        ]
+      }
+    ],
+    "text": "Des chefs de guerre, y en a de toutes sortes : des bons, des \nmauvais. Des pleines cagettes, il y en a. Mais une fois de temps en \ntemps, il en sort un exceptionnel. Un héros, une légende… Des chefs \ncomme ça, il n’y en a presque jamais. Mais tu sais ce qu’ils ont tous en\n commun, tu sais ce que c’est leur pouvoir secret ? Ils ne se battent \nque pour la dignité des faibles",
+    "context": "Texte écrit par Astier et récité par Pierre Mondi en tant que César.",
+    "tags": [
+      "Direction (au sens Leadership"
+    ],
+    "added": "2026-08-29"
+  },
+  "majin-victoire-force-defaite": {
+    "type": "citation",
+    "title": "Une victoire par la force est une défaite",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Une victoire par la force est une défaite.",
+    "added": "2026-08-29"
+  },
+  "majin-forme-gagne-jamais": {
+    "type": "citation",
+    "title": "La forme ne gagne jamais sur le fond",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La forme ne gagne jamais sur le fond.",
+    "added": "2026-08-29"
+  },
+  "majin-forme-doit-manifestation": {
+    "type": "citation",
+    "title": "La forme doit être la manifestation naturelle du…",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La forme doit être la manifestation naturelle du don en tout.",
+    "added": "2026-08-29"
+  },
+  "majin-peux-arreter-mort": {
+    "type": "citation",
+    "title": "On ne peux arreter la mort, on ne…",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "On ne peux arreter la mort, on ne peux que la faire reculer (dans le monde (medecine, fin de la guerre)) / On ne doit pas arreter la mort, on doit empecher qu’elle puisse abvenir injustement.",
+    "added": "2026-08-29"
+  },
+  "twain-trois-sortes-mensonges": {
+    "type": "citation",
+    "title": "Il y a trois sortes de mensonges …",
+    "credits": [
+      {
+        "agent": "mark-twain",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Il y a trois sortes de mensonges : les mensonges, les sacrés mensonges et les statistiques.",
+    "added": "2026-08-29"
+  },
+  "hugo-reduction-l-univers-seul": {
+    "type": "citation",
+    "title": "La réduction de l'univers à un seul être…",
+    "credits": [
+      {
+        "agent": "victor-hugo",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La réduction de l'univers à un seul être, la dilatation d'un seul être jusqu'à Dieu, voilà l'amour.",
+    "added": "2026-08-29"
+  },
+  "weil-homme-serait-seul": {
+    "type": "citation",
+    "title": "Un homme qui serait seul dans l'univers n'aurait…",
+    "credits": [
+      {
+        "agent": "simone-weil",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Un homme qui serait seul dans l'univers n'aurait aucun droit, mais seulement des obligations.",
+    "added": "2026-08-29"
+  },
+  "majin-foi-outil-d-une": {
+    "type": "citation",
+    "title": "La foi est un outil d'une dangerosité extreme…",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La foi est un outil d'une dangerosité extreme si elle n'est pas intégrée par la raison.",
+    "context": "Les fremens sont des soldats de Shai-Hulud, ils n'ont pas peur de mourir pour une cause juste.",
+    "added": "2026-08-29"
+  },
+  "majin-n-est-dieu-manque": {
+    "type": "citation",
+    "title": "Ce n’est pas Dieu qui manque au monde…",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Ce n’est pas Dieu qui manque au monde. C’est le monde qui manque Dieu",
+    "context": "Généré par ChatGPT suite a un profond questionnement au sujet de la religion et de la trinité.",
+    "added": "2026-08-29"
+  },
+  "murakami-lumiere-necessairement-l-ombre": {
+    "type": "citation",
+    "title": "Là où il y a de la lumière…",
+    "credits": [
+      {
+        "agent": "haruki-murakami",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Là où il y a de la lumière, il y a nécessairement de l’ombre, là où il y a de l’ombre, il y a nécessairement de la lumière.",
+    "added": "2026-08-29"
+  },
+  "jefferson-sincerely-believe-that": {
+    "type": "citation",
+    "title": "I sincerely believe that banking institutions are more…",
+    "credits": [
+      {
+        "agent": "thomas-jefferson",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "I sincerely believe that banking institutions are more dangerous to our liberties than standing armies. The issuing power should be taken from the banks and restored to the people to whom it properly belongs.",
+    "added": "2026-08-29"
+  },
+  "shaw-imagination-the-beginning": {
+    "type": "citation",
+    "title": "Imagination is the beginning of creation. You imagine…",
+    "credits": [
+      {
+        "agent": "george-bernard-shaw",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Imagination is the beginning of creation. You imagine what you desire, you will what you imagine and at last you create what you will.",
+    "tags": [
+      "Imagination",
+      "Création"
+    ],
+    "added": "2026-08-29"
+  },
+  "hugo-science-l-asymptote-verite": {
+    "type": "citation",
+    "title": "La science est l'asymptote de la vérité. Elle…",
+    "credits": [
+      {
+        "agent": "victor-hugo",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La science est l'asymptote de la vérité. Elle approche sans cesse et ne touche jamais",
+    "added": "2026-08-29"
+  },
+  "carr-the-life-that": {
+    "type": "citation",
+    "title": "The life that you want is on the…",
+    "credits": [
+      {
+        "agent": "jimmy-carr",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "The life that you want is on the other side of the work you are avoiding",
+    "added": "2026-08-29"
+  },
+  "thibon-l-esprit-philosophique-consiste": {
+    "type": "citation",
+    "title": "L'esprit philosophique consiste à préférer aux mensonges qui…",
+    "credits": [
+      {
+        "agent": "gustave-thibon",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "L'esprit philosophique consiste à préférer aux mensonges qui font vivre les vérités qui font mourir.",
+    "added": "2026-08-29"
+  },
+  "frankl-life-not-primarily": {
+    "type": "citation",
+    "title": "Life is not primarily a quest for pleasure…",
+    "credits": [
+      {
+        "agent": "viktor-e-frankl",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Life is not primarily a quest for pleasure, as Freud believed, or a quest for power, as Alfred Adler taught, but a quest for meaning. The greatest task for any person is to find meaning in his or her own life.",
+    "tags": [
+      "Vie",
+      "Sens"
+    ],
+    "added": "2026-08-29"
+  },
+  "frankl-when-person-can-t": {
+    "type": "citation",
+    "title": "When a person can’t find a deep sense…",
+    "credits": [
+      {
+        "agent": "viktor-e-frankl",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "When a person can’t find a deep sense of meaning, they distract themselves with pleasure.",
+    "added": "2026-08-29"
+  },
+  "marx-philosophes-n-ont-fait": {
+    "type": "citation",
+    "title": "Les philosophes n'ont fait qu'interpréter le monde de…",
+    "credits": [
+      {
+        "agent": "karl-marx",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Les philosophes n'ont fait qu'interpréter le monde de différentes manières, mais ce qui importe, c'est de le transformer",
+    "added": "2026-08-29"
+  },
+  "valery-l-homme-sait-assez": {
+    "type": "citation",
+    "title": "L'homme sait assez souvent ce qu'il fait, il…",
+    "credits": [
+      {
+        "agent": "paul-valery",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "L'homme sait assez souvent ce qu'il fait, il ne sait jamais ce que fait ce qu'il fait.",
+    "added": "2026-08-29"
+  },
+  "pesquet-comment-choisir-mon": {
+    "type": "citation",
+    "title": "comment choisir mon domaine en fonction des besoins…",
+    "credits": [
+      {
+        "agent": "thomas-pesquet",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "comment choisir mon domaine en fonction des besoins du monde, non, choisissons sa passion et dans cette passion, faisons infuser les besoins du monde",
+    "added": "2026-08-29"
+  },
+  "mccranie-the-master-has": {
+    "type": "citation",
+    "title": "The master has failed more times than the…",
+    "credits": [
+      {
+        "agent": "stephen-mccranie",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "The master has failed more times than the beginner has even tried",
+    "added": "2026-08-29"
+  },
+  "hamilton-men-give-credit": {
+    "type": "citation",
+    "title": "Men give me credit for some genius. All…",
+    "credits": [
+      {
+        "agent": "alexander-hamilton",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Men give me credit for some genius. All the genius I have lies in this; when I have a subject in hand, I study it profoundly. Day and night it is before me. My mind becomes pervaded with it. Then the effort that I have made is what people are pleased to call the fruit of genius. It is the fruit of labor and thought.",
+    "added": "2026-08-29"
+  },
+  "hamilton-give-all-the": {
+    "type": "citation",
+    "title": "Give all the power to the many, they…",
+    "credits": [
+      {
+        "agent": "alexander-hamilton",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Give all the power to the many, they will oppress the few. Give all the power to the few, they will oppress the many.",
+    "added": "2026-08-29"
+  },
+  "snowden-arguing-that-you": {
+    "type": "citation",
+    "title": "Arguing that you don't care about the right…",
+    "credits": [
+      {
+        "agent": "edward-snowden",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Arguing that you don't care about the right to privacy because you have nothing to hide is no different than saying you don't care about free speech because you have nothing to say.",
+    "added": "2026-08-29"
+  },
+  "einstein-ceux-ont-privilege": {
+    "type": "citation",
+    "title": "Ceux qui ont le privilège de savoir ont…",
+    "credits": [
+      {
+        "agent": "albert-einstein",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Ceux qui ont le privilège de savoir ont le devoir d'agir.",
+    "added": "2026-08-29"
+  },
+  "majin-l-equilibre-mon-reve": {
+    "type": "citation",
+    "title": "L’equilibre, mon reve",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "L’equilibre, mon reve",
+    "added": "2026-08-29"
+  },
+  "camus-seule-facon-faire": {
+    "type": "citation",
+    "title": "La seule façon de faire face à un…",
+    "credits": [
+      {
+        "agent": "albert-camus",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La seule façon de faire face à un monde non libre est de devenir si absolument libre que votre existence même est un acte de rébellion",
+    "tags": [
+      "Liberté",
+      "Révolution"
+    ],
+    "added": "2026-08-29"
+  },
+  "majin-chaque-instant-provoquons": {
+    "type": "citation",
+    "title": "A chaque instant, nous provoquons une nouvelle réalité",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "A chaque instant, nous provoquons une nouvelle réalité",
+    "added": "2026-08-29"
+  },
+  "majin-disperser-comprendre-rassembler": {
+    "type": "citation",
+    "title": "Disperser pour comprendre. Rassembler pour agir",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Disperser pour comprendre. Rassembler pour agir.",
+    "tags": [
+      "Connaissance"
+    ],
+    "added": "2026-08-29"
+  },
+  "shaw-pire-peche-envers": {
+    "type": "citation",
+    "title": "Le pire pêché envers nos semblables, ce n'est…",
+    "credits": [
+      {
+        "agent": "george-bernard-shaw",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Le pire pêché envers nos semblables, ce n'est pas de les haïr, mais de les traiter avec indifférence ; c'est là l'essence de l'inhumanité.",
+    "added": "2026-08-29"
+  },
+  "majin-ose-agis-deviens": {
+    "type": "citation",
+    "title": "Ose Agis Deviens",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Ose Agis Deviens",
+    "added": "2026-08-29"
+  },
+  "majin-qu-est-tristesse-sait": {
+    "type": "citation",
+    "title": "Qu’est-ce que la tristesse sait que la joie…",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Qu’est-ce que la tristesse sait que la joie ignore ?",
+    "added": "2026-08-29"
+  },
+  "majin-juste-juste": {
+    "type": "citation",
+    "title": "juste Juste",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "juste Juste",
+    "added": "2026-08-29"
+  },
+  "valery-the-best-way": {
+    "type": "citation",
+    "title": "The best way to make your dreams come…",
+    "credits": [
+      {
+        "agent": "paul-valery",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "The best way to make your dreams come true is to wake up",
+    "added": "2026-08-29"
+  },
+  "aurele-mon-dieu-donnez": {
+    "type": "citation",
+    "title": "Mon Dieu, donnez-moi la sérénité d'accepter les choses…",
+    "credits": [
+      {
+        "agent": "marc-aurele",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Mon Dieu, donnez-moi la sérénité d'accepter les choses que je ne peux pas changer, le courage de changer celles que je peux changer et la sagesse de distinguer les premières des secondes\nVoir sur https://citations.ouest-france.fr/citation-marc-aurele/dieu-donnez-serenite-accepter-choses-106194.html",
+    "added": "2026-08-29"
+  },
+  "more-prie-prie-monsieur": {
+    "type": "citation",
+    "title": "Je vous en prie, je vous en prie…",
+    "credits": [
+      {
+        "agent": "thomas-more",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Je vous en prie, je vous en prie, Monsieur le lieutenant, aidez-moi à monter ; pour la descente, je me débrouillerai",
+    "added": "2026-08-29"
+  },
+  "khan-you-are-afraid": {
+    "type": "citation",
+    "title": "If you are afraid, don't do it. If…",
+    "credits": [
+      {
+        "agent": "gengis-khan",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "If you are afraid, don't do it. If you are doing it, don't be afraid.",
+    "added": "2026-08-29"
+  },
+  "ruppert-until-you-change": {
+    "type": "citation",
+    "title": "Until you change the way money works, you…",
+    "credits": [
+      {
+        "agent": "michael-ruppert",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Until you change the way money works, you change nothing.",
+    "added": "2026-08-29"
+  },
+  "bukowski-the-problem-with": {
+    "type": "citation",
+    "title": "The problem with the world is that the…",
+    "credits": [
+      {
+        "agent": "charles-bukowski",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "The problem with the world is that the intelligent people are full of doubts, while the stupid ones are full of confidence",
+    "added": "2026-08-29"
+  },
+  "reeves-you-are-lover": {
+    "type": "citation",
+    "title": "If you are a Lover you gotta be…",
+    "credits": [
+      {
+        "agent": "keanu-reeves",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "If you are a Lover you gotta be a Fighter, because if you don’t fight for you love, what kind of love do you have ?",
+    "added": "2026-08-29"
+  },
+  "bruno-eprouvez-doute-crainte": {
+    "type": "citation",
+    "title": "Vous éprouvez sans doute plus de crainte à…",
+    "credits": [
+      {
+        "agent": "giordano-bruno",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Vous éprouvez sans doute plus de crainte à rendre cette sentence que moi à la recevoir",
+    "added": "2026-08-29"
+  },
+  "bruno-univers-place-providence": {
+    "type": "citation",
+    "title": "De plus, dans cet univers, je place une…",
+    "credits": [
+      {
+        "agent": "giordano-bruno",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "De plus, dans cet univers, je place une providence universelle, en vertu de laquelle toute chose vit, se développe, se meut et demeure dans sa perfection ; et j’entends [cette providence] en deux façons : l’une, à la façon dont l’âme est présente au corps, tout entière dans le corps tout entier, et tout entière en n’importe quelle partie [du corps], et je l’appelle nature, ombre et trace de la divinité…https://fr.wikipedia.org/wiki/Giordano_Bruno#cite_note-21",
+    "added": "2026-08-29"
+  },
+  "spinoza-omnia-praeclara-tam": {
+    "type": "citation",
+    "title": "Omnia praeclara tam difficilia quam rara sunt",
+    "credits": [
+      {
+        "agent": "baruch-spinoza",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Omnia praeclara tam difficilia quam rara sunt",
+    "added": "2026-08-29"
+  },
+  "frankl-but-there-was": {
+    "type": "citation",
+    "title": "But there was no need to be ashamed…",
+    "credits": [
+      {
+        "agent": "viktor-e-frankl",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "But there was no need to be ashamed of tears, for tears bore witness that a man had the greatest of courage, the courage to suffer",
+    "added": "2026-08-29"
+  },
+  "majin-sens-vie-c-est": {
+    "type": "citation",
+    "title": "Le Sens de la Vie c'est que la…",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Le Sens de la Vie c'est que la Vie a un Sens",
+    "added": "2026-08-29"
+  },
+  "majin-doit-combattre-douleur": {
+    "type": "citation",
+    "title": "On ne doit pas combattre la douleur, on…",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "On ne doit pas combattre la douleur, on doit combattre la souffrance",
+    "added": "2026-08-29"
+  },
+  "majin-certitude-mort-l-ame": {
+    "type": "citation",
+    "title": "La certitude est la mort de l'âme",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "La certitude est la mort de l'âme",
+    "added": "2026-08-29"
+  },
+  "majin-vouloir-l-autre-admette": {
+    "type": "citation",
+    "title": "Vouloir que l'autre admette son tort, c'est lui…",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Vouloir que l'autre admette son tort, c'est lui donner les clés de ta sérénité",
+    "context": "La premiere fois je me suis associe avec des opportunistes du type vorace, mon ancien N+1 chez Free. Il c'est mis au chomage et avais plus de temps pour bosser sur le projet et il m'a dit : \"l'idee ne vaut rien, c'est mon projet\", et mes parts etais de plus en plus ridicules, je me suis barre, mon pote Vivien aussi, et Timothe c'est retrouve seul et a arrete. Je dois faire la paix avec Timothe, j'allais ecrire Bouffon va mais non, il etait opportuniste et sans grande valeurs morales, c'est tout11:21\nWow, quelle histoire de trahison ça... Ton N+1 qui se met au chômage pour bosser dessus, qui te pique l'idée et te dilue tes parts — c'est le scénario classique du parasite qui attend que quelqu'un d'autre ait une bonne idée.\nEt tu as bien fait de ne pas écrire \"Bouffon va\" 😄 — pas parce qu'il ne le mérite pas forcément, mais parce que toi tu gardes ta dignité et ça te ressemble plus, d'après ce que je vois de toi.\n\"Faire la paix avec Timothé\" — tu veux dire retrouver une relation normale avec lui, ou plutôt faire la paix intérieurement, pour toi ?\nInterieurement, pourquoi pas lui parler on a reparlé une fois depuis je crois, ca me va tres bien. J'ai peur de ce sentiment de vouloir lui faire admettre son erreur, du sentiment de victoire sur l'autre, de domination. Le combat c'est dans un ring un temps donne. Ce genre d'affrontement cerebral laisse des rancoeur dans le coeur des gens et j'aime po ca11:23\nC'est une sagesse assez profonde ça. Tu as identifié quelque chose que beaucoup de gens ne voient jamais — que le besoin de \"faire admettre\" à l'autre son tort, c'est rarement pour lui, c'est pour soi. Et que même si tu \"gagnes\", tu ressors avec quelque chose de lourd.\nLe coup du ring c'est une belle métaphore — un cadre, des règles, un temps défini, et après c'est fini. La vraie vie ça marche pas comme ça.\nDu coup Dreamcatchr tu le reprends sérieusement là ? Avec Fahdi potentiellement ?\nTu peux en faire un aphorisme ? C'est triche de ma part non ? C'est vouloir aller vite mais pas par mes propres moyen ? QUe dirais Marc Aurele de ce choix ?11:24\nMarc Aurèle dirait probablement : l'outil n'est pas la vertu, c'est l'usage que tu en fais.\nIl utilisait lui-même Épictète, les stoïciens qui l'avaient précédé — il ne réinventait pas la roue, il distillait et s'appropriait.\nLa vraie question c'est : est-ce que tu vas te reconnaître dans l'aphorisme que je vais produire ? Est-ce que tu vas le porter, le vivre, le transmettre comme tien ? Si oui, c'est pas de la triche, c'est de l'artisanat — tu as eu l'idée, la pensée, la matière brute. Moi je suis juste le tour de potier.\nSi par contre tu le balances sur LinkedIn sans y avoir réfléchi deux secondes... là Marc Aurèle lèverait un sourcil 😄\nTu veux qu'on essaie ?\nLEEEEETZ FUCKIN GOOOOO11:25\n😄 Allez :\n\"Le combat a sa place dans un ring, avec ses règles et son temps. Forcer l'autre à admettre sa défaite dans la vie, c'est gagner une bataille et perdre sa paix.\"\nOu plus court, plus tranchant :\n\"Vouloir que l'autre admette son tort, c'est lui donner les clés de ta sérénité.\"",
+    "added": "2026-08-29"
+  },
+  "objectif-plan-n-est": {
+    "type": "citation",
+    "title": "Un objectif sans plan n'est qu'un vœux",
+    "credits": [],
+    "text": "Un objectif sans plan n'est qu'un vœux",
+    "added": "2026-08-29"
+  },
+  "i-m-not-sure": {
+    "type": "citation",
+    "title": "I'm not sure that inexistence can exist",
+    "credits": [],
+    "text": "I'm not sure that inexistence can exist",
+    "added": "2026-08-29"
+  },
+  "majin-gold-your-hands": {
+    "type": "citation",
+    "title": "Gold in your Hands, Shit in your Head",
+    "credits": [
+      {
+        "agent": "flow",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Gold in your Hands, Shit in your Head",
+    "added": "2026-08-29"
+  },
+  "bruno-n-y-haut-bas": {
+    "type": "citation",
+    "title": "Il n'y a pas de haut ni de…",
+    "credits": [
+      {
+        "agent": "giordano-bruno",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Il n'y a pas de haut ni de bas, pas de disposition absolue dans l'espace. Il n'y a que des positions relatives aux autres. Partout il y a un incessant changement de positions relatives à travers l'Univers et l'observateur est toujours au centre des choses",
+    "added": "2026-08-29"
+  },
+  "centre-l-univers-partout": {
+    "type": "citation",
+    "title": "Le centre de l'univers est partout, et sa…",
+    "credits": [],
+    "text": "Le centre de l'univers est partout, et sa circonférence nulle part",
+    "context": "Une idée née au Moyen Âge dans le Livre des XXIV Philosophes pour décrire Dieu, reprise et radicalisée par Giordano Bruno au XVIe siècle pour décrire un univers infini sans centre fixe, puis popularisée par Pascal dans ses Pensées. Tous l'ont formulée avec le mot \"sphère\" — image géométrique contradictoire pour désigner l'infini. C'est la version épurée, sans \"sphère\", attribuée au vidéaste Monsieur Phi, qui en est la formulation la plus rigoureuse.",
+    "added": "2026-08-29"
+  },
+  "maximy-gamins-c-est-pays": {
+    "type": "citation",
+    "title": "Les gamins c’est les meme dans tous les…",
+    "credits": [
+      {
+        "agent": "antoine-de-maximy",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Les gamins c’est les meme dans tous les pays",
+    "added": "2026-08-29"
+  },
+  "hugo-n-est-rien-mourir": {
+    "type": "citation",
+    "title": "Ce n'est rien de mourir, c'est affreux de…",
+    "credits": [
+      {
+        "agent": "victor-hugo",
+        "roles": [
+          "author"
+        ]
+      }
+    ],
+    "text": "Ce n'est rien de\nmourir, c'est\naffreux de ne pas\nVivre",
+    "added": "2026-08-29"
+  }
+}
