@@ -14,8 +14,11 @@
   "paroles-de-philosophes-simone-weil": {
     "type": "video",
     "title": "Paroles de philosophes — Simone Weil",
-    "credits": [{ "agent": "simone-weil", "roles": ["subject"] }],
-    "note": "⚠️ fixture : le cas qui commande tout le modèle. Elle n'a pas contribué à cette vidéo, elle en est le SUJET — et pourtant elle doit apparaître sur sa page à côté de ses citations.",
+    "credits": [
+      { "agent": "simone-weil", "roles": ["subject"] },
+      { "agent": "paroles-de-philosophes", "roles": ["publisher"] }
+    ],
+    "note": "⚠️ fixture : le cas qui commande tout le modèle. Elle n'a pas contribué à cette vidéo, elle en est le SUJET — et pourtant elle doit apparaître sur sa page à côté de ses citations. La chaîne YouTube est un agent `kind: organization` crédité `publisher` : ni un champ à part, ni une personne. L'humain qui a réalisé la vidéo serait un troisième crédit, `director` — non renseigné ici, la chaîne étant inventée.",
     "added": "2026-08-28",
     "tags": ["philosophie"]
   },
@@ -41,16 +44,14 @@
     "tags": ["boxe"]
   },
 
-  "dany-bill-combat": {
+  "dany-bill-vs-ramon-dekkers": {
     "type": "video",
-    "title": "Dany Bill — combat",
+    "title": "Dany Bill vs Ramon Dekkers",
     "credits": [
-      {
-        "agent": "dany-bill",
-        "roles": ["performer"],
-        "note": "⚠️ fixture : c'est ici que se met la précision que l'enum ne porte pas (adversaire, date, lieu)."
-      }
+      { "agent": "dany-bill", "roles": ["performer"] },
+      { "agent": "ramon-dekkers", "roles": ["performer"] }
     ],
+    "note": "⚠️ fixture, date et édition non vérifiées. Tu avais raison : l'adversaire est un agent crédité, pas une note. Et son rôle n'est pas `subject` — dans un combat personne n'est le sujet, les deux agissent, donc les deux sont `performer`. Qui est « le principal » est porté par l'ORDRE du tableau (le billing d'un générique), pas par un rôle inventé.",
     "added": "2026-08-28",
     "tags": ["boxe", "muay-thai"]
   },

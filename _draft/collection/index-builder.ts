@@ -110,6 +110,26 @@ export function buildIndex(agents: Agent[], items: CollectionItem[]): Collection
 }
 
 /**
+ * Tri alphabétique des noms.
+ *
+ * `Intl.Collator('fr')` et pas `<` : le tri lexicographique brut place « Zola »
+ * avant « Éluard » (É vaut U+00C9, après Z), et ne sait pas que « œ » se range
+ * comme « oe ». Le collateur, lui, applique les règles de la langue. C'est aussi
+ * pour ça que `sortName` n'a pas besoin d'être « normalisé » à la saisie : la
+ * virgule et l'espace n'influencent pas le résultat, ils ne servent qu'à l'œil.
+ */
+const collator = new Intl.Collator('fr', { sensitivity: 'base', ignorePunctuation: true });
+
+export function compareAgents(a: Agent, b: Agent): number {
+  return collator.compare(a.sortName ?? a.name, b.sortName ?? b.name);
+}
+
+/** Les groupes auxquels appartient un agent — index inverse de `Agent.members`. */
+export function groupsOfAgent(index: CollectionIndex, slug: Slug): Agent[] {
+  return [...index.agents.values()].filter((a) => a.members?.includes(slug));
+}
+
+/**
  * Les rôles qu'un agent tient dans toute la collection — sert à proposer les
  * filtres de sa page : « autrice (12) · sujet (3) », et à n'afficher le filtre
  * que quand il a plus d'un rôle.

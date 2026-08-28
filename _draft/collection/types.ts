@@ -74,6 +74,11 @@ export const COLLECTION_ROLES = [
   'interviewee',
   'interviewer',
   /**
+   * Qui diffuse : une chaîne YouTube, un label, une maison d'édition, un studio.
+   * Presque toujours un agent `kind: 'organization'`.
+   */
+  'publisher',
+  /**
    * L'item PARLE D'ELLE, elle n'y a pas contribué.
    * → Simone Weil dans la vidéo « Paroles de philosophes ».
    */
@@ -95,6 +100,7 @@ export const ROLE_LABELS: Record<CollectionRole, string> = {
   narrator: 'narrateur',
   interviewee: 'interviewé',
   interviewer: 'intervieweur',
+  publisher: 'diffusé par',
   subject: 'sujet',
 };
 
@@ -117,7 +123,28 @@ export const ROLE_LABELS: Record<CollectionRole, string> = {
  * vis-à-vis d'un État. Aristote n'est citoyen d'aucun État actuel, et Simone
  * Weil ne sera jamais citoyenne d'ATLAS.
  */
-export type AgentKind = 'person' | 'group';
+export type AgentKind =
+  | 'person'
+  /** Massive Attack, un quatuor, un collectif. */
+  | 'group'
+  /**
+   * Une chaîne YouTube, un label, une maison d'édition, un studio.
+   * Le vocabulaire des bibliothèques dit « corporate body » : ni une personne,
+   * ni un groupe de personnes nommées — une entité qui publie.
+   */
+  | 'organization';
+
+/** Un texte et sa langue — un surnom thaï n'est pas un surnom anglais. */
+export interface LocalizedText {
+  /** Code BCP 47 : `fr`, `en`, `th`… */
+  lang: string;
+  text: string;
+}
+
+export interface Link {
+  label: string;
+  url: string;
+}
 
 export interface Agent {
   slug: Slug;
@@ -133,14 +160,61 @@ export interface Agent {
    */
   name: string;
 
-  /** Pour le tri : « Weil, Simone ». Absent pour un groupe ou un mononyme. */
+  /**
+   * Forme inversée, pour l'affichage d'un index alphabétique : « Weil, Simone ».
+   *
+   * ⚠️ La virgule et l'espace ne servent PAS au tri — `Intl.Collator` compare
+   * les caractères, « Weil Simone » se trierait pareil. Ils servent à l'œil :
+   * dans une liste de noms, la virgule signale « nom de famille d'abord »,
+   * c'est la convention des index de bibliothèque. C'est donc un champ
+   * d'AFFICHAGE, dont le tri profite parce que la bonne clé de tri commence
+   * par le nom de famille. Voir `compareAgents()` dans `index-builder.ts`.
+   *
+   * Absent pour un mononyme, un groupe, une organisation.
+   */
   sortName?: string;
+
+  /**
+   * Le nom d'état civil, quand le nom d'usage est un pseudonyme.
+   * Colette → « Sidonie-Gabrielle Colette ».
+   * (En anglais : *legal name* ; le nom d'auteur est un *pen name* ; le second
+   * prénom est un *middle name*.)
+   */
+  legalName?: string;
+
+  /**
+   * Surnoms, alias de ring, noms de scène. Localisés, parce qu'ils le sont
+   * réellement : Dany Bill est « Black Monk » en anglais et « ไอ้ดำพระกาฬ » en thaï.
+   *
+   * ⚠️ Ne pas confondre avec `formerSlugs` : ceci est fait pour être LU, ça n'a
+   * aucun rôle d'identifiant. C'est la collision qui existait dans `aliases`.
+   */
+  nicknames?: LocalizedText[];
 
   born?: PartialDate;
   died?: PartialDate;
 
-  /** Une phrase de désambiguïsation, pas une biographie. */
+  /**
+   * UNE phrase de désambiguïsation, affichée dans les listes et sous le nom.
+   * La biographie longue n'a pas sa place ici : si elle existe un jour, c'est
+   * un corps Markdown (un fichier `.md` par agent — données en frontmatter,
+   * texte dans le corps), pas une chaîne dans un JSON.
+   */
   bio?: string;
+
+  /**
+   * Les membres, pour un `group` — par slug, jamais par nom.
+   *
+   * Slug pour la raison que tu donnes : il reste lisible et résolvable quel que
+   * soit l'export. Un id opaque obligerait à trimballer la table pour relire la
+   * donnée.
+   *
+   * ⚠️ Volontairement SANS dates d'entrée/sortie ni instrument : une composition
+   * de groupe est temporelle, et c'est un terrier à lapin. Tant qu'aucune page
+   * n'en a besoin, une liste plate suffit — l'enrichir plus tard est additif,
+   * donc gratuit.
+   */
+  members?: Slug[];
 
   /**
    * Le pont externe, optionnel. Wikidata est gratuit, stable, couvre les
@@ -149,8 +223,15 @@ export interface Agent {
    */
   wikidata?: `Q${number}`;
 
-  /** Anciens slugs, pour ne pas casser une URL déjà publiée. */
-  aliases?: Slug[];
+  /** Wikipédia, site officiel, Discogs… ce qui n'est pas dérivable de Wikidata. */
+  links?: Link[];
+
+  /**
+   * Anciens slugs, pour ne pas casser une URL déjà publiée. Purement machine,
+   * jamais affiché. (S'appelait `aliases` — renommé parce qu'« alias » évoque
+   * un surnom, et que les deux sens se télescopaient.)
+   */
+  formerSlugs?: Slug[];
 
   /** Sert à l'accord des libellés au rendu (« autrice »), pas au stockage. */
   gender?: 'f' | 'm' | 'other';
@@ -218,7 +299,15 @@ export interface CollectionItem {
   type: CollectionType;
   title: string;
 
-  /** Tous les liens vers des agents, tous rôles confondus. */
+  /**
+   * Tous les liens vers des agents, tous rôles confondus.
+   *
+   * ⚠️ **L'ordre est signifiant** : c'est le « billing » du générique de film.
+   * Dans une vidéo de combat, les deux boxeurs sont `performer` — celui dont
+   * c'est la vidéo est cité en premier. Ça évite d'inventer un rôle
+   * `main-subject` qui mentirait (dans un combat, personne n'est le *sujet* :
+   * les deux agissent, donc les deux sont des interprètes).
+   */
   credits: Credit[];
 
   /* ── Représentation vs contenu ───────────────────────────────────────────

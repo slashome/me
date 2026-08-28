@@ -51,8 +51,36 @@ export function validate(agents: Agent[], items: CollectionItem[]): Issue[] {
     if (agent.born && agent.died && agent.died < agent.born) {
       error(where, 'died antérieur à born');
     }
-    if (agent.kind === 'group' && agent.sortName) {
-      warn(where, 'sortName sur un groupe : le tri se fait déjà sur name');
+    if (agent.kind !== 'person' && agent.sortName) {
+      warn(where, 'sortName inutile hors personne : le tri se fait déjà sur name');
+    }
+    if (agent.members?.length && agent.kind === 'person') {
+      error(where, 'une personne n\'a pas de membres');
+    }
+    for (const nickname of agent.nicknames ?? []) {
+      if (!nickname.lang.trim()) error(where, 'surnom sans langue');
+      if (!nickname.text.trim()) error(where, 'surnom vide');
+    }
+  }
+
+  /* Membres : vérifiés APRÈS, quand tous les slugs sont connus (un membre peut
+     être déclaré plus bas dans le fichier que son groupe). */
+  for (const agent of agents) {
+    for (const member of agent.members ?? []) {
+      if (!seenAgents.has(member)) {
+        error(`agents/${agent.slug}`, `membre inconnu : ${member}`);
+      }
+      if (member === agent.slug) {
+        error(`agents/${agent.slug}`, 'membre de lui-même');
+      }
+    }
+    for (const former of agent.formerSlugs ?? []) {
+      if (seenAgents.has(former)) {
+        error(
+          `agents/${agent.slug}`,
+          `formerSlugs contient « ${former} », qui est le slug d'un agent existant`,
+        );
+      }
     }
   }
 
@@ -121,8 +149,13 @@ export function validate(agents: Agent[], items: CollectionItem[]): Issue[] {
   /* ── Agents orphelins ───────────────────────────────────────────────────── */
 
   const cited = new Set(items.flatMap((i) => i.credits.map((c) => c.agent)));
+  /* Un membre de groupe cité est légitimement sans item à lui : il est visible
+     par la page de son groupe. Ne pas le signaler évite un bruit permanent. */
+  const membersOfCitedGroups = new Set(
+    agents.filter((a) => cited.has(a.slug)).flatMap((a) => a.members ?? []),
+  );
   for (const agent of agents) {
-    if (!cited.has(agent.slug)) {
+    if (!cited.has(agent.slug) && !membersOfCitedGroups.has(agent.slug)) {
       warn(`agents/${agent.slug}`, 'aucun item : sa page serait vide');
     }
   }

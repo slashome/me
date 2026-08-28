@@ -1,5 +1,5 @@
 {
-  "_comment": "Fixtures de travail. La clé EST le slug — voir Keyed<T> dans types.ts. Les faits (dates, orthographes) ne sont PAS vérifiés : à contrôler avant toute publication.",
+  "_comment": "Fixtures de travail. La clé EST le slug — voir Keyed<T> dans types.ts. Les faits marqués ⚠️ ne sont PAS vérifiés ; les autres viennent d'une recherche et restent à recouper avant publication.",
 
   "simone-weil": {
     "kind": "person",
@@ -8,27 +8,77 @@
     "born": "1909",
     "died": "1943",
     "gender": "f",
-    "bio": "Philosophe et mystique française."
+    "bio": "Philosophe et mystique française. À ne pas confondre avec Simone Veil.",
+    "links": [{ "label": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Simone_Weil" }]
   },
 
   "dany-bill": {
     "kind": "person",
     "name": "Dany Bill",
     "sortName": "Bill, Dany",
+    "born": "1973-04-28",
     "gender": "m",
-    "bio": "Boxeur français, multiple champion du monde de muay-thaï."
+    "bio": "Boxeur franco-camerounais, sept fois champion du monde de muay-thaï.",
+    "nicknames": [
+      { "lang": "en", "text": "Black Monk" },
+      { "lang": "th", "text": "ไอ้ดำพระกาฬ" },
+      { "lang": "en", "text": "Dangerous Black Lion" },
+      { "lang": "th", "text": "สิงดำ อันตราย" },
+      { "lang": "en", "text": "The Magician of the Ring" }
+    ],
+    "links": [{ "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Dany_Bill" }]
+  },
+
+  "ramon-dekkers": {
+    "kind": "person",
+    "name": "Ramon Dekkers",
+    "sortName": "Dekkers, Ramon",
+    "gender": "m",
+    "bio": "Boxeur néerlandais, figure du muay-thaï occidental.",
+    "links": [{ "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Ramon_Dekkers" }]
   },
 
   "massive-attack": {
     "kind": "group",
     "name": "Massive Attack",
-    "bio": "Groupe britannique de trip-hop, formé à Bristol."
+    "bio": "Groupe britannique de trip-hop, formé à Bristol.",
+    "members": ["robert-del-naja", "grant-marshall", "andrew-vowles"],
+    "links": [{ "label": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Massive_Attack" }]
+  },
+  "robert-del-naja": {
+    "kind": "person",
+    "name": "Robert Del Naja",
+    "sortName": "Del Naja, Robert",
+    "gender": "m",
+    "nicknames": [{ "lang": "en", "text": "3D" }]
+  },
+  "grant-marshall": {
+    "kind": "person",
+    "name": "Grant Marshall",
+    "sortName": "Marshall, Grant",
+    "gender": "m",
+    "nicknames": [{ "lang": "en", "text": "Daddy G" }]
+  },
+  "andrew-vowles": {
+    "kind": "person",
+    "name": "Andrew Vowles",
+    "sortName": "Vowles, Andrew",
+    "gender": "m",
+    "nicknames": [{ "lang": "en", "text": "Mushroom" }]
+  },
+
+  "paroles-de-philosophes": {
+    "kind": "organization",
+    "name": "Paroles de philosophes",
+    "bio": "⚠️ fixture : chaîne YouTube inventée pour l'exemple. C'est la réponse à « le nom de la chaîne, on le stocke comment ? » — un agent, pas un champ."
   },
 
   "colette": {
     "kind": "person",
     "name": "Colette",
+    "legalName": "Sidonie-Gabrielle Colette",
     "gender": "f",
-    "bio": "Mononyme — le cas qui casse firstname/lastname."
+    "bio": "Le cas qui casse firstname/lastname : le nom d'usage est un mononyme, l'état civil est ailleurs.",
+    "links": [{ "label": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Colette" }]
   }
 }
