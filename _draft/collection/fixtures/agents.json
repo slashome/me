@@ -32,28 +32,38 @@
     "bio": "Boxeur camerounais, sept fois champion du monde de muay-thaï. En 1993, il devient le premier combattant venu de France à décrocher un titre mondial en Thaïlande.",
     "nicknames": [
       {
+        "lang": "fr",
+        "text": "l'Extraterrestre du Muay Thaï",
+        "note": "Forgé par le journaliste Pascal Iglicki dans Karaté Bushido, après le titre mondial de Bangkok en 1993 — Dany Bill le raconte lui-même. Circule aussi sous la variante « l'Extraterrestre des rings ».",
+        "translations": [{ "lang": "en", "text": "the Alien of Muay Thai" }]
+      },
+      {
         "lang": "th",
         "text": "ไอ้ดำพระกาฬ",
+        "note": "⚠️ Traduit « Black Monk » par Wikipédia anglophone (sans source), et repris partout. C'est très probablement un contresens : พระ est ici le préfixe honorifique des divinités, pas le mot « moine », et พระกาฬ (Phra Kan) désigne le seigneur de la Mort — Yama, du sanskrit Kāla. กาฬ vaut « noir » selon la Société royale de Thaïlande (cf. กาฬทวีป, « continent noir »). Sens plus fidèle : « le Noir de la Mort ». Aucune source thaïlandaise trouvée pour cette graphie : à confirmer par un locuteur thaï.",
         "translations": [
-          { "lang": "en", "text": "Black Monk" },
-          { "lang": "fr", "text": "le Moine noir" }
+          { "lang": "fr", "text": "le Noir de la Mort" },
+          { "lang": "en", "text": "the Black One of the Death God" }
         ]
       },
       {
         "lang": "th",
         "text": "สิงดำ อันตราย",
+        "note": "สิงห์ = lion, ดำ = noir, อันตราย = dangereux. Siam Fight Mag translittère « Singdam Anetaraï » et traduit simplement « le Lion noir », en omettant le qualificatif. Graphie thaïe attestée seulement par des sources occidentales.",
         "translations": [
-          { "lang": "en", "text": "Dangerous Black Lion" },
-          { "lang": "fr", "text": "le Lion noir dangereux" }
+          { "lang": "fr", "text": "le Lion noir dangereux" },
+          { "lang": "en", "text": "Dangerous Black Lion" }
         ]
-      },
-      {
-        "lang": "en",
-        "text": "The Magician of the Ring",
-        "translations": [{ "lang": "fr", "text": "le Magicien du ring" }]
       }
     ],
-    "links": [{ "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Dany_Bill" }]
+    "links": [
+      { "label": "Wikipédia (fr)", "url": "https://fr.wikipedia.org/wiki/Dany_Bill" },
+      { "label": "Wikipedia (en)", "url": "https://en.wikipedia.org/wiki/Dany_Bill" },
+      {
+        "label": "Siam Fight Mag — le magicien des rings",
+        "url": "https://www.siamfightmag.com/dany-bill-the-magician-of-the-ring/"
+      }
+    ]
   },
 
   "ramon-dekkers": {

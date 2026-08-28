@@ -243,6 +243,17 @@ export interface Nickname {
   text: string;
   /** Pour comprendre un surnom qu'on ne sait pas lire. */
   translations?: LocalizedText[];
+  /**
+   * Provenance, sens littéral, réserve sur la traduction.
+   *
+   * Champ ajouté parce qu'un surnom a une histoire que ni son texte ni sa
+   * traduction ne portent : « l'Extraterrestre du Muay Thaï » a été forgé par
+   * un journaliste nommé, en 1993, après un titre précis. Et « ไอ้ดำพระกาฬ »
+   * est traduit « Black Monk » un peu partout alors que พระกาฬ désigne le
+   * seigneur de la Mort — la réserve doit tenir à côté de la donnée, pas
+   * ailleurs.
+   */
+  note?: string;
 }
 
 export interface Link {
