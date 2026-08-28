@@ -8,9 +8,10 @@
  */
 
 import { appearancesOfAgent, buildIndex, compareAgents, rolesOfAgent } from '../index-builder';
-import { fromKeyed, ROLE_LABELS, type Agent, type CollectionItem, type Keyed } from '../types';
+import { fromKeyed, ROLE_LABELS, type Agent, type CollectionItem, type Concept, type Keyed } from '../types';
 import { report, validate } from '../validate';
 import agentsData from './agents.json' with { type: 'json' };
+import conceptsRaw from './concepts.json' with { type: 'json' };
 import citationsData from './items/citations.json' with { type: 'json' };
 
 function withoutComment<T extends object>(record: Record<string, unknown>): Keyed<T> {
@@ -21,11 +22,13 @@ function withoutComment<T extends object>(record: Record<string, unknown>): Keye
 const agents = fromKeyed<Agent>(withoutComment<Agent>(agentsData));
 const items = fromKeyed<CollectionItem>(withoutComment<CollectionItem>(citationsData));
 
-const { ok, text } = report(validate(agents, items));
+const concepts = fromKeyed<Concept>(withoutComment<Concept>(conceptsRaw));
+
+const { ok, text } = report(validate(agents, items, concepts));
 console.log(text);
 if (!ok) throw new Error('Corpus invalide — voir les erreurs ci-dessus.');
 
-const index = buildIndex(agents, items);
+const index = buildIndex(agents, items, concepts);
 
 console.log(`\n${items.length} items · ${agents.length} agents`);
 const byKind = new Map<string, number>();

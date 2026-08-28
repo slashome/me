@@ -1,0 +1,33 @@
+{
+  "_comment": "Concepts d'exemple. Un concept est une entité comme un agent : référencé par slug, jamais par une chaîne libre.",
+  "attention": {
+    "name": "Attention"
+  },
+  "boxe": {
+    "name": "Boxe"
+  },
+  "morale": {
+    "name": "Morale"
+  },
+  "muay-thai": {
+    "name": "Muay-thai"
+  },
+  "mystique": {
+    "name": "Mystique",
+    "related": [
+      "philosophie"
+    ]
+  },
+  "philosophie": {
+    "name": "Philosophie",
+    "related": [
+      "mystique"
+    ]
+  },
+  "societe": {
+    "name": "Société"
+  },
+  "trip-hop": {
+    "name": "Trip-hop"
+  }
+}

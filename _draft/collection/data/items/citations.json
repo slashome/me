@@ -12,10 +12,10 @@
       }
     ],
     "text": "Pour triompher, le mal n’a besoin que de l’inaction des gens de bien",
-    "tags": [
-      "Inaction"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "inaction"
+    ]
   },
   "valery-guerre-c-est-massacre": {
     "type": "citation",
@@ -29,10 +29,10 @@
       }
     ],
     "text": "La guerre, c'est le massacre de gens qui ne se connaissent pas, au profit de gens qui se connaissent et ne se massacrent pas.",
-    "tags": [
-      "Guerre"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "guerre"
+    ]
   },
   "einstein-n-existe-deux-choses": {
     "type": "citation",
@@ -46,10 +46,10 @@
       }
     ],
     "text": "Il n'existe que deux choses infinies, l'univers et la bêtise humaine... mais pour l'univers, je n'ai pas de certitude absolue.",
-    "tags": [
-      "Bêtise"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "betise"
+    ]
   },
   "c-est-permissivite-societe": {
     "type": "citation",
@@ -64,10 +64,10 @@
     ],
     "text": "C'est la permissivité de la société qui incite les criminels à s'épanouir.",
     "context": "Ras Al Gul dans Batman Begins",
-    "tags": [
-      "Société"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "societe"
+    ]
   },
   "arendt-mort-l-empathie-humaine": {
     "type": "citation",
@@ -81,11 +81,11 @@
       }
     ],
     "text": "La mort de l'empathie humaine est l'un des premiers signes et le plus révélateur d'une culture sur le point de sombrer dans la barbarie.",
-    "tags": [
-      "Empathie",
-      "Barbarie"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "empathie",
+      "barbarie"
+    ]
   },
   "arendt-trouver-place-convenable": {
     "type": "citation",
@@ -99,10 +99,10 @@
       }
     ],
     "text": "Pour trouver sa place convenable dans le monde, l'œuvre d'art doit être soigneusement écartée du contexte des objets d'usage ordinaires.",
-    "tags": [
-      "Art"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "art"
+    ]
   },
   "arendt-crise-l-autorite-l-education": {
     "type": "citation",
@@ -116,10 +116,10 @@
       }
     ],
     "text": "La crise de l'autorité dans l'éducation est étroitement liée à la crise de la tradition, c'est-à-dire à la crise de notre attitude envers tout ce qui touche au passé.",
-    "tags": [
-      "Éducation"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "education"
+    ]
   },
   "arendt-personne-cultivee-devrait": {
     "type": "citation",
@@ -262,10 +262,10 @@
       }
     ],
     "text": "Le mal qui est dans le monde vient presque toujours de l’ignorance, et la bonne volonté peut faire autant de dégâts que la méchanceté si elle n’est pas éclairée.",
-    "tags": [
-      "Mal"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "mal"
+    ]
   },
   "ricard-avons-besoin-d-un": {
     "type": "citation",
@@ -300,10 +300,10 @@
     ],
     "text": "Que la vie en vaut la peine",
     "context": "Récité par Jean D’Ormesson à la télévision",
-    "tags": [
-      "Vie"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "vie"
+    ]
   },
   "eschyle-premiere-victime-guerres": {
     "type": "citation",
@@ -347,11 +347,11 @@
     ],
     "text": "Le temps n'a pas d'importance, seule la vie est importante.",
     "context": "Citation de la scène d’introduction du Cinquième Element.",
-    "tags": [
-      "Vie",
-      "Temps"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "vie",
+      "temps"
+    ]
   },
   "carlin-you-don-t-need": {
     "type": "citation",
@@ -387,11 +387,11 @@
     ],
     "text": "On m’a souvent posé cette question et je me la pose aussi. Quand j’y réfléchi bien, je suis optimiste parce que j’ai une grande foi en l’être humain et je crois qu’un jour les gens vont se révolter et prendre soin de la planète.",
     "context": "Reponse a la question d’une journaliste Americaine: Capitaine, etes-vous optimiste sur la facon dont les nations vont gérer cette ressource qui est la notre ?",
-    "tags": [
-      "Ecologie",
-      "Révolte"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "ecologie",
+      "revolte"
+    ]
   },
   "fragione-notre-philosophie-c-est": {
     "type": "citation",
@@ -406,11 +406,11 @@
     ],
     "text": "Notre philosophie c’est une philosophie.",
     "context": "Video “”",
-    "tags": [
-      "Démocratie",
-      "Universalité"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "democratie",
+      "universalite"
+    ]
   },
   "give-man-gun": {
     "type": "citation",
@@ -468,10 +468,10 @@
     ],
     "text": "The roots so deep and the head so high",
     "context": "Song Love from Gojira band",
-    "tags": [
-      "Spiritualité"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "spiritualite"
+    ]
   },
   "curie-vie-rien-craindre": {
     "type": "citation",
@@ -485,10 +485,10 @@
       }
     ],
     "text": "Dans la vie rien est à craindre, tout est à comprendre",
-    "tags": [
-      "Connaissance"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "connaissance"
+    ]
   },
   "d-amato-greatness-not-measure": {
     "type": "citation",
@@ -516,10 +516,10 @@
       }
     ],
     "text": "Fear is the greatest obstacle to learning. But fear is your best friend. Fear is like fire. If you learn to control it, you let it work for you. If you don’t learn to control it, it’ll destroy you and everything around you.",
-    "tags": [
-      "Peur"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "peur"
+    ]
   },
   "einstein-all-religions-arts": {
     "type": "citation",
@@ -547,10 +547,10 @@
       }
     ],
     "text": "L’échec c’est pas de ne pas réussir, l’échec c’est de ne pas entreprendre.",
-    "tags": [
-      "Réussite"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "reussite"
+    ]
   },
   "ngannou-zero-chance-n-existe": {
     "type": "citation",
@@ -753,10 +753,10 @@
       }
     ],
     "text": "Il faut mettre la société au service de l’école et pas l’école au service de la société",
-    "tags": [
-      "Éducation"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "education"
+    ]
   },
   "coluche-quand-pense-qu-il": {
     "type": "citation",
@@ -876,11 +876,11 @@
       }
     ],
     "text": "La douleur est obligatoire, la souffrance est optionnelle",
-    "tags": [
-      "Douleur",
-      "Souffrance"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "douleur",
+      "souffrance"
+    ]
   },
   "whitehead-fonction-raison": {
     "type": "citation",
@@ -971,10 +971,10 @@
       }
     ],
     "text": "L'homme libre pense à la mort moins qu'à toute autre chose ; sa sagesse est une méditation non pas sur la mort mais sur la vie.",
-    "tags": [
-      "Vie"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "vie"
+    ]
   },
   "majin-lorsque-vais-mourrir": {
     "type": "citation",
@@ -1029,10 +1029,10 @@
     ],
     "text": "Des chefs de guerre, y en a de toutes sortes : des bons, des \nmauvais. Des pleines cagettes, il y en a. Mais une fois de temps en \ntemps, il en sort un exceptionnel. Un héros, une légende… Des chefs \ncomme ça, il n’y en a presque jamais. Mais tu sais ce qu’ils ont tous en\n commun, tu sais ce que c’est leur pouvoir secret ? Ils ne se battent \nque pour la dignité des faibles",
     "context": "Texte écrit par Astier et récité par Pierre Mondi en tant que César.",
-    "tags": [
-      "Direction (au sens Leadership"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "direction-au-sens-leadership"
+    ]
   },
   "majin-victoire-force-defaite": {
     "type": "citation",
@@ -1202,11 +1202,11 @@
       }
     ],
     "text": "Imagination is the beginning of creation. You imagine what you desire, you will what you imagine and at last you create what you will.",
-    "tags": [
-      "Imagination",
-      "Création"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "imagination",
+      "creation"
+    ]
   },
   "hugo-science-l-asymptote-verite": {
     "type": "citation",
@@ -1262,11 +1262,11 @@
       }
     ],
     "text": "Life is not primarily a quest for pleasure, as Freud believed, or a quest for power, as Alfred Adler taught, but a quest for meaning. The greatest task for any person is to find meaning in his or her own life.",
-    "tags": [
-      "Vie",
-      "Sens"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "vie",
+      "sens"
+    ]
   },
   "frankl-when-person-can-t": {
     "type": "citation",
@@ -1420,11 +1420,11 @@
       }
     ],
     "text": "La seule façon de faire face à un monde non libre est de devenir si absolument libre que votre existence même est un acte de rébellion",
-    "tags": [
-      "Liberté",
-      "Révolution"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "liberte",
+      "revolution"
+    ]
   },
   "majin-chaque-instant-provoquons": {
     "type": "citation",
@@ -1452,10 +1452,10 @@
       }
     ],
     "text": "Disperser pour comprendre. Rassembler pour agir.",
-    "tags": [
-      "Connaissance"
-    ],
-    "added": "2026-08-29"
+    "added": "2026-08-29",
+    "concepts": [
+      "connaissance"
+    ]
   },
   "shaw-pire-peche-envers": {
     "type": "citation",

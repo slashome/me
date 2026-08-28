@@ -12,6 +12,7 @@ import type {
   CollectionItem,
   CollectionRole,
   CollectionType,
+  Concept,
   Slug,
 } from './types';
 
@@ -27,8 +28,10 @@ export interface CollectionIndex {
    */
   byAgent: Map<Slug, Appearance[]>;
 
+  concepts: Map<Slug, Concept>;
+
   byType: Map<CollectionType, CollectionItem[]>;
-  byTag: Map<string, CollectionItem[]>;
+  byConcept: Map<Slug, CollectionItem[]>;
   /** Seau `'sans-date'` explicite : ne jamais perdre un item en silence. */
   byYear: Map<string, CollectionItem[]>;
   /** Tri décroissant sur `added`. */
@@ -43,14 +46,9 @@ export function itemKey(item: CollectionItem): string {
   return `${item.type}/${item.slug}`;
 }
 
-/** Minuscules + accents retirés. Les tags sont libres, donc il faut les rabattre. */
-export function normalizeTag(tag: string): string {
-  return tag
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .trim();
-}
+/* `normalizeTag()` a disparu avec les tags libres : quand un concept est une
+   entité référencée par slug, il n'y a plus rien à rabattre. Une faute de
+   frappe est une référence morte, donc une erreur — pas un 28ᵉ concept. */
 
 function push<K, V>(map: Map<K, V[]>, key: K, value: V): void {
   const bucket = map.get(key);
@@ -58,18 +56,28 @@ function push<K, V>(map: Map<K, V[]>, key: K, value: V): void {
   else map.set(key, [value]);
 }
 
-export function buildIndex(agents: Agent[], items: CollectionItem[]): CollectionIndex {
+export function buildIndex(
+  agents: Agent[],
+  items: CollectionItem[],
+  concepts: Concept[] = [],
+): CollectionIndex {
   const agentsBySlug = new Map(agents.map((a) => [a.slug, a]));
+  const conceptsBySlug = new Map(concepts.map((c) => [c.slug, c]));
 
   const byAgent = new Map<Slug, Appearance[]>();
   const byType = new Map<CollectionType, CollectionItem[]>();
-  const byTag = new Map<string, CollectionItem[]>();
+  const byConcept = new Map<Slug, CollectionItem[]>();
   const byYear = new Map<string, CollectionItem[]>();
 
   for (const item of items) {
     push(byType, item.type, item);
     push(byYear, item.published?.slice(0, 4) ?? 'sans-date', item);
-    for (const tag of item.tags ?? []) push(byTag, normalizeTag(tag), item);
+    for (const slug of item.concepts ?? []) {
+      if (concepts.length && !conceptsBySlug.has(slug)) {
+        throw new Error(`Référence morte : items/${item.slug} → concepts/${slug}`);
+      }
+      push(byConcept, slug, item);
+    }
 
     for (const credit of item.credits) {
       /**
@@ -108,10 +116,11 @@ export function buildIndex(agents: Agent[], items: CollectionItem[]): Collection
 
   return {
     agents: agentsBySlug,
+    concepts: conceptsBySlug,
     items,
     byAgent,
     byType,
-    byTag,
+    byConcept,
     byYear,
     latest: [...items].sort((a, b) => (a.added < b.added ? 1 : a.added > b.added ? -1 : 0)),
   };

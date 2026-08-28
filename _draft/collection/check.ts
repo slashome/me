@@ -8,6 +8,7 @@
  */
 
 import agentsFixture from './fixtures/agents.json' with { type: 'json' };
+import conceptsRaw from './fixtures/concepts.json' with { type: 'json' };
 import itemsFixture from './fixtures/items.json' with { type: 'json' };
 import {
   appearancesOfAgent,
@@ -17,7 +18,7 @@ import {
   rolesOfAgent,
 } from './index-builder';
 import { formatPartialDate } from './partial-date';
-import { fromKeyed, ROLE_LABELS, type Agent, type CollectionItem, type Keyed } from './types';
+import { fromKeyed, ROLE_LABELS, type Agent, type CollectionItem, type Concept, type Keyed } from './types';
 import { report, validate } from './validate';
 
 /** `_comment` est une clé de documentation dans les fixtures, pas une entrée. */
@@ -29,12 +30,14 @@ function withoutComment<T extends object>(record: Record<string, unknown>): Keye
 const agents = fromKeyed<Agent>(withoutComment<Agent>(agentsFixture));
 const items = fromKeyed<CollectionItem>(withoutComment<CollectionItem>(itemsFixture));
 
-const { ok, text } = report(validate(agents, items));
+const concepts = fromKeyed<Concept>(withoutComment<Concept>(conceptsRaw));
+
+const { ok, text } = report(validate(agents, items, concepts));
 console.log(text);
 /** Un throw suffit à sortir en code non nul, sans dépendre des types de Node. */
 if (!ok) throw new Error('Collection invalide — voir les erreurs ci-dessus.');
 
-const index = buildIndex(agents, items);
+const index = buildIndex(agents, items, concepts);
 
 console.log('\n── Index alphabétique (Intl.Collator fr, sur sortName ?? name)');
 for (const agent of [...index.agents.values()].sort(compareAgents)) {

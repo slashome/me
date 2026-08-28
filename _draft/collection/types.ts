@@ -543,12 +543,49 @@ export interface CollectionItem {
      `history`. */
 
   /**
-   * Chaînes libres, délibérément. Règle du modèle : on ne normalise QUE les
-   * entités qui ont leur propre page. Aucune exigence ne porte sur les tags —
-   * ils seront regroupés au build avec une normalisation (minuscules +
-   * accents). Ils deviendront une entité le jour où ça fera mal, pas avant.
+   * Références vers `Concept.slug`. **Plus des chaînes libres.**
+   *
+   * Le corpus a tranché : les 27 concepts existent déjà comme des pages dans
+   * Notion, donc ils ont déjà une identité. La règle du modèle s'applique —
+   * on normalise ce qui a sa propre page — et elle s'applique dans les deux
+   * sens : ce qui a une identité ne doit pas être une chaîne libre.
+   *
+   * Gain concret : la fonction de normalisation (minuscules + accents) qui
+   * existait pour rabattre « Écologie » sur « ecologie » **disparaît**. Une
+   * faute de frappe devient une référence morte, donc une erreur de build, au
+   * lieu d'un 28ᵉ concept silencieux.
+   *
+   * ⚠️ Le rendu, lui, reste un tag : petit, cliquable, sans cérémonie. Une
+   * entité dans la donnée n'oblige à rien dans l'interface.
    */
-  tags?: string[];
+  concepts?: Slug[];
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   Concept — le troisième nœud
+   ──────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * Un thème du fonds : Éducation, Guerre, Empathie, Bêtise…
+ *
+ * Troisième entité après `Agent` et `CollectionItem`, et la dernière — le
+ * critère reste le même : **ce qui a sa propre page mérite une identité.**
+ * Éditeurs, labels et collections n'en ont pas, ils resteront des chaînes.
+ */
+export interface Concept {
+  slug: Slug;
+  /** Tel qu'il s'affiche : « Éducation », majuscule et accent compris. */
+  name: string;
+  /** Une phrase, si elle apporte quelque chose. Pas un article. */
+  description?: string;
+  /**
+   * Concepts voisins — un graphe plat, sans hiérarchie.
+   *
+   * Pas de parent/enfant délibérément : une taxonomie arborescente oblige à
+   * trancher si « Barbarie » est sous « Guerre » ou sous « Société », et la
+   * réponse est « les deux ». Un voisinage symétrique ne pose pas la question.
+   */
+  related?: Slug[];
 }
 
 /* ────────────────────────────────────────────────────────────────────────────

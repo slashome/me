@@ -16,6 +16,7 @@ import {
   type Agent,
   type Attribution,
   type CollectionItem,
+  type Concept,
 } from './types';
 
 export interface Issue {
@@ -28,7 +29,11 @@ const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 const ATTRIBUTIONS: readonly Attribution[] = ['misattributed', 'disputed', 'altered'];
 
-export function validate(agents: Agent[], items: CollectionItem[]): Issue[] {
+export function validate(
+  agents: Agent[],
+  items: CollectionItem[],
+  concepts: Concept[] = [],
+): Issue[] {
   const issues: Issue[] = [];
   const error = (where: string, message: string) =>
     issues.push({ severity: 'error', where, message });
@@ -114,6 +119,23 @@ export function validate(agents: Agent[], items: CollectionItem[]): Issue[] {
     }
   }
 
+  /* ── Concepts ───────────────────────────────────────────────────────────── */
+
+  const seenConcepts = new Set<string>();
+  for (const concept of concepts) {
+    const where = `concepts/${concept.slug}`;
+    if (!SLUG_RE.test(concept.slug)) error(where, 'slug non conforme (minuscules, tirets)');
+    if (seenConcepts.has(concept.slug)) error(where, 'slug en double');
+    seenConcepts.add(concept.slug);
+    if (!concept.name.trim()) error(where, 'nom vide');
+  }
+  for (const concept of concepts) {
+    for (const rel of concept.related ?? []) {
+      if (!seenConcepts.has(rel)) error(`concepts/${concept.slug}`, `voisin inconnu : ${rel}`);
+      if (rel === concept.slug) error(`concepts/${concept.slug}`, 'voisin de lui-même');
+    }
+  }
+
   /* ── Items ──────────────────────────────────────────────────────────────── */
 
   const seenItems = new Set<string>();
@@ -152,6 +174,17 @@ export function validate(agents: Agent[], items: CollectionItem[]): Issue[] {
     }
     if (item.attribution && !ATTRIBUTIONS.includes(item.attribution)) {
       error(where, `attribution inconnue : ${item.attribution}`);
+    }
+
+    /* Une faute de frappe sur un concept est une référence morte, plus un
+       28ᵉ concept créé en silence. C'est tout le gain de l'entité. */
+    if (concepts.length) {
+      const seenOnItem = new Set<string>();
+      for (const slug of item.concepts ?? []) {
+        if (!seenConcepts.has(slug)) error(where, `concept inconnu : ${slug}`);
+        if (seenOnItem.has(slug)) error(where, `concept en double : ${slug}`);
+        seenOnItem.add(slug);
+      }
     }
 
     /* ── Crédits ── */
@@ -199,6 +232,13 @@ export function validate(agents: Agent[], items: CollectionItem[]): Issue[] {
   for (const agent of agents) {
     if (!cited.has(agent.slug) && !membersOfCitedGroups.has(agent.slug)) {
       warn(`agents/${agent.slug}`, 'aucun item : sa page serait vide');
+    }
+  }
+
+  const usedConcepts = new Set(items.flatMap((i) => i.concepts ?? []));
+  for (const concept of concepts) {
+    if (!usedConcepts.has(concept.slug)) {
+      warn(`concepts/${concept.slug}`, 'aucun item : sa page serait vide');
     }
   }
 
