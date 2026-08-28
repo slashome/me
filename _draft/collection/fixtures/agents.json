@@ -8,6 +8,7 @@
     "born": "1909",
     "died": "1943",
     "gender": "f",
+    "pantheon": true,
     "bio": "Philosophe. Agrégée à vingt-deux ans, elle quitte l'enseignement pour l'usine puis les champs afin de partager la condition ouvrière, et meurt à trente-quatre ans en exil.",
     "links": [{ "label": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Simone_Weil" }]
   },
@@ -70,7 +71,7 @@
     "sortName": "Boulestreau, Florian",
     "born": "1981-06-16",
     "gender": "m",
-    "bio": "Vingt citations du corpus sont de lui — de loin l'auteur le plus cité de ce fonds, devant Hannah Arendt (8).",
+    "bio": "Développeur. Garde des phrases depuis longtemps. Le reste ne tient pas dans une ligne.",
     "nicknames": [
       { "text": "slashome" },
       { "text": "alucard" },

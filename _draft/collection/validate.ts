@@ -11,6 +11,8 @@ import { isIsoDate, isPartialDate } from './partial-date';
 import {
   COLLECTION_ROLES,
   COLLECTION_TYPES,
+  LANGUAGES,
+  RESERVED_AGENT_SLUGS,
   type Agent,
   type Attribution,
   type CollectionItem,
@@ -40,6 +42,10 @@ export function validate(agents: Agent[], items: CollectionItem[]): Issue[] {
     const where = `agents/${agent.slug}`;
     if (!SLUG_RE.test(agent.slug)) error(where, 'slug non conforme (minuscules, tirets)');
     if (seenAgents.has(agent.slug)) error(where, 'slug en double');
+    /* `/agents/pantheon/` est une page du site, pas quelqu'un. */
+    if ((RESERVED_AGENT_SLUGS as readonly string[]).includes(agent.slug)) {
+      error(where, `« ${agent.slug} » est un nom réservé sous /agents/`);
+    }
     seenAgents.add(agent.slug);
 
     if (!agent.name.trim()) error(where, 'nom vide');
@@ -67,8 +73,16 @@ export function validate(agents: Agent[], items: CollectionItem[]): Issue[] {
       if (nickname.translations?.length && !nickname.lang) {
         error(where, `« ${nickname.text} » a des traductions mais pas de langue d'origine`);
       }
+      /* La liste fermée est ce qui distingue une coquille d'une langue nouvelle :
+         `frr` est un code valide (frison septentrional), pas une faute de `fr`. */
+      if (nickname.lang && !LANGUAGES.includes(nickname.lang)) {
+        error(where, `langue inconnue : « ${nickname.lang} » — à ajouter à LANGUAGES si elle est réelle`);
+      }
       for (const t of nickname.translations ?? []) {
         if (!t.lang.trim() || !t.text.trim()) error(where, 'traduction incomplète');
+        if (!LANGUAGES.includes(t.lang)) {
+          error(where, `langue de traduction inconnue : « ${t.lang} »`);
+        }
         if (t.lang === nickname.lang) {
           warn(where, `traduction dans la langue d'origine (${t.lang})`);
         }

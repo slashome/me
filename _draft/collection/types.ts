@@ -176,10 +176,44 @@ export type AgentKind =
    */
   | 'character';
 
+/**
+ * Les langues du fonds — liste **curée**, étendue délibérément.
+ *
+ * L'état de l'art pour nommer une langue, c'est **BCP 47** (RFC 5646) : `fr`,
+ * `en`, `th`, `pt-BR`, `zh-Hant`. C'est le vocabulaire ; ce n'est pas une
+ * validation. BCP 47 accepte des milliers de codes, dont `frr` — qui n'est PAS
+ * une faute de frappe pour `fr`, c'est le frison septentrional.
+ *
+ * D'où le point que ta question soulève : **une regex de forme BCP 47 ne peut
+ * pas distinguer une coquille d'une langue que tu n'as pas encore utilisée.**
+ * Seule une liste fermée le peut. On ferme donc, et on l'étend d'une ligne le
+ * jour où une langue entre vraiment dans le fonds.
+ *
+ * ⚠️ Une distinction à ne pas perdre : ceci est la langue **d'un contenu** (un
+ * surnom thaï existe même si le site n'a pas de version thaïe). Ce n'est PAS la
+ * liste des langues d'interface du site — ce serait un autre ensemble, plus
+ * petit, et le confondre est l'erreur classique en i18n.
+ */
+export const LANGUAGES = [
+  // attestées dans le fonds aujourd'hui
+  'fr',
+  'en',
+  'th',
+  // langues d'origine d'auteurs déjà présents — à activer quand un texte arrive
+  'grc', // grec ancien : Eschyle, Hérodote
+  'la', // latin : Marc Aurèle
+  'ar', // arabe : Ali ibn Abi Talib
+  'ja', // japonais : Haruki Murakami
+  'de',
+  'es',
+  'it',
+] as const;
+
+export type Language = (typeof LANGUAGES)[number];
+
 /** Un texte et sa langue — un surnom thaï n'est pas un surnom anglais. */
 export interface LocalizedText {
-  /** Code BCP 47 : `fr`, `en`, `th`… */
-  lang: string;
+  lang: Language;
   text: string;
 }
 
@@ -205,7 +239,7 @@ export interface Nickname {
    * obligerait à mentir (`fr` ? `en` ?). D'où l'optionnalité, plutôt qu'un
    * second champ `handles` qui dupliquerait la structure.
    */
-  lang?: string;
+  lang?: Language;
   text: string;
   /** Pour comprendre un surnom qu'on ne sait pas lire. */
   translations?: LocalizedText[];
@@ -305,7 +339,31 @@ export interface Agent {
 
   /** Sert à l'accord des libellés au rendu (« autrice »), pas au stockage. */
   gender?: 'f' | 'm' | 'other';
+
+  /**
+   * Résident du Panthéon — **opt-in, curé à la main, jamais dérivé**.
+   *
+   * C'est le point de conception, et il est délibéré : le Panthéon n'est pas
+   * une conséquence du `kind`, ni du nombre d'items, ni de quoi que ce soit
+   * d'automatique. C'est un jugement, et il doit s'écrire.
+   *
+   * Conséquence voulue : le jour où une conversation devient un item et où
+   * `claude-opus-5` devient un agent, il est un agent — et il n'entre pas au
+   * Panthéon, parce que personne ne l'aura écrit. Aucune règle à modifier,
+   * aucune exception à coder. Une émission de télévision et un personnage de
+   * fiction sont dans le même cas.
+   */
+  pantheon?: boolean;
 }
+
+/**
+ * Noms réservés sous `/agents/` : aucun agent ne peut porter ces slugs, sinon
+ * sa page entrerait en collision avec une page du site.
+ *
+ * `pantheon` en fait partie : `/agents/pantheon/` est la page curée, pas
+ * quelqu'un qui s'appellerait « Pantheon ».
+ */
+export const RESERVED_AGENT_SLUGS = ['pantheon', 'index', 'tous'] as const;
 
 /* ────────────────────────────────────────────────────────────────────────────
    Credit — l'arête entre un agent et un item
