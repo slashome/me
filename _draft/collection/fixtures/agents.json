@@ -64,12 +64,22 @@
     "links": [{ "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Ramon_Dekkers" }]
   },
 
-  "majin": {
+  "flow": {
     "kind": "person",
-    "name": "Majin",
-    "legalName": "Florian Boulestreau",
+    "name": "Florian Boulestreau",
+    "sortName": "Boulestreau, Florian",
+    "born": "1981-06-16",
     "gender": "m",
-    "bio": "⚠️ fixture : c'est toi. Vingt citations du corpus sont de toi — tu es de loin l'auteur le plus cité de ton propre recueil, devant Hannah Arendt (8).",
+    "bio": "Vingt citations du corpus sont de lui — de loin l'auteur le plus cité de ce fonds, devant Hannah Arendt (8).",
+    "nicknames": [
+      { "text": "slashome" },
+      { "text": "alucard" },
+      { "text": "majin" },
+      { "text": "majin alucard" },
+      { "text": "theneoshaman" },
+      { "text": "flow" },
+      { "text": "floflow" }
+    ],
     "links": [{ "label": "slashome", "url": "https://github.com/slashome" }]
   },
 

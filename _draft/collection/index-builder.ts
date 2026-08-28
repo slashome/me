@@ -35,6 +35,14 @@ export interface CollectionIndex {
   latest: CollectionItem[];
 }
 
+/**
+ * L'identité d'un item est le couple (type, slug) : les slugs d'items ne sont
+ * uniques que dans leur type, parce que l'URL les porte tous les deux.
+ */
+export function itemKey(item: CollectionItem): string {
+  return `${item.type}/${item.slug}`;
+}
+
 /** Minuscules + accents retirés. Les tags sont libres, donc il faut les rabattre. */
 export function normalizeTag(tag: string): string {
   return tag
@@ -85,7 +93,7 @@ export function buildIndex(agents: Agent[], items: CollectionItem[]): Collection
       }
 
       const appearances = byAgent.get(agent.slug);
-      const existing = appearances?.find((a) => a.item.slug === item.slug);
+      const existing = appearances?.find((a) => itemKey(a.item) === itemKey(item));
       if (existing) {
         // Filet : deux `Credit` pour le même agent sur le même item. `validate`
         // l'interdit, mais on fusionne plutôt que d'afficher l'item deux fois.

@@ -196,8 +196,16 @@ export interface LocalizedText {
  * à quelqu'un qui en a trois.
  */
 export interface Nickname {
-  /** La langue dans laquelle le surnom a été donné. */
-  lang: string;
+  /**
+   * La langue dans laquelle le surnom a été donné — **optionnelle**.
+   *
+   * Un surnom donné dans une langue en a une (« Black Monk », « ไอ้ดำพระกาฬ »).
+   * Un pseudonyme n'en a pas : `alucard`, `majin`, `theneoshaman` ne sont dans
+   * aucune langue, ce sont des identités choisies. Forcer un `lang` sur eux
+   * obligerait à mentir (`fr` ? `en` ?). D'où l'optionnalité, plutôt qu'un
+   * second champ `handles` qui dupliquerait la structure.
+   */
+  lang?: string;
   text: string;
   /** Pour comprendre un surnom qu'on ne sait pas lire. */
   translations?: LocalizedText[];
@@ -357,6 +365,21 @@ export interface ImageRef {
 }
 
 export interface CollectionItem {
+  /**
+   * Unique **dans son type**, pas globalement — l'URL est
+   * `/inventaire/<type>/<slug>/`.
+   *
+   * Pourquoi pas un id opaque, alors que les items sont nombreux et souvent
+   * importés : parce que l'URL d'une citation se partage. `/inventaire/
+   * citations/weil-attention-generosite/` se lit et se retient,
+   * `/inventaire/citations/c-7f3a2/` non.
+   *
+   * La difficulté est réelle pour les citations : dans le corpus Notion, le
+   * « titre » d'une citation EST son texte, donc un slug dérivé ferait
+   * soixante caractères. La règle retenue : **auteur + thème, court**
+   * (`weil-attention-generosite`). L'import en génère une première passe, à
+   * raffiner à la main sur les items qui comptent.
+   */
   slug: Slug;
   type: CollectionType;
   title: string;

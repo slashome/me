@@ -61,8 +61,12 @@ export function validate(agents: Agent[], items: CollectionItem[]): Issue[] {
       error(where, 'seul un groupe a des membres');
     }
     for (const nickname of agent.nicknames ?? []) {
-      if (!nickname.lang.trim()) error(where, 'surnom sans langue');
       if (!nickname.text.trim()) error(where, 'surnom vide');
+      /* `lang` est optionnel : un pseudonyme n'est dans aucune langue. Mais une
+         traduction sans langue d'origine ne veut rien dire. */
+      if (nickname.translations?.length && !nickname.lang) {
+        error(where, `« ${nickname.text} » a des traductions mais pas de langue d'origine`);
+      }
       for (const t of nickname.translations ?? []) {
         if (!t.lang.trim() || !t.text.trim()) error(where, 'traduction incomplète');
         if (t.lang === nickname.lang) {
@@ -102,8 +106,10 @@ export function validate(agents: Agent[], items: CollectionItem[]): Issue[] {
   for (const item of items) {
     const where = `items/${item.slug}`;
     if (!SLUG_RE.test(item.slug)) error(where, 'slug non conforme (minuscules, tirets)');
-    if (seenItems.has(item.slug)) error(where, 'slug en double');
-    seenItems.add(item.slug);
+    /* Unicité par TYPE, pas globale : l'URL est /inventaire/<type>/<slug>/. */
+    const key = `${item.type}/${item.slug}`;
+    if (seenItems.has(key)) error(where, `slug en double dans le type ${item.type}`);
+    seenItems.add(key);
 
     if (!COLLECTION_TYPES.includes(item.type)) error(where, `type inconnu : ${item.type}`);
     if (!item.title.trim()) error(where, 'titre vide');

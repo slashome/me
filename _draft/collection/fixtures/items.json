@@ -68,7 +68,7 @@
   "cousteau-optimisme": {
     "type": "citation",
     "title": "Sur l'optimisme",
-    "credits": [{ "agent": "majin", "roles": ["author"] }],
+    "credits": [{ "agent": "flow", "roles": ["author"] }],
     "text": "— texte à reprendre du corpus —",
     "context": "⚠️ fixture. Dans le corpus, ce champ porte des choses comme « Réponse à la question d'une journaliste américaine : Capitaine, êtes-vous optimiste… » — les CIRCONSTANCES, pas la raison de garder la citation.",
     "note": "Ce que `note` porte, c'est pourquoi TU la gardes. Les deux coexistent dans 17 items du corpus, d'où deux champs.",
