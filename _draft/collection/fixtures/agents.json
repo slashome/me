@@ -1,5 +1,5 @@
 {
-  "_comment": "Fixtures de travail. La clé EST le slug — voir Keyed<T> dans types.ts. Les faits marqués ⚠️ ne sont PAS vérifiés ; les autres viennent d'une recherche et restent à recouper avant publication.",
+  "_comment": "Fixtures de travail. La clé EST le slug — voir Keyed<T> dans types.ts. Les faits viennent d'une recherche et restent à recouper ; ce qui est marqué ⚠️ est explicitement non vérifié.",
 
   "simone-weil": {
     "kind": "person",
@@ -8,8 +8,18 @@
     "born": "1909",
     "died": "1943",
     "gender": "f",
-    "bio": "Philosophe et mystique française. À ne pas confondre avec Simone Veil.",
+    "bio": "Philosophe. Agrégée à vingt-deux ans, elle quitte l'enseignement pour l'usine puis les champs afin de partager la condition ouvrière, et meurt à trente-quatre ans en exil.",
     "links": [{ "label": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Simone_Weil" }]
+  },
+
+  "albert-camus": {
+    "kind": "person",
+    "name": "Albert Camus",
+    "sortName": "Camus, Albert",
+    "born": "1913",
+    "died": "1960",
+    "gender": "m",
+    "links": [{ "label": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Albert_Camus" }]
   },
 
   "dany-bill": {
@@ -18,13 +28,29 @@
     "sortName": "Bill, Dany",
     "born": "1973-04-28",
     "gender": "m",
-    "bio": "Boxeur franco-camerounais, sept fois champion du monde de muay-thaï.",
+    "bio": "Boxeur camerounais, sept fois champion du monde de muay-thaï. En 1993, il devient le premier combattant venu de France à décrocher un titre mondial en Thaïlande.",
     "nicknames": [
-      { "lang": "en", "text": "Black Monk" },
-      { "lang": "th", "text": "ไอ้ดำพระกาฬ" },
-      { "lang": "en", "text": "Dangerous Black Lion" },
-      { "lang": "th", "text": "สิงดำ อันตราย" },
-      { "lang": "en", "text": "The Magician of the Ring" }
+      {
+        "lang": "th",
+        "text": "ไอ้ดำพระกาฬ",
+        "translations": [
+          { "lang": "en", "text": "Black Monk" },
+          { "lang": "fr", "text": "le Moine noir" }
+        ]
+      },
+      {
+        "lang": "th",
+        "text": "สิงดำ อันตราย",
+        "translations": [
+          { "lang": "en", "text": "Dangerous Black Lion" },
+          { "lang": "fr", "text": "le Lion noir dangereux" }
+        ]
+      },
+      {
+        "lang": "en",
+        "text": "The Magician of the Ring",
+        "translations": [{ "lang": "fr", "text": "le Magicien du ring" }]
+      }
     ],
     "links": [{ "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Dany_Bill" }]
   },
@@ -36,6 +62,29 @@
     "gender": "m",
     "bio": "Boxeur néerlandais, figure du muay-thaï occidental.",
     "links": [{ "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Ramon_Dekkers" }]
+  },
+
+  "majin": {
+    "kind": "person",
+    "name": "Majin",
+    "legalName": "Florian Boulestreau",
+    "gender": "m",
+    "bio": "⚠️ fixture : c'est toi. Vingt citations du corpus sont de toi — tu es de loin l'auteur le plus cité de ton propre recueil, devant Hannah Arendt (8).",
+    "links": [{ "label": "slashome", "url": "https://github.com/slashome" }]
+  },
+
+  "ras-al-ghul": {
+    "kind": "character",
+    "name": "Ra's al Ghul",
+    "bio": "Personnage de Batman Begins. Il ne peut pas être l'auteur de sa réplique : il la prononce, quelqu'un l'a écrite."
+  },
+
+  "christopher-nolan": {
+    "kind": "person",
+    "name": "Christopher Nolan",
+    "sortName": "Nolan, Christopher",
+    "gender": "m",
+    "bio": "⚠️ fixture : co-scénariste de Batman Begins avec David S. Goyer, qui manque ici."
   },
 
   "massive-attack": {

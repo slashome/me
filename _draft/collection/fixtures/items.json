@@ -1,5 +1,19 @@
 {
-  "_comment": "Fixtures de travail. La clé EST le slug. ⚠️ Le CONTENU n'est pas vérifié : citations, dates et attributions sont à contrôler par Florian avant toute publication. Ces items existent pour exercer le modèle, pas pour être publiés.",
+  "_comment": "Fixtures de travail. La clé EST le slug. ⚠️ Le CONTENU n'est pas vérifié : citations, dates et attributions sont à contrôler avant toute publication. Plusieurs cas sont repris du corpus Notion réel (123 citations) : ce sont eux qui ont imposé `character`, `context` et `attribution`.",
+
+  "camus-sur-simone-weil": {
+    "type": "citation",
+    "title": "Le seul grand esprit de notre temps",
+    "credits": [
+      { "agent": "albert-camus", "roles": ["author"] },
+      { "agent": "simone-weil", "roles": ["subject"] }
+    ],
+    "text": "Simone Weil, je le sais encore maintenant, est le seul grand esprit de notre temps.",
+    "note": "⚠️ fixture : phrase largement rapportée, source primaire non retrouvée — c'est exactement le cas que `attribution: 'disputed'` est là pour dire au lieu de le taire. Démontre aussi `subject` sur une citation : elle n'a pas écrit cette phrase, elle en est l'objet, et elle doit donc apparaître sur sa page.",
+    "attribution": "disputed",
+    "added": "2026-08-28",
+    "tags": ["philosophie"]
+  },
 
   "weil-attention-generosite": {
     "type": "citation",
@@ -7,20 +21,9 @@
     "credits": [{ "agent": "simone-weil", "roles": ["author"] }],
     "text": "L'attention est la forme la plus rare et la plus pure de la générosité.",
     "note": "⚠️ fixture : attribution très répandue mais à sourcer avant publication.",
+    "attribution": "disputed",
     "added": "2026-08-28",
     "tags": ["attention", "morale"]
-  },
-
-  "paroles-de-philosophes-simone-weil": {
-    "type": "video",
-    "title": "Paroles de philosophes — Simone Weil",
-    "credits": [
-      { "agent": "simone-weil", "roles": ["subject"] },
-      { "agent": "paroles-de-philosophes", "roles": ["publisher"] }
-    ],
-    "note": "⚠️ fixture : le cas qui commande tout le modèle. Elle n'a pas contribué à cette vidéo, elle en est le SUJET — et pourtant elle doit apparaître sur sa page à côté de ses citations. La chaîne YouTube est un agent `kind: organization` crédité `publisher` : ni un champ à part, ni une personne. L'humain qui a réalisé la vidéo serait un troisième crédit, `director` — non renseigné ici, la chaîne étant inventée.",
-    "added": "2026-08-28",
-    "tags": ["philosophie"]
   },
 
   "la-pesanteur-et-la-grace": {
@@ -34,12 +37,51 @@
     "tags": ["philosophie", "mystique"]
   },
 
+  "ras-al-ghul-permissivite": {
+    "type": "citation",
+    "title": "La permissivité de la société",
+    "credits": [
+      { "agent": "ras-al-ghul", "roles": ["speaker"] },
+      { "agent": "christopher-nolan", "roles": ["author"] }
+    ],
+    "text": "C'est la permissivité de la société qui incite les criminels à s'épanouir.",
+    "context": "Ra's al Ghul dans Batman Begins.",
+    "note": "Repris du corpus réel. C'est CE cas qui a imposé `kind: 'character'` : le personnage prononce (`speaker`), le scénariste écrit (`author`), l'acteur jouerait (`performer`). Trois agents pour une réplique, et un seul des trois existe.",
+    "added": "2026-08-28",
+    "tags": ["société"]
+  },
+
+  "faussement-attribuee-bruce-lee": {
+    "type": "citation",
+    "title": "Citation faussement attribuée",
+    "credits": [],
+    "text": "— texte à reprendre du corpus —",
+    "context": "Faussement attribuée à Bruce Lee ou à Warren Buffett.",
+    "attribution": "misattributed",
+    "sources": [
+      { "label": "Quote Investigator", "url": "https://quoteinvestigator.com/2019/07/26/allow/" }
+    ],
+    "note": "Repris du corpus réel. Démontre trois choses d'un coup : `credits` vide est légitime (8 citations sur 123 n'ont aucun auteur), `attribution` doit être une donnée et non une phrase en prose, et `sources` sert à étayer — ou à démonter.",
+    "added": "2026-08-28"
+  },
+
+  "cousteau-optimisme": {
+    "type": "citation",
+    "title": "Sur l'optimisme",
+    "credits": [{ "agent": "majin", "roles": ["author"] }],
+    "text": "— texte à reprendre du corpus —",
+    "context": "⚠️ fixture. Dans le corpus, ce champ porte des choses comme « Réponse à la question d'une journaliste américaine : Capitaine, êtes-vous optimiste… » — les CIRCONSTANCES, pas la raison de garder la citation.",
+    "note": "Ce que `note` porte, c'est pourquoi TU la gardes. Les deux coexistent dans 17 items du corpus, d'où deux champs.",
+    "added": "2026-08-28"
+  },
+
   "dany-bill-citation": {
     "type": "citation",
     "title": "Sur l'entraînement",
     "credits": [{ "agent": "dany-bill", "roles": ["author"] }],
     "text": "— texte à saisir —",
-    "note": "⚠️ fixture : texte volontairement vide de sens, je n'ai pas de citation sourcée de lui. À remplacer.",
+    "context": "Dany Bill est appelé le génie technique de la boxe thaï ; son secret serait d'avoir aimé ce sport plus que les autres.",
+    "note": "⚠️ fixture : texte à reprendre du corpus, le contexte en vient.",
     "added": "2026-08-28",
     "tags": ["boxe"]
   },
@@ -63,6 +105,18 @@
     "note": "⚠️ fixture. Démontre `roles: []` au pluriel : il DÉMONTRE (performer) et il PARLE (interviewee) dans la même vidéo. Un rôle unique aurait forcé deux crédits pour le même homme sur le même item, donc l'item deux fois sur sa page.",
     "added": "2026-08-28",
     "tags": ["boxe"]
+  },
+
+  "paroles-de-philosophes-simone-weil": {
+    "type": "video",
+    "title": "Paroles de philosophes — Simone Weil",
+    "credits": [
+      { "agent": "simone-weil", "roles": ["subject"] },
+      { "agent": "paroles-de-philosophes", "roles": ["publisher"] }
+    ],
+    "note": "⚠️ fixture : le cas qui commande tout le modèle. Elle n'a pas contribué à cette vidéo, elle en est le SUJET — et pourtant elle doit apparaître sur sa page à côté de ses citations. La chaîne YouTube est un agent `kind: 'organization'` crédité `publisher` : ni un champ à part, ni une personne. L'humain qui a réalisé la vidéo serait un troisième crédit, `director`.",
+    "added": "2026-08-28",
+    "tags": ["philosophie"]
   },
 
   "mezzanine": {

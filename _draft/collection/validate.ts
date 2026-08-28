@@ -12,6 +12,7 @@ import {
   COLLECTION_ROLES,
   COLLECTION_TYPES,
   type Agent,
+  type Attribution,
   type CollectionItem,
 } from './types';
 
@@ -22,6 +23,8 @@ export interface Issue {
 }
 
 const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+
+const ATTRIBUTIONS: readonly Attribution[] = ['misattributed', 'disputed', 'altered'];
 
 export function validate(agents: Agent[], items: CollectionItem[]): Issue[] {
   const issues: Issue[] = [];
@@ -54,12 +57,21 @@ export function validate(agents: Agent[], items: CollectionItem[]): Issue[] {
     if (agent.kind !== 'person' && agent.sortName) {
       warn(where, 'sortName inutile hors personne : le tri se fait déjà sur name');
     }
-    if (agent.members?.length && agent.kind === 'person') {
-      error(where, 'une personne n\'a pas de membres');
+    if (agent.members?.length && agent.kind !== 'group') {
+      error(where, 'seul un groupe a des membres');
     }
     for (const nickname of agent.nicknames ?? []) {
       if (!nickname.lang.trim()) error(where, 'surnom sans langue');
       if (!nickname.text.trim()) error(where, 'surnom vide');
+      for (const t of nickname.translations ?? []) {
+        if (!t.lang.trim() || !t.text.trim()) error(where, 'traduction incomplète');
+        if (t.lang === nickname.lang) {
+          warn(where, `traduction dans la langue d'origine (${t.lang})`);
+        }
+      }
+    }
+    for (const link of agent.links ?? []) {
+      if (!/^https?:\/\//.test(link.url)) error(where, `lien non absolu : ${link.url}`);
     }
   }
 
@@ -108,8 +120,18 @@ export function validate(agents: Agent[], items: CollectionItem[]): Issue[] {
       error(where, 'une citation doit porter son texte dans `text`');
     }
 
+    /* Le corpus Notion a un champ « lien » qui contient parfois « Song Love from
+       Gojira band » — c'est-à-dire pas un lien. D'où la vérification. */
     if (item.link && !/^https?:\/\//.test(item.link)) {
       error(where, `link : « ${item.link} » doit être une URL absolue`);
+    }
+    for (const source of item.sources ?? []) {
+      if (!/^https?:\/\//.test(source.url)) {
+        error(where, `sources : « ${source.url} » doit être une URL absolue`);
+      }
+    }
+    if (item.attribution && !ATTRIBUTIONS.includes(item.attribution)) {
+      error(where, `attribution inconnue : ${item.attribution}`);
     }
 
     /* ── Crédits ── */

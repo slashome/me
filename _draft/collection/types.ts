@@ -56,21 +56,29 @@ export type CollectionType = (typeof COLLECTION_TYPES)[number];
  */
 export const COLLECTION_ROLES = [
   // — écrit
+  /** Qui a écrit les mots. Attesté 115 fois sur 123 dans le corpus Notion. */
   'author',
+  /** Non attesté dans le corpus de citations, mais inévitable dès le premier livre. */
   'translator',
   'editor',
-  'illustrator',
-  'photographer',
   // — audiovisuel / musique
+  /** Luc Besson pour la scène d'ouverture du Cinquième Élément. */
   'director',
   /**
    * La personne AGIT, et son action EST le contenu.
-   * → Dany Bill dans les vidéos de ses combats. Idem : musicien sur scène, danseur.
+   * → Dany Bill dans ses combats, Pierre Mondy jouant César, un musicien sur scène.
    */
   'performer',
+  /**
+   * Qui PRONONCE la phrase, sans l'avoir écrite ni l'incarner.
+   * → Jean d'Ormesson récitant Aragon à la télévision ; le personnage César,
+   *   dont Astier est l'auteur. Distinct de `performer` : d'Ormesson ne joue pas.
+   */
+  'speaker',
+  /** Non attesté dans le corpus, mais inévitable dès le premier vinyl. */
   'composer',
-  'narrator',
   // — parole
+  /** George Carlin invité chez Bill Maher ; Cousteau répondant à une journaliste. */
   'interviewee',
   'interviewer',
   /**
@@ -80,10 +88,16 @@ export const COLLECTION_ROLES = [
   'publisher',
   /**
    * L'item PARLE D'ELLE, elle n'y a pas contribué.
-   * → Simone Weil dans la vidéo « Paroles de philosophes ».
+   * → Simone Weil dans la vidéo « Paroles de philosophes » ; Simone Weil encore,
+   *   dans la phrase de Camus sur elle.
    */
   'subject',
 ] as const;
+
+/* Retirés après lecture du corpus réel : `illustrator`, `photographer`,
+   `narrator`. Aucun des 123 items n'en a besoin, et `narrator` faisait doublon
+   avec `speaker`. Règle appliquée : tout rôle pour lequel on ne peut pas citer
+   un item existant est spéculatif. Les rajouter est une ligne. */
 
 export type CollectionRole = (typeof COLLECTION_ROLES)[number];
 
@@ -92,17 +106,33 @@ export const ROLE_LABELS: Record<CollectionRole, string> = {
   author: 'auteur',
   translator: 'traducteur',
   editor: 'éditeur',
-  illustrator: 'illustrateur',
-  photographer: 'photographe',
   director: 'réalisateur',
   performer: 'interprète',
+  speaker: 'énonciateur',
   composer: 'compositeur',
-  narrator: 'narrateur',
   interviewee: 'interviewé',
   interviewer: 'intervieweur',
   publisher: 'diffusé par',
   subject: 'sujet',
 };
+
+/**
+ * Sûreté de l'attribution.
+ *
+ * Imposé par le corpus : une citation y porte « faussement attribuée à Bruce Lee
+ * ou Warren Buffett », une autre « citation modifiée avec le temps » (Hérodote).
+ * Sans ce champ, la seule façon de le dire est une note en prose — donc quelque
+ * chose que l'affichage ne peut pas traiter, et qu'aucun filtre n'atteint.
+ *
+ * `attributed` est la valeur par défaut implicite : on ne l'écrit pas.
+ */
+export type Attribution =
+  /** L'attribution courante est fausse, et on garde la citation quand même. */
+  | 'misattributed'
+  /** Attribution contestée, ou source jamais retrouvée. */
+  | 'disputed'
+  /** Le texte a dérivé de l'original en circulant. */
+  | 'altered';
 
 /* ────────────────────────────────────────────────────────────────────────────
    Agent — celui qu'on peut cliquer
@@ -132,13 +162,45 @@ export type AgentKind =
    * Le vocabulaire des bibliothèques dit « corporate body » : ni une personne,
    * ni un groupe de personnes nommées — une entité qui publie.
    */
-  | 'organization';
+  | 'organization'
+  /**
+   * Un personnage de fiction.
+   *
+   * Imposé par le corpus réel : Ra's al Ghul dans Batman Begins, Tyrell Wellick
+   * dans Mr. Robot, César dans Kaamelott. Trois citations sur 123 sont
+   * prononcées par quelqu'un qui n'existe pas — et les traiter en `person`
+   * mettrait un personnage dans l'index des gens.
+   *
+   * Un personnage n'est pas l'auteur de sa réplique : Alexandre Astier écrit
+   * (`author`), César prononce (`speaker`), Pierre Mondy joue (`performer`).
+   */
+  | 'character';
 
 /** Un texte et sa langue — un surnom thaï n'est pas un surnom anglais. */
 export interface LocalizedText {
   /** Code BCP 47 : `fr`, `en`, `th`… */
   lang: string;
   text: string;
+}
+
+/**
+ * Un surnom, dans SA langue d'origine, avec ses traductions.
+ *
+ * Pas de slug, et pas d'entité : un surnom n'a pas de page, rien ne pointe
+ * vers lui, on ne navigue jamais dessus. C'est un attribut d'affichage — lui
+ * donner une identité serait payer une table pour du texte.
+ *
+ * La structure répond à la vraie question : « ไอ้ดำพระกาฬ » et « Black Monk »
+ * ne sont pas deux surnoms, c'est UN surnom et sa traduction. Les mettre côte
+ * à côte dans une liste plate perdrait ce lien, et afficherait cinq surnoms
+ * à quelqu'un qui en a trois.
+ */
+export interface Nickname {
+  /** La langue dans laquelle le surnom a été donné. */
+  lang: string;
+  text: string;
+  /** Pour comprendre un surnom qu'on ne sait pas lire. */
+  translations?: LocalizedText[];
 }
 
 export interface Link {
@@ -189,7 +251,7 @@ export interface Agent {
    * ⚠️ Ne pas confondre avec `formerSlugs` : ceci est fait pour être LU, ça n'a
    * aucun rôle d'identifiant. C'est la collision qui existait dans `aliases`.
    */
-  nicknames?: LocalizedText[];
+  nicknames?: Nickname[];
 
   born?: PartialDate;
   died?: PartialDate;
@@ -340,6 +402,30 @@ export interface CollectionItem {
    * Goodreads de plus. Séparé de `text` pour pouvoir citer sans commenter.
    */
   note?: string;
+
+  /**
+   * Les CIRCONSTANCES de l'énonciation — pas tes mots, pas ceux de l'auteur.
+   *
+   * Champ imposé par le corpus, où il est rempli 17 fois sur 123 :
+   * « Réponse à la question d'une journaliste américaine : … »,
+   * « Récité par Jean d'Ormesson à la télévision »,
+   * « Politically Incorrect with Bill Maher, épisode du 16 mai 2001 ».
+   *
+   * Distinct de `note` : celui-ci répond à « dans quel cadre est-ce dit ? »,
+   * `note` répond à « pourquoi je le garde ? ». Les fusionner obligerait à
+   * choisir entre les deux, et le corpus montre qu'ils coexistent.
+   */
+  context?: string;
+
+  /**
+   * Absent = attribution tenue pour sûre. Voir `Attribution`.
+   * Une citation dont l'attribution est fausse reste une citation qu'on garde —
+   * elle mérite d'être affichée comme telle, pas cachée.
+   */
+  attribution?: Attribution;
+
+  /** Ce qui étaie (ou démonte) l'attribution : quoteinvestigator, une édition… */
+  sources?: Link[];
 
   link?: string;
 
