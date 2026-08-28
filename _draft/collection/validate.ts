@@ -176,6 +176,12 @@ export function validate(
       error(where, `attribution inconnue : ${item.attribution}`);
     }
 
+    /* Celui qui a fait découvrir l'item est un agent comme un autre : il a une
+       page, donc il doit exister. */
+    if (item.suggestedBy && !seenAgents.has(item.suggestedBy)) {
+      error(where, `suggestedBy : agent inconnu « ${item.suggestedBy} »`);
+    }
+
     /* Une faute de frappe sur un concept est une référence morte, plus un
        28ᵉ concept créé en silence. C'est tout le gain de l'entité. */
     if (concepts.length) {
@@ -242,6 +248,40 @@ export function validate(
     }
   }
 
+  return issues;
+}
+
+/**
+ * Règles propres aux **propositions** — ce que des inconnus proposent, et qui
+ * n'est pas encore entré dans le fonds.
+ *
+ * Une proposition est un item comme un autre pour le schéma : elle passe par
+ * `validate()` avec les items. Ces deux règles-ci s'y ajoutent, et elles
+ * existent parce qu'une proposition n'est PAS un ajout au fonds — c'est un
+ * cadeau qui attend d'être accepté.
+ */
+export function validatePropositions(propositions: CollectionItem[]): Issue[] {
+  const issues: Issue[] = [];
+  for (const item of propositions) {
+    const where = `propositions/${item.slug}`;
+
+    /* Sans elle, on ne saurait plus qui a montré quoi — et c'est la seule
+       chose que le contributeur reçoit en retour. */
+    if (!item.suggestedBy) {
+      issues.push({ severity: 'error', where, message: '`suggestedBy` est obligatoire ici' });
+    }
+
+    /* `note` dit pourquoi Florian garde une chose. C'est sa voix ; elle n'est
+       pas ouverte aux contributions. Le contributeur a `context` pour expliquer
+       de quoi il s'agit. */
+    if (item.note) {
+      issues.push({
+        severity: 'error',
+        where,
+        message: '`note` est réservé au propriétaire du fonds — utilise `context`',
+      });
+    }
+  }
   return issues;
 }
 

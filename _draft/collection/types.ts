@@ -531,8 +531,24 @@ export interface CollectionItem {
    * tu écris la ligne. C'est elle qui alimente « derniers ajouts » — la page
    * d'accueil naturelle d'une collection — et c'est le seul tri qui fonctionne
    * quand `published` manque.
+   *
+   * Pour une proposition adoptée, c'est le jour de l'ADOPTION, pas celui de la
+   * proposition : le fonds dit ce qui t'a formé, et rien ne t'a formé avant que
+   * tu le lises.
    */
   added: IsoDate;
+
+  /**
+   * L'agent qui t'a fait découvrir cet item.
+   *
+   * Obligatoire sur une proposition (`propositions.json`), conservé quand elle
+   * est adoptée — c'est ce qui donne à celui qui t'a montré quelque chose une
+   * trace nominative sur sa propre page, et pas une ligne dans un changelog.
+   *
+   * Pour un fonds qui dit « ce qui m'a formé », les gens qui t'ont montré des
+   * choses en font partie de plein droit.
+   */
+  suggestedBy?: Slug;
 
   /* Pas de `history: Event[]`. Sur un site à fichiers versionnés, ajouter un
      champ OPTIONNEL est une migration gratuite : pas de base, pas d'ALTER
