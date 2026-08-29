@@ -11,6 +11,21 @@
  * il n'y a rien à réparer.
  */
 
+/* ── Le logotype ─────────────────────────────────────────────────────────────
+   Sous-ensemble de Special Elite réduit aux huit lettres de « slashome » :
+   3764 octets, auto-hébergés — aucune requête vers un tiers. Le texte du
+   logotype ne change pas, donc le sous-ensemble ne peut pas manquer un glyphe.
+   Voir public/fonts/LICENSE.md. */
+@font-face {
+  font-family: 'Special Elite Subset';
+  src: url('/fonts/special-elite-slashome.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  /* La chute ne se produit que si le fichier manque : on borne quand même. */
+  unicode-range: U+61, U+65, U+68, U+6c-6d, U+6f, U+73;
+}
+
 .title-screen {
   /* Une scène, pas un document : elle reste sombre même en thème clair.
      Un écran-titre éclairé n'existe pas. */
@@ -133,24 +148,16 @@
 
 .title-screen__brand {
   margin: 0;
-  font-family: var(--font-mono);
-  font-size: clamp(1.6rem, 1.1rem + 2.6vw, 3.2rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--scene-fg-strong);
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.9);
-}
-
-.title-screen__brand span {
-  display: block;
-  margin-top: 0.35rem;
-  font-size: 0.8rem;
+  font-family: 'Special Elite Subset', var(--font-mono);
+  font-size: clamp(2.6rem, 1.6rem + 5vw, 5.5rem);
   font-weight: 400;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--scene-fg);
-  opacity: 0.62;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  color: var(--scene-fg-strong);
+  /* Deux ombres : une proche qui décolle du fond, une large qui l'assied. */
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.8),
+    0 4px 38px rgba(0, 0, 0, 0.95);
 }
 
 /* ── Le menu ────────────────────────────────────────────────────────────────── */
@@ -158,6 +165,12 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+/* Les groupes du menu, comme chez Project Zomboid : ce qu'on consulte, puis ce
+   qui règle. Un blanc vaut mieux qu'un séparateur — il sépare sans meubler. */
+.title-menu ul + ul {
+  margin-top: 1.6rem;
 }
 
 .title-menu li {
@@ -169,16 +182,38 @@
   min-height: 44px;               /* WCAG 2.5.5 — une entrée en texte brut n'a
                                      sinon que la largeur de ses glyphes */
   padding: 0.5rem 1rem 0.5rem 2.3rem;
-  font-family: var(--font-mono);
-  font-size: clamp(1.05rem, 0.9rem + 0.9vw, 1.55rem);
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 0.88rem + 0.7vw, 1.35rem);
   font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: 0.09em;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--scene-fg);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
-  transition: color 0.12s ease;
+  transition:
+    color 0.14s ease,
+    letter-spacing 0.14s ease,
+    background-color 0.14s ease;
+}
+
+/* La bande de sélection : un dégradé qui s'éteint vers la droite, comme une
+   surbrillance de menu de jeu — et non un rectangle plein, qui ferait bouton. */
+.title-menu a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to right,
+    rgba(224, 122, 58, 0.22) 0%,
+    rgba(224, 122, 58, 0.06) 45%,
+    transparent 100%
+  );
+  opacity: 0;
+  transform: scaleX(0.94);
+  transform-origin: left;
+  transition: opacity 0.14s ease, transform 0.14s ease;
 }
 
 .title-menu a::before {
@@ -194,11 +229,22 @@
 .title-menu a:focus-visible,
 .title-menu a[aria-current='page'] {
   color: var(--scene-fg-strong);
+  letter-spacing: 0.2em;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.95),
+    0 0 22px rgba(255, 214, 170, 0.35);
 }
 
 .title-menu a:hover::before,
 .title-menu a:focus-visible::before,
 .title-menu a[aria-current='page']::before {
+  opacity: 1;
+  transform: none;
+}
+
+.title-menu a:hover::after,
+.title-menu a:focus-visible::after,
+.title-menu a[aria-current='page']::after {
   opacity: 1;
   transform: none;
 }
@@ -225,16 +271,6 @@
   opacity: 0.5;
 }
 
-.title-screen__profile {
-  padding-left: 1rem;
-  font-size: 0.95rem;
-  letter-spacing: 0.12em;
-  opacity: 0.78;
-  border-top: 1px solid rgba(207, 198, 178, 0.22);
-  padding-top: 0.8rem;
-  max-width: 22ch;
-}
-
 /* ── Accessibilité ──────────────────────────────────────────────────────────── */
 
 /* La règle globale du site neutralise les DURÉES d'animation ; elle ne stoppe ni
@@ -247,7 +283,8 @@
     animation: none;
   }
   .title-menu a,
-  .title-menu a::before {
+  .title-menu a::before,
+  .title-menu a::after {
     transition: none;
   }
 }
@@ -260,7 +297,22 @@
   .crt {
     display: none;
   }
-  .title-screen {
+  /* ── Le logotype ─────────────────────────────────────────────────────────────
+   Sous-ensemble de Special Elite réduit aux huit lettres de « slashome » :
+   3764 octets, auto-hébergés — aucune requête vers un tiers. Le texte du
+   logotype ne change pas, donc le sous-ensemble ne peut pas manquer un glyphe.
+   Voir public/fonts/LICENSE.md. */
+@font-face {
+  font-family: 'Special Elite Subset';
+  src: url('/fonts/special-elite-slashome.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  /* La chute ne se produit que si le fichier manque : on borne quand même. */
+  unicode-range: U+61, U+65, U+68, U+6c-6d, U+6f, U+73;
+}
+
+.title-screen {
     background: Canvas;
     color: CanvasText;
   }

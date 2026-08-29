@@ -40,6 +40,24 @@ const fullTitle = path === '/' ? title : `${title} — slashome.me`;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {
+      /*
+       * Le logotype est l'élément le plus visible de l'écran-titre, et
+       * `font-display: swap` le ferait clignoter : rendu dans la police de
+       * repli, puis remplacé. Le précharger supprime le saut. Uniquement sur
+       * l'écran-titre — c'est la seule page qui l'utilise, et 3,7 ko sur les
+       * autres seraient du poids pur.
+       */
+      variant === 'screen' && (
+        <link
+          rel="preload"
+          href="/fonts/special-elite-slashome.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+      )
+    }
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
