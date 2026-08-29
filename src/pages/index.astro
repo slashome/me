@@ -7,10 +7,6 @@ import Base from '../layouts/Base.astro';
   description="Florian Boulestreau — qui je suis, ce que je construis, ce que j'écris."
 >
   <h1>Florian Boulestreau</h1>
-  <p class="lede todo">
-    Ta présentation en trois phrases. Ce qui t'anime, d'où tu écris. Pas un pitch, pas une accroche
-    — le métier n'est qu'une part de toi et cette page le dit dès la première ligne.
-  </p>
 
   <nav class="doors" aria-label="Sections du site">
     <a href="/projets/">
@@ -18,7 +14,7 @@ import Base from '../layouts/Base.astro';
       <span>ce que je construis</span>
     </a>
     <a href="/blog/">
-      <strong>Blog</strong>
+      <strong>Journal</strong>
       <span>ce que j'écris</span>
     </a>
     <a href="/citations/">
@@ -27,23 +23,17 @@ import Base from '../layouts/Base.astro';
     </a>
   </nav>
 
-  <section class="id-block">
-    <h2>hors du clavier</h2>
-    <p class="todo">Ce qui occupe le plus de place et qu'aucun CV ne mentionne.</p>
-  </section>
-
-  <section class="id-block">
-    <h2>ce sur quoi je sais travailler</h2>
-    <p class="todo">
-      Les compétences pro — volontairement en bas de page, et volontairement courtes.
-    </p>
-  </section>
+  {/*
+    « hors du clavier » et les compétences ne vivent plus ici : elles deviennent la
+    fiche de personnage de /a-propos/, avec ses statistiques. Voir la réflexion
+    « écran-titre et rendu » du nœud Ariane.
+  */}
 
   <section class="id-block">
     <h2>me joindre</h2>
     <ul>
       <li><a href="https://github.com/slashome">github.com/slashome</a></li>
     </ul>
-    <p class="todo">Les autres points de contact que tu veux exposer publiquement.</p>
+    {/* À compléter : Instagram, Twitch, et ce que tu veux exposer publiquement. */}
   </section>
 </Base>
