@@ -1,0 +1,77 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg
+  class:list={['figure', className]}
+  viewBox="0 0 220 560"
+  role="img"
+  aria-label="Silhouette au trait : grand, fin, bandana, chignon, lunettes rondes à verres rouges"
+>
+  <g class="figure__body">
+    <g class="figure__breath">
+      <ellipse class="ink" cx="110" cy="88" rx="27" ry="34" />
+      <path class="ink" d="M110 34c-7 0-12 5-12 11 0 5 5 9 12 9s12-4 12-9c0-6-5-11-12-11z" />
+      <path class="ink" d="M84 66q26 -12 52 0" />
+      <path class="ink" d="M136 66q16 3 22 12 q-13 1 -22 -4" />
+      <path class="ink" d="M136 72q14 8 16 18 q-12 -3 -18 -11" />
+
+      <circle class="lens" cx="97" cy="92" r="12" />
+      <circle class="lens" cx="125" cy="92" r="12" />
+      <path class="ink" d="M109 92h4" />
+
+      <path class="ink" d="M100 118v14" />
+      <path class="ink" d="M120 118v14" />
+
+      <path class="bead bead--light" d="M92 140a4 4 0 1 0 .1 0" />
+      <path class="bead bead--dark" d="M101 146a4 4 0 1 0 .1 0" />
+      <path class="bead bead--light" d="M110 148a4 4 0 1 0 .1 0" />
+      <path class="bead bead--metal" d="M110 158a5 5 0 1 0 .1 0" />
+      <path class="bead bead--dark" d="M119 146a4 4 0 1 0 .1 0" />
+      <path class="bead bead--light" d="M128 140a4 4 0 1 0 .1 0" />
+
+      <path class="ink" d="M88 134q22 26 44 0 l6 66 q-28 12 -56 0z" />
+    </g>
+
+    <path class="ink" d="M90 150q-16 26 -14 74" />
+    <path class="ink" d="M130 150q18 24 20 60" />
+
+    <g class="figure__hand figure__hand--left">
+      <path class="ink" d="M70 224q-6 10 0 18 q10 6 16 -2" />
+      <circle class="ring ring--silver" cx="70" cy="232" r="5" />
+    </g>
+
+    <g class="figure__hand figure__hand--right">
+      <path class="ink" d="M150 210q8 8 4 18 q-9 6 -16 -1" />
+      <circle class="ring ring--obsidian" cx="151" cy="219" r="5" />
+      <path class="ink" d="M152 206l14 -12" />
+    </g>
+
+    <g class="figure__smoke" aria-hidden="true">
+      <circle class="puff" cx="170" cy="188" r="4" />
+      <circle class="puff puff--2" cx="176" cy="180" r="5" />
+      <circle class="puff puff--3" cx="168" cy="172" r="6" />
+    </g>
+
+    <path class="ink" d="M84 262q-4 34 6 66" />
+    <path class="ink" d="M136 262q4 34 -6 66" />
+
+    <g class="figure__legs figure__legs--stand">
+      <path class="ink" d="M92 328q-4 62 -2 118" />
+      <path class="ink" d="M128 328q4 62 2 118" />
+      <path class="ink" d="M72 446q6 -8 20 -8 q14 0 16 10 q2 12 -18 12 q-22 0 -18 -14z" />
+      <path class="ink" d="M112 446q6 -8 20 -8 q14 0 16 10 q2 12 -18 12 q-22 0 -18 -14z" />
+    </g>
+
+    <g class="figure__legs figure__legs--kick">
+      <path class="ink" d="M96 328q-4 62 -2 118" />
+      <path class="ink" d="M128 330q26 22 60 8" />
+      <path class="ink" d="M76 446q6 -8 20 -8 q14 0 16 10 q2 12 -18 12 q-22 0 -18 -14z" />
+      <path class="ink" d="M186 328q10 4 14 12 q-8 8 -18 4 q-6 -8 4 -16z" />
+    </g>
+  </g>
+</svg>

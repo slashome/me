@@ -1,0 +1,110 @@
+.decor-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.figure {
+  position: absolute;
+  right: clamp(2%, 6vw, 12%);
+  bottom: 0;
+  height: min(78vh, 620px);
+  width: auto;
+  opacity: 0.9;
+}
+
+.ink {
+  fill: none;
+  stroke: var(--scene-fg-strong);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lens {
+  fill: rgba(196, 40, 34, 0.55);
+  stroke: var(--scene-fg-strong);
+  stroke-width: 4;
+  filter: drop-shadow(0 0 10px rgba(224, 60, 48, 0.8));
+}
+
+.bead {
+  stroke: var(--scene-fg-strong);
+  stroke-width: 2.5;
+}
+
+.bead--light { fill: #d8c9a6; }
+.bead--dark  { fill: #3a2b1e; }
+.bead--metal { fill: #9aa0a6; }
+
+.ring {
+  fill: none;
+  stroke-width: 3.5;
+}
+
+.ring--silver    { stroke: #cfd4d8; }
+.ring--obsidian  { stroke: #2a2530; }
+
+.figure__breath {
+  transform-origin: 110px 150px;
+  animation: breathe 5.2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scaleY(1) translateY(0); }
+  45%      { transform: scaleY(1.018) translateY(-2px); }
+}
+
+.puff {
+  fill: rgba(207, 198, 178, 0.28);
+  opacity: 0;
+  animation: puff 6s ease-out infinite;
+}
+
+.puff--2 { animation-delay: 2s; }
+.puff--3 { animation-delay: 4s; }
+
+@keyframes puff {
+  0%        { opacity: 0; transform: translateY(0) scale(0.6); }
+  12%       { opacity: 0.5; }
+  100%      { opacity: 0; transform: translateY(-46px) scale(1.9); }
+}
+
+.figure__legs--kick { display: none; }
+
+.figure__legs--stand { animation: stand 17s steps(1) infinite; }
+.figure__legs--kick  { animation: kick 17s steps(1) infinite; display: block; }
+
+@keyframes stand {
+  0%, 96%   { opacity: 1; }
+  96.5%, 98% { opacity: 0; }
+  98.5%, 100% { opacity: 1; }
+}
+
+@keyframes kick {
+  0%, 96%   { opacity: 0; }
+  96.5%, 98% { opacity: 1; }
+  98.5%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .figure__breath,
+  .puff,
+  .figure__legs--stand,
+  .figure__legs--kick {
+    animation: none;
+  }
+  .figure__legs--kick { opacity: 0; }
+  .figure__legs--stand { opacity: 1; }
+  .puff { opacity: 0; }
+}
+
+@media (max-width: 46rem) {
+  .figure { opacity: 0.32; right: -8%; }
+}
+
+@media (forced-colors: active) {
+  .decor-scene { display: none; }
+}

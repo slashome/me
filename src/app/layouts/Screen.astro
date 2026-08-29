@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import '../styles/scene.css';
 import Breadcrumb, { type Crumb } from '../../widgets/breadcrumb/Breadcrumb.astro';
+import Decor from '../../widgets/decor/Decor.astro';
 
 interface Props {
   title: string;
@@ -46,6 +47,7 @@ const fullTitle = path === '/' ? title : `${title} — slashome.me`;
 
   <body class="scene">
     <div class="scene__decor" aria-hidden="true"></div>
+    <Decor />
     <Breadcrumb trail={trail} />
     <main class="scene__main">
       <slot />
