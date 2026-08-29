@@ -1,7 +1,7 @@
 ---
-import Base from '../layouts/Base.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import { projects } from '../data/projects';
+import Base from '../app/layouts/Base.astro';
+import ProjectCard from '../entities/project/ProjectCard.astro';
+import { projects } from '../entities/project/projects';
 
 const featured = projects.filter((p) => p.featured);
 const rest = projects.filter((p) => !p.featured);
