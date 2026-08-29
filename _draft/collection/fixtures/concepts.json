@@ -1,0 +1,9 @@
+{
+  "_comment": "Les thèmes du fonds d'Ulysse. Un concept est une entité comme un agent : référencé par slug, jamais par une chaîne libre — c'est ce qui fait qu'une faute de frappe devient une erreur de build, et non un concept de plus créé en silence.",
+  "retour": { "name": "Retour", "related": ["patience", "mer"] },
+  "ruse": { "name": "Ruse" },
+  "hospitalite": { "name": "Hospitalité" },
+  "memoire": { "name": "Mémoire", "related": ["retour"] },
+  "mer": { "name": "Mer", "related": ["retour"] },
+  "patience": { "name": "Patience", "related": ["retour"] }
+}
