@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Le contenu est cloné ici par la CI, et localement par `npm run content`.
+/content/

@@ -1,8 +1,14 @@
 name: Deploy to GitHub Pages
 
 on:
+  # Le moteur change → le site change.
   push:
     branches: [main]
+  # Le CONTENU change → le site change aussi. slashome/_me envoie cet événement
+  # à chaque push sur sa branche main : le site est le produit des deux dépôts,
+  # donc chacun doit pouvoir le republier.
+  repository_dispatch:
+    types: [content-updated]
   workflow_dispatch:
 
 # Un seul déploiement à la fois ; on ne coupe pas celui qui est en cours.
@@ -19,10 +25,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: withastro/action@v4
+      - name: Le moteur
+        uses: actions/checkout@v4
+
+      # Le contenu, à sa dernière version. Le sens de l'épinglage est
+      # volontairement asymétrique : _me épingle une VERSION du moteur (son
+      # schéma doit être stable), le moteur prend le contenu LIVE (une citation
+      # ajoutée doit paraître sans qu'on retague quoi que ce soit).
+      - name: Le contenu
+        uses: actions/checkout@v4
         with:
-          node-version: 22
+          repository: slashome/_me
+          ref: main
+          path: content
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
   deploy:
     needs: build
