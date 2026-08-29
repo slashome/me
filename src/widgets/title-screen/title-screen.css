@@ -9,104 +9,10 @@
 }
 
 .title-screen {
-  
-  --scene-bg: #0a0908;
-  --scene-fg: #cfc6b2;
-  --scene-fg-strong: #fff6e2;
-  --scene-ember: #c25a2a;
-
-  position: relative;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
-  background: var(--scene-bg);
-  color: var(--scene-fg);
-}
-
-.title-screen__decor {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(60% 45% at 22% 88%, rgba(194, 90, 42, 0.28), transparent 70%),
-    radial-gradient(40% 30% at 78% 18%, rgba(90, 110, 130, 0.16), transparent 70%),
-    radial-gradient(120% 90% at 50% 50%, transparent 35%, rgba(0, 0, 0, 0.75) 100%),
-    linear-gradient(170deg, #141210 0%, #0a0908 55%, #060505 100%);
-}
-
-.title-screen__decor::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(28% 22% at 22% 90%, rgba(224, 122, 58, 0.35), transparent 70%);
-  animation: ember 5.5s ease-in-out infinite;
-}
-
-@keyframes ember {
-  0%, 100% { opacity: 0.55; }
-  38%      { opacity: 0.9; }
-  61%      { opacity: 0.68; }
-}
-
-.title-screen::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(to top, rgba(8, 7, 6, 0.94) 0%, rgba(8, 7, 6, 0.5) 38%, transparent 72%),
-    linear-gradient(to right, rgba(8, 7, 6, 0.86) 0%, transparent 58%);
-}
-
-.crt {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  pointer-events: none;
-  mix-blend-mode: overlay;
-}
-
-.crt::before {
-  content: '';
-  position: absolute;
-  inset: -100% 0 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.26) 0 1px,
-    transparent 1px 3px
-  );
-  animation: crt-roll 9s linear infinite;
-}
-
-.crt::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('/noise.png') 0 0 / 128px 128px repeat;
-  opacity: 0.09;
-  animation: crt-grain 0.5s steps(1) infinite;
-}
-
-@keyframes crt-roll {
-  to { transform: translateY(50%); }
-}
-
-@keyframes crt-grain {
-  0%   { background-position: 0 0; }
-  25%  { background-position: -37px 19px; }
-  50%  { background-position: 23px -41px; }
-  75%  { background-position: -11px -29px; }
-}
-
-.title-screen__inner {
-  position: relative;
-  z-index: 2;
+  margin-top: auto;
   display: grid;
   gap: clamp(1.5rem, 1rem + 3vw, 3rem);
-  padding: clamp(1.5rem, 1rem + 4vw, 4rem);
-  padding-block-end: clamp(2rem, 1rem + 5vw, 5rem);
+  padding-block-end: clamp(1rem, 0.5rem + 3vw, 3rem);
 }
 
 .title-screen__brand {

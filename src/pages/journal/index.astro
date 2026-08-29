@@ -1,5 +1,5 @@
 ---
-import Base from '../../app/layouts/Base.astro';
+import Screen from '../../app/layouts/Screen.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
@@ -9,7 +9,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 const dateFormat = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
 ---
 
-<Base title="Blog" description="Notes et articles de Florian Boulestreau.">
+<Screen trail={[{ label: 'Journal' }]} title="Blog" description="Notes et articles de Florian Boulestreau.">
   <h1>Blog</h1>
   <p class="lede">Des notes qui ont assez mûri pour être écrites.</p>
 
@@ -30,4 +30,4 @@ const dateFormat = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
       </ul>
     )
   }
-</Base>
+</Screen>

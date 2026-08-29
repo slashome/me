@@ -1,0 +1,138 @@
+.item {
+  display: grid;
+  grid-template-columns: 1fr minmax(14rem, 20rem);
+  gap: clamp(1rem, 0.6rem + 2vw, 2.2rem);
+  align-items: start;
+}
+
+@media (max-width: 46rem) {
+  .item {
+    grid-template-columns: 1fr;
+  }
+}
+
+.item__panel {
+  padding: clamp(1rem, 0.7rem + 1.6vw, 2rem);
+  background: var(--scene-panel);
+  border: 1px solid var(--scene-line);
+  backdrop-filter: blur(2px);
+}
+
+.item__type {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--scene-ember);
+}
+
+.item__lang {
+  margin-left: auto;
+  color: var(--scene-fg);
+  opacity: 0.55;
+}
+
+.item__text {
+  margin: 0;
+  font-size: clamp(1.15rem, 1rem + 1.1vw, 1.9rem);
+  line-height: 1.45;
+  color: var(--scene-fg-strong);
+  text-wrap: balance;
+}
+
+.item__flag {
+  margin: 1.4rem 0 0;
+  padding: 0.6rem 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--scene-ember);
+  border: 1px solid rgba(194, 90, 42, 0.45);
+  background: rgba(194, 90, 42, 0.08);
+}
+
+.item__context {
+  margin: 1.4rem 0 0;
+  font-size: 0.92rem;
+  opacity: 0.72;
+}
+
+.item__side h2 {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--scene-fg);
+  opacity: 0.55;
+}
+
+.item__side section + section {
+  margin-top: 1.6rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--scene-line);
+}
+
+.item__side ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.item__agent {
+  display: block;
+  color: var(--scene-fg-strong);
+}
+
+.item__roles {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.item__concepts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.item__concept {
+  padding: 0.2rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--scene-line);
+  opacity: 0.8;
+}
+
+.item__side dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1rem;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.item__side dt {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.item__side dd {
+  margin: 0;
+  color: var(--scene-fg-strong);
+  font-variant-numeric: tabular-nums;
+}

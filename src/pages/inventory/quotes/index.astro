@@ -1,0 +1,27 @@
+---
+import Screen from '../../../app/layouts/Screen.astro';
+import { agentsBySlug, items, TYPE_ORDER } from '../../../shared/lib/content';
+import InventoryGrid from '../../../widgets/inventory/InventoryGrid.astro';
+
+const all = items();
+const quotes = all.filter((i) => i.type === 'citation').sort((a, b) => (a.added < b.added ? 1 : -1));
+const agents = agentsBySlug();
+
+const counts = Object.fromEntries(
+  TYPE_ORDER.map((type) => [type, all.filter((i) => i.type === type).length]),
+);
+---
+
+<Screen
+  trail={[{ href: '/inventory/', label: 'Inventaire' }, { label: 'Citations' }]}
+  title="Citations"
+  description="Les citations que je garde."
+>
+  <InventoryGrid
+    items={quotes}
+    agents={agents}
+    counts={counts}
+    activeType="citation"
+    capacity={500}
+  />
+</Screen>

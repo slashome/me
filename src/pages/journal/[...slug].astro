@@ -1,6 +1,6 @@
 ---
 import type { GetStaticPaths } from 'astro';
-import Base from '../../app/layouts/Base.astro';
+import Screen from '../../app/layouts/Screen.astro';
 import { getCollection, render } from 'astro:content';
 
 export const getStaticPaths = (async () => {
@@ -14,7 +14,7 @@ const { Content } = await render(post);
 const dateFormat = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
 ---
 
-<Base title={post.data.title} description={post.data.description}>
+<Screen title={post.data.title} description={post.data.description}>
   <article class="post">
     <h1>{post.data.title}</h1>
     <div class="post__meta">
@@ -33,4 +33,4 @@ const dateFormat = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
       <Content />
     </div>
   </article>
-</Base>
+</Screen>

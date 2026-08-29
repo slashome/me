@@ -1,14 +1,14 @@
 ---
-import Base from '../app/layouts/Base.astro';
+import Screen from '../app/layouts/Screen.astro';
 import { buildId } from '../shared/lib/build-id';
 import { GROUPS } from '../shared/config/navigation';
 import TitleScreen from '../widgets/title-screen/TitleScreen.astro';
 ---
 
-<Base
-  variant="screen"
+<Screen
+  preloadTitleFont
   title="slashome.me"
   description="Florian Boulestreau — ce que je construis, ce que j'écris, ce que je garde."
 >
   <TitleScreen build={buildId()} menu={GROUPS} />
-</Base>
+</Screen>

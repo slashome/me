@@ -1,0 +1,117 @@
+---
+import Screen from '../../../app/layouts/Screen.astro';
+import TypeGlyph from '../../../entities/inventory/TypeGlyph.astro';
+import { agentsBySlug, conceptsBySlug, items, type Item } from '../../../shared/lib/content';
+import './item.css';
+
+export function getStaticPaths() {
+  return items().map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+interface Props {
+  item: Item;
+}
+
+const { item } = Astro.props;
+const agents = agentsBySlug();
+const concepts = conceptsBySlug();
+
+const ROLE_LABELS: Record<string, string> = {
+  author: 'auteur',
+  translator: 'traducteur',
+  editor: 'éditeur',
+  director: 'réalisateur',
+  performer: 'interprète',
+  speaker: 'énonciateur',
+  composer: 'compositeur',
+  interviewee: 'interviewé',
+  interviewer: 'intervieweur',
+  publisher: 'diffusé par',
+  subject: 'sujet',
+};
+
+const ATTRIBUTION_LABELS: Record<string, string> = {
+  misattributed: 'attribution fausse',
+  disputed: 'attribution contestée',
+  altered: 'texte altéré en circulant',
+};
+---
+
+<Screen
+  trail={[
+    { href: '/inventory/', label: 'Inventaire' },
+    { href: '/inventory/quotes/', label: 'Citations' },
+    { label: item.title },
+  ]}
+  title={item.title}
+  description={item.text ?? item.title}
+>
+  <article class="item">
+    <div class="item__panel">
+      <p class="item__type">
+        <TypeGlyph type={item.type} />
+        {item.type}
+        {item.lang && <span class="item__lang">{item.lang}</span>}
+      </p>
+
+      {item.text && <blockquote class="item__text">{item.text}</blockquote>}
+
+      {
+        item.attribution && (
+          <p class="item__flag">⚠ {ATTRIBUTION_LABELS[item.attribution] ?? item.attribution}</p>
+        )
+      }
+
+      {item.context && <p class="item__context">{item.context}</p>}
+    </div>
+
+    <aside class="item__panel item__side">
+      {
+        item.credits.length > 0 && (
+          <section>
+            <h2>Crédits</h2>
+            <ul>
+              {item.credits.map((credit) => (
+                <li>
+                  <span class="item__agent">{agents.get(credit.agent)?.name ?? credit.agent}</span>
+                  <span class="item__roles">
+                    {credit.roles.map((r) => ROLE_LABELS[r] ?? r).join(' · ')}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      {
+        item.concepts && item.concepts.length > 0 && (
+          <section>
+            <h2>Concepts</h2>
+            <p class="item__concepts">
+              {item.concepts.map((c) => (
+                <span class="item__concept">{concepts.get(c)?.name ?? c}</span>
+              ))}
+            </p>
+          </section>
+        )
+      }
+
+      <section>
+        <h2>Fiche</h2>
+        <dl>
+          {
+            item.published && (
+              <>
+                <dt>Publié</dt>
+                <dd>{item.published}</dd>
+              </>
+            )
+          }
+          <dt>Ajouté</dt>
+          <dd>{item.added}</dd>
+        </dl>
+      </section>
+    </aside>
+  </article>
+</Screen>

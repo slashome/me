@@ -1,0 +1,122 @@
+:root,
+.scene {
+  --scene-bg: #0a0908;
+  --scene-fg: #cfc6b2;
+  --scene-fg-strong: #fff6e2;
+  --scene-ember: #c25a2a;
+  --scene-panel: rgba(22, 19, 17, 0.82);
+  --scene-line: rgba(207, 198, 178, 0.18);
+}
+
+.scene {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--scene-bg);
+  color: var(--scene-fg);
+  font-family: var(--font-sans);
+}
+
+.scene__decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 45% at 18% 88%, rgba(194, 90, 42, 0.22), transparent 70%),
+    radial-gradient(40% 30% at 82% 12%, rgba(90, 110, 130, 0.14), transparent 70%),
+    radial-gradient(120% 90% at 50% 50%, transparent 32%, rgba(0, 0, 0, 0.78) 100%),
+    linear-gradient(170deg, #141210 0%, #0a0908 55%, #060505 100%);
+}
+
+.scene__decor::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(26% 20% at 18% 90%, rgba(224, 122, 58, 0.3), transparent 70%);
+  animation: ember 5.5s ease-in-out infinite;
+}
+
+@keyframes ember {
+  0%, 100% { opacity: 0.55; }
+  38%      { opacity: 0.9; }
+  61%      { opacity: 0.68; }
+}
+
+.scene__main {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.2rem, 0.8rem + 3vw, 3.5rem);
+}
+
+.crt {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.crt::before {
+  content: '';
+  position: absolute;
+  inset: -100% 0 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.26) 0 1px,
+    transparent 1px 3px
+  );
+  animation: crt-roll 9s linear infinite;
+}
+
+.crt::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/noise.png') 0 0 / 128px 128px repeat;
+  opacity: 0.09;
+  animation: crt-grain 0.5s steps(1) infinite;
+}
+
+@keyframes crt-roll {
+  to { transform: translateY(50%); }
+}
+
+@keyframes crt-grain {
+  0%   { background-position: 0 0; }
+  25%  { background-position: -37px 19px; }
+  50%  { background-position: 23px -41px; }
+  75%  { background-position: -11px -29px; }
+}
+
+
+.hint {
+  position: fixed;
+  right: clamp(0.8rem, 0.5rem + 2vw, 2.5rem);
+  bottom: clamp(0.6rem, 0.4rem + 1.5vw, 1.6rem);
+  z-index: 3;
+  margin: 0;
+  display: flex;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--scene-fg);
+  opacity: 0.34;
+  pointer-events: none;
+}
+
+.hint span {
+  color: var(--scene-fg-strong);
+  opacity: 0.75;
+}
+
+@media (max-width: 46rem) {
+  .hint { display: none; }
+}
