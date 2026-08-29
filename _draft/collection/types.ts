@@ -276,12 +276,15 @@ export interface Translation {
    * Qui a traduit. Un agent, donc une page, donc créditable comme n'importe
    * quel contributeur.
    *
-   * ⚠️ Pourquoi ici plutôt que dans `credits` avec `role: 'translator'` : une
+   * ⚠️ Nommé `translatedBy` et non `translator`, pour aller avec `suggestedBy` :
+   * un champ qui pointe une personne dit « par qui », il ne la nomme pas.
+   *
+   * Pourquoi ici plutôt que dans `credits` avec `role: 'translator'` : une
    * citation peut porter deux traductions par deux personnes différentes, et
    * `credits` ne saurait pas dire qui a traduit quoi. Le rôle `translator`
    * reste utile pour une ŒUVRE traduite en entier — un livre, un film.
    */
-  translator?: Slug;
+  translatedBy?: Slug;
 
   /**
    * Ce que cette traduction rend, ce qu'elle perd, pourquoi ce mot-là.
@@ -655,6 +658,41 @@ export interface Concept {
    * réponse est « les deux ». Un voisinage symétrique ne pose pas la question.
    */
   related?: Slug[];
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   Projet — ce que je fabrique
+   ──────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * Un dépôt, un site, une chose faite.
+ *
+ * **Séparé de `CollectionItem`, et c'est le point** : l'inventaire dit ce qui
+ * m'a formé, les projets disent ce que je produis. Les confondre ferait de mes
+ * propres dépôts des choses qui m'auraient influencé — ce qui est faux, et ce
+ * qui casserait la seule question à laquelle l'inventaire répond.
+ */
+export interface Project {
+  slug: Slug;
+  name: string;
+  description: string;
+
+  /** Renseigné **seulement si le dépôt est public**. Un lien mort ne sert personne. */
+  repo?: string;
+
+  /**
+   * Ce qui est consultable et qui n'est pas un dépôt : un site, une démo.
+   * C'est ce qui permet de montrer un projet dont le code est privé.
+   */
+  links?: Link[];
+
+  tags?: string[];
+  /** Langue principale. Indicatif, pas exhaustif. */
+  language?: string;
+
+  /** Jugement éditorial, pas une donnée GitHub : à ajuster à la main. */
+  status: 'actif' | 'archive' | 'dormant';
+  featured?: boolean;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────

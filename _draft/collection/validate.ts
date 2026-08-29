@@ -17,6 +17,7 @@ import {
   type Attribution,
   type CollectionItem,
   type Concept,
+  type Project,
 } from './types';
 
 export interface Issue {
@@ -28,6 +29,8 @@ export interface Issue {
 const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 const ATTRIBUTIONS: readonly Attribution[] = ['misattributed', 'disputed', 'altered'];
+
+const PROJECT_STATUSES: readonly Project['status'][] = ['actif', 'archive', 'dormant'];
 
 export function validate(
   agents: Agent[],
@@ -193,8 +196,8 @@ export function validate(
       if (t.lang === item.lang) error(where, `traduction dans la langue de l'original (${t.lang})`);
       if (seenTranslations.has(t.lang)) error(where, `deux traductions en ${t.lang}`);
       seenTranslations.add(t.lang);
-      if (t.translator && !seenAgents.has(t.translator)) {
-        error(where, `traducteur inconnu : « ${t.translator} »`);
+      if (t.translatedBy && !seenAgents.has(t.translatedBy)) {
+        error(where, `traducteur inconnu : « ${t.translatedBy} »`);
       }
       if (t.source && !/^https?:\/\//.test(t.source.url)) {
         error(where, `source de traduction non absolue : ${t.source.url}`);
@@ -319,4 +322,40 @@ export function report(issues: Issue[]): { ok: boolean; text: string } {
   );
   lines.push(`\n${errors.length} erreur(s), ${issues.length - errors.length} avertissement(s).`);
   return { ok: errors.length === 0, text: lines.join('\n') };
+}
+
+/**
+ * Règles des projets. Séparé de `validate()` parce que les projets ne sont pas
+ * des items : ils n'ont ni crédits, ni concepts, ni date d'entrée dans un fonds.
+ */
+export function validateProjects(projects: Project[]): Issue[] {
+  const issues: Issue[] = [];
+  const seen = new Set<string>();
+  for (const p of projects) {
+    const where = `projects/${p.slug}`;
+    const error = (m: string) => issues.push({ severity: 'error', where, message: m });
+
+    if (!SLUG_RE.test(p.slug)) error('slug non conforme (minuscules, tirets)');
+    if (seen.has(p.slug)) error('slug en double');
+    seen.add(p.slug);
+
+    if (!p.name.trim()) error('nom vide');
+    if (!p.description.trim()) error('description vide');
+    if (!PROJECT_STATUSES.includes(p.status)) error(`statut inconnu : ${p.status}`);
+
+    if (p.repo && !/^https?:\/\//.test(p.repo)) error(`repo non absolu : ${p.repo}`);
+    for (const l of p.links ?? []) {
+      if (!/^https?:\/\//.test(l.url)) error(`lien non absolu : ${l.url}`);
+    }
+    /* Un projet qu'on ne peut ni lire ni visiter n'a rien à faire sur une page
+       publique — c'est le cas des dépôts privés, d'où l'exigence d'un `links`. */
+    if (!p.repo && !p.links?.length) {
+      issues.push({
+        severity: 'warning',
+        where,
+        message: 'ni dépôt public ni lien : rien à montrer au visiteur',
+      });
+    }
+  }
+  return issues;
 }

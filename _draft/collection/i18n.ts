@@ -25,7 +25,7 @@ export interface ResolvedText {
   lang?: Language;
   /** Vrai si ce n'est pas l'original : à signaler au lecteur. */
   translated: boolean;
-  translator?: Slug;
+  translatedBy?: Slug;
   translatorNote?: string;
 }
 
@@ -58,7 +58,7 @@ export function resolveText(
     text: chosen.text,
     lang: chosen.lang,
     translated: true,
-    translator: chosen.translator,
+    translatedBy: chosen.translatedBy,
     translatorNote: chosen.translatorNote,
   };
 }
