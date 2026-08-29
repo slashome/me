@@ -261,6 +261,42 @@ export interface Link {
   url: string;
 }
 
+/**
+ * La traduction d'un texte — **jamais à la place de l'original.**
+ *
+ * Le texte d'une citation EST la citation : le remplacer par sa traduction en
+ * ferait une autre chose. D'où un tableau à côté de `text`, exactement comme
+ * les surnoms portent leurs traductions à côté du surnom thaï.
+ */
+export interface Translation {
+  lang: Language;
+  text: string;
+
+  /**
+   * Qui a traduit. Un agent, donc une page, donc créditable comme n'importe
+   * quel contributeur.
+   *
+   * ⚠️ Pourquoi ici plutôt que dans `credits` avec `role: 'translator'` : une
+   * citation peut porter deux traductions par deux personnes différentes, et
+   * `credits` ne saurait pas dire qui a traduit quoi. Le rôle `translator`
+   * reste utile pour une ŒUVRE traduite en entier — un livre, un film.
+   */
+  translator?: Slug;
+
+  /**
+   * Ce que cette traduction rend, ce qu'elle perd, pourquoi ce mot-là.
+   *
+   * Ce sont les mots du TRADUCTEUR, pas ceux du propriétaire du fonds — d'où un
+   * champ distinct de `note`, qui lui reste fermé aux contributions. C'est ce
+   * qui permet à quelqu'un de proposer une traduction plus juste en expliquant
+   * pourquoi, et de garder l'explication à côté de la donnée.
+   */
+  translatorNote?: string;
+
+  /** L'édition d'où vient la traduction, quand elle est publiée. */
+  source?: Link;
+}
+
 export interface Agent {
   slug: Slug;
   kind: AgentKind;
@@ -487,6 +523,23 @@ export interface CollectionItem {
    * Pour un vinyl, souvent vide : la musique n'est pas embarquable.
    */
   text?: string;
+
+  /**
+   * La langue de `text`.
+   *
+   * Optionnelle par tolérance, mais **obligatoire dès qu'il y a une
+   * traduction** : traduire depuis une langue inconnue n'a pas de sens.
+   */
+  lang?: Language;
+
+  /**
+   * Traductions de `text`. L'original ne bouge jamais.
+   *
+   * Ouvert aux contributions : c'est l'endroit où quelqu'un peut proposer une
+   * traduction plus juste, avec son explication dans `translatorNote` et son
+   * nom dans `translator`.
+   */
+  translations?: Translation[];
 
   /**
    * TES mots à toi. Distinct de `text` : c'est ce champ qui transforme une

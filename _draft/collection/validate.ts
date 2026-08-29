@@ -176,6 +176,31 @@ export function validate(
       error(where, `attribution inconnue : ${item.attribution}`);
     }
 
+    /* ── Langue et traductions ── */
+
+    if (item.lang && !LANGUAGES.includes(item.lang)) {
+      error(where, `langue inconnue : « ${item.lang} »`);
+    }
+    if (item.translations?.length && !item.lang) {
+      error(where, 'des traductions, mais la langue de `text` n\'est pas déclarée');
+    }
+    const seenTranslations = new Set<string>();
+    for (const t of item.translations ?? []) {
+      if (!LANGUAGES.includes(t.lang)) error(where, `traduction en langue inconnue : « ${t.lang} »`);
+      if (!t.text.trim()) error(where, `traduction vide (${t.lang})`);
+      /* Une « traduction » dans la langue de l'original est soit un doublon,
+         soit une variante — dans les deux cas ce n'est pas une traduction. */
+      if (t.lang === item.lang) error(where, `traduction dans la langue de l'original (${t.lang})`);
+      if (seenTranslations.has(t.lang)) error(where, `deux traductions en ${t.lang}`);
+      seenTranslations.add(t.lang);
+      if (t.translator && !seenAgents.has(t.translator)) {
+        error(where, `traducteur inconnu : « ${t.translator} »`);
+      }
+      if (t.source && !/^https?:\/\//.test(t.source.url)) {
+        error(where, `source de traduction non absolue : ${t.source.url}`);
+      }
+    }
+
     /* Celui qui a fait découvrir l'item est un agent comme un autre : il a une
        page, donc il doit exister. */
     if (item.suggestedBy && !seenAgents.has(item.suggestedBy)) {
