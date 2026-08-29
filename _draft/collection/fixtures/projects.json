@@ -1,19 +1,27 @@
 {
-  "_comment": "Projets de démonstration, fictifs. Séparés des items : l'inventaire dit ce qui m'a formé, les projets disent ce que je fabrique — les confondre ferait de mes propres dépôts des choses qui m'auraient influencé.",
-  "boussole": {
-    "name": "boussole",
-    "description": "Projet fictif. Une boussole en ligne de commande — exerce le cas d'un dépôt public.",
-    "repo": "https://example.org/boussole",
-    "tags": ["CLI"],
-    "language": "Rust",
+  "_comment": "Ce qu'Ulysse fabrique. Séparé de l'inventaire, et c'est le point : l'inventaire dit ce qui m'a formé, les projets disent ce que je produis. Les confondre ferait de ses propres ouvrages des choses qui l'auraient influencé.",
+  "cheval-de-troie": {
+    "name": "cheval-de-troie",
+    "description": "Un cheval creux. Livré une fois, jamais maintenu, toujours cité.",
+    "repo": "https://example.org/cheval-de-troie",
+    "tags": ["ruse", "siège"],
+    "language": "Bois",
+    "status": "archive",
+    "featured": true
+  },
+  "arc": {
+    "name": "arc",
+    "description": "Un arc que personne d'autre ne sait bander. Exerce le cas d'un projet actif au dépôt public.",
+    "repo": "https://example.org/arc",
+    "tags": ["outil"],
     "status": "actif",
     "featured": true
   },
-  "atelier": {
-    "name": "atelier",
-    "description": "Projet fictif dont le code est privé — exerce `links` sans `repo` : c'est ce qui permet de montrer un projet qu'on ne peut pas ouvrir.",
-    "links": [{ "label": "Site", "url": "https://example.org/atelier" }],
-    "tags": ["outillage"],
+  "radeau": {
+    "name": "radeau",
+    "description": "Construit en urgence, coulé depuis. Exerce `links` sans `repo` : c'est ce qui permet de montrer un projet qu'on ne peut pas ouvrir.",
+    "links": [{ "label": "Récit", "url": "https://example.org/radeau" }],
+    "tags": ["mer"],
     "status": "dormant"
   }
 }

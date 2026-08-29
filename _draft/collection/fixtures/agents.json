@@ -1,61 +1,75 @@
 {
-  "_comment": "⚠️ FONDS DE DÉMONSTRATION — entièrement FICTIF. Aucune de ces personnes n'existe, aucun de ces textes n'a été écrit par quiconque. Le thème du labyrinthe est choisi pour aller avec slashome (ariane, knossos, daedalus) sans emprunter les goûts de personne : celui qui forke ce moteur doit voir tout de suite que ce n'est pas un contenu à garder. Chaque entrée existe pour exercer une partie précise du modèle.",
+  "_comment": "FONDS DE DÉMONSTRATION — le site d'Ulysse. Plutôt qu'un jeu de données abstrait, on montre à quoi ressemblerait le site de quelqu'un. Domaine public, donc aucun problème de marque, et le registre va avec slashome (ariane, knossos, daedalus). Les textes attribués à des PERSONNAGES sont inventés : c'est de la fiction sur de la fiction, pas une fausse attribution — et rien n'est mis dans la bouche d'Homère.",
 
-  "marguerite-vasseur": {
+  "ulysse": {
     "kind": "person",
-    "name": "Marguerite Vasseur",
-    "sortName": "Vasseur, Marguerite",
-    "born": "1921",
-    "died": "1994",
+    "name": "Ulysse",
+    "gender": "m",
+    "bio": "Le propriétaire de ce fonds. Roi d'Ithaque, rentré tard. Exerce le cas du propriétaire : il écrit dans le journal, et il n'entre pas dans son propre Panthéon.",
+    "nicknames": [
+      {
+        "lang": "fr",
+        "text": "l'homme aux mille tours",
+        "translations": [{ "lang": "en", "text": "the man of many turns" }]
+      },
+      { "text": "personne" }
+    ]
+  },
+
+  "homere": {
+    "kind": "person",
+    "name": "Homère",
+    "gender": "m",
+    "pantheon": true,
+    "bio": "Aède. Exerce l'auteur d'une œuvre entière, et un résident du Panthéon — un choix qui s'écrit à la main, jamais dérivé du reste.",
+    "links": [{ "label": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Hom%C3%A8re" }]
+  },
+
+  "athena": {
+    "kind": "character",
+    "name": "Athéna",
     "gender": "f",
     "pantheon": true,
-    "bio": "Personnage fictif. Cartographe et essayiste — exerce le cas d'un agent auteur, sujet, et résident du Panthéon.",
-    "links": [{ "label": "Exemple", "url": "https://example.org/vasseur" }]
+    "bio": "Personnage. Exerce le fait qu'un personnage de fiction peut entrer au Panthéon : celui-ci est un jugement, pas une conséquence du `kind`."
   },
-
-  "theo-brandt": {
-    "kind": "person",
-    "name": "Theo Brandt",
-    "sortName": "Brandt, Theo",
-    "gender": "m",
-    "bio": "Personnage fictif. Traducteur et réalisateur — exerce `translatedBy` et le rôle `director`."
-  },
-
-  "les-cartographes": {
-    "kind": "group",
-    "name": "Les Cartographes",
-    "bio": "Groupe fictif. Exerce `kind: group` et ses membres — le cas que « Person » ne savait pas représenter.",
-    "members": ["nadia-orso", "sam-kettler"]
-  },
-  "nadia-orso": {
-    "kind": "person",
-    "name": "Nadia Orso",
-    "sortName": "Orso, Nadia",
-    "gender": "f",
-    "nicknames": [{ "text": "orso" }]
-  },
-  "sam-kettler": {
-    "kind": "person",
-    "name": "Sam Kettler",
-    "sortName": "Kettler, Sam",
-    "gender": "m"
-  },
-
-  "radio-dedale": {
-    "kind": "organization",
-    "name": "Radio Dédale",
-    "bio": "Station fictive. Exerce `kind: organization` et le rôle `publisher` — une chaîne n'est ni une personne ni un groupe."
-  },
-
-  "minotaure": {
+  "tiresias": {
     "kind": "character",
-    "name": "le Minotaure",
-    "bio": "Personnage de fiction. Il prononce une réplique sans en être l'auteur : c'est tout l'objet de `kind: character` et du rôle `speaker`."
+    "name": "Tirésias",
+    "gender": "m",
+    "bio": "Personnage. Il prononce sans avoir écrit — c'est tout l'objet du rôle `speaker`."
+  },
+  "circe": { "kind": "character", "name": "Circé", "gender": "f", "bio": "Personnage." },
+  "penelope": {
+    "kind": "character",
+    "name": "Pénélope",
+    "gender": "f",
+    "bio": "Personnage. Exerce `suggestedBy` : c'est elle qui a fait découvrir un item à Ulysse."
+  },
+  "ajax": {
+    "kind": "character",
+    "name": "Ajax",
+    "gender": "m",
+    "bio": "Personnage. Second interprète d'un affrontement — l'adversaire est un agent crédité, pas une note en prose."
+  },
+
+  "les-sirenes": {
+    "kind": "group",
+    "name": "les Sirènes",
+    "bio": "Groupe. Exerce ce que « Person » ne savait pas représenter, et ses membres.",
+    "members": ["parthenope", "ligeia"]
+  },
+  "parthenope": { "kind": "character", "name": "Parthénope", "gender": "f" },
+  "ligeia": { "kind": "character", "name": "Ligeia", "gender": "f" },
+
+  "bibliotheque-d-alexandrie": {
+    "kind": "organization",
+    "name": "Bibliothèque d'Alexandrie",
+    "bio": "Organisation. Exerce le rôle `publisher` : qui diffuse n'est ni une personne ni un groupe de personnes nommées."
   },
 
   "anonyme": {
     "kind": "person",
     "name": "Anonyme",
-    "bio": "Agent conventionnel. Il porte ce qui est explicitement anonyme — quelqu'un qui a choisi de ne pas être nommé. À ne pas confondre avec un auteur INCONNU : dans ce cas l'item n'a aucun crédit."
+    "bio": "Agent conventionnel. Il porte ce qui est explicitement anonyme — quelqu'un qui a choisi de ne pas être nommé. À ne pas confondre avec un auteur INCONNU : dans ce cas l'item n'a aucun crédit du tout."
   }
 }

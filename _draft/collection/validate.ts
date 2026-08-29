@@ -259,7 +259,13 @@ export function validate(
 
   /* ── Agents orphelins ───────────────────────────────────────────────────── */
 
-  const cited = new Set(items.flatMap((i) => i.credits.map((c) => c.agent)));
+  /* `suggestedBy` compte autant qu'un crédit : celui qui a fait découvrir un
+     item a bien quelque chose sur sa page. Trou trouvé en écrivant les fixtures
+     — Pénélope était signalée orpheline alors qu'elle avait apporté un item. */
+  const cited = new Set([
+    ...items.flatMap((i) => i.credits.map((c) => c.agent)),
+    ...items.flatMap((i) => (i.suggestedBy ? [i.suggestedBy] : [])),
+  ]);
   /* Un membre de groupe cité est légitimement sans item à lui : il est visible
      par la page de son groupe. Ne pas le signaler évite un bruit permanent. */
   const membersOfCitedGroups = new Set(

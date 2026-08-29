@@ -56,7 +56,7 @@ for (const agent of [...index.agents.values()].sort(compareAgents)) {
   );
 }
 
-for (const slug of ['marguerite-vasseur', 'nadia-orso', 'les-cartographes'] as const) {
+for (const slug of ['homere', 'athena', 'ulysse', 'les-sirenes'] as const) {
   const agent = index.agents.get(slug)!;
   const roles = rolesOfAgent(index, slug).map((r) => ROLE_LABELS[r]);
   console.log(`\n── ${agent.name} — ${roles.join(' · ')}`);

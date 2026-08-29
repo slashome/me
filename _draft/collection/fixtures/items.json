@@ -1,113 +1,110 @@
 {
-  "_comment": "⚠️ FONDS DE DÉMONSTRATION — textes entièrement inventés, attribués à des personnes qui n'existent pas. Chaque entrée exerce un point précis du modèle, indiqué dans sa `note`.",
+  "_comment": "L'inventaire d'Ulysse — ce qui l'a formé. Chaque entrée exerce un point précis du modèle et le dit dans sa `note`. Les textes prêtés aux personnages sont inventés.",
 
-  "vasseur-le-fil-ne-ment-pas": {
+  "homere-l-odyssee": {
+    "type": "livre",
+    "title": "L'Odyssée",
+    "credits": [{ "agent": "homere", "roles": ["author"] }],
+    "cover": { "src": "covers/odyssee.jpg", "alt": "" },
+    "context": "Composée vers le VIIIᵉ siècle avant notre ère.",
+    "note": "Exerce une LIMITE assumée du modèle plutôt que de la cacher : `published` est une date ISO tronquée, qui ne sait pas dire « avant notre ère ». Le champ reste donc vide et la date vit dans `context`. Inventer un `-0800` aurait cassé le tri lexicographique de tout le fonds pour une entrée.",
+    "added": "2026-08-29",
+    "concepts": ["retour", "mer"]
+  },
+
+  "tiresias-la-prophetie": {
     "type": "citation",
-    "title": "Le fil ne ment pas",
-    "credits": [{ "agent": "marguerite-vasseur", "roles": ["author"] }],
-    "text": "Le fil ne dit pas où aller. Il dit seulement d'où l'on vient, et c'est déjà beaucoup.",
+    "title": "La prophétie de Tirésias",
+    "credits": [
+      { "agent": "tiresias", "roles": ["speaker"] },
+      { "agent": "homere", "roles": ["author"] }
+    ],
+    "text": "Tu rentreras. Tard, mal, et sur un bateau qui ne sera pas le tien.",
     "lang": "fr",
     "translations": [
       {
         "lang": "en",
-        "text": "The thread does not say where to go. It only says where one comes from, and that is already a great deal.",
-        "translatedBy": "theo-brandt",
-        "translatorNote": "« C'est déjà beaucoup » se rend mal : « that is already a great deal » garde la mesure, « that is plenty » aurait été plus vif mais plus sec."
+        "text": "You will come home. Late, badly, and on a ship that is not yours.",
+        "translatedBy": "ulysse",
+        "translatorNote": "« Mal » ne se rend pas : « badly » dit la manière, le français dit aussi l'état. Retenu quand même, faute de mieux."
       }
     ],
-    "note": "Exerce `lang` et `translations` : l'original ne bouge jamais, la traduction se met à côté. Et `translatedBy` vit sur la traduction, parce qu'une citation peut en porter deux par deux personnes différentes.",
-    "published": "1974",
+    "attribution": "altered",
+    "note": "Trois choses. Le personnage PRONONCE (`speaker`), le poète ÉCRIT (`author`) : deux agents pour une réplique. La traduction se pose à côté de l'original, jamais à sa place, et `translatedBy` vit sur elle — une citation peut en porter deux, par deux personnes. Et `attribution: altered` dit honnêtement que le texte est une paraphrase, au lieu de le taire.",
     "added": "2026-08-29",
-    "concepts": ["labyrinthe", "memoire"]
+    "concepts": ["retour", "patience"]
   },
 
-  "minotaure-au-centre": {
+  "circe-les-hommes": {
     "type": "citation",
-    "title": "Au centre, il n'y a personne",
-    "credits": [
-      { "agent": "minotaure", "roles": ["speaker"] },
-      { "agent": "marguerite-vasseur", "roles": ["author"] }
-    ],
-    "text": "Au centre, il n'y a personne. C'est pour cela que tout le monde y va.",
+    "title": "Sur les hommes",
+    "credits": [{ "agent": "circe", "roles": ["speaker"] }],
+    "text": "Je ne les change pas en pourceaux. Je leur retire seulement ce qui les en empêchait.",
     "lang": "fr",
-    "context": "Le Minotaure, dans la pièce radiophonique diffusée par Radio Dédale.",
-    "note": "LE cas qui a imposé `kind: character`. Le personnage prononce (`speaker`), quelqu'un d'autre écrit (`author`). Trois agents pour une réplique, et un seul des trois existe.",
+    "attribution": "altered",
+    "suggestedBy": "penelope",
+    "note": "Exerce `suggestedBy` : quelqu'un a fait découvrir cet item, et son nom reste attaché après l'adoption. C'est ce qui donne à un contributeur une trace nominative plutôt qu'une ligne dans un changelog.",
     "added": "2026-08-29",
-    "concepts": ["labyrinthe", "seuil"]
+    "concepts": ["ruse"]
   },
 
-  "le-fil-et-la-pierre": {
-    "type": "livre",
-    "title": "Le Fil et la Pierre",
-    "credits": [
-      { "agent": "marguerite-vasseur", "roles": ["author"] },
-      { "agent": "theo-brandt", "roles": ["translator"] }
-    ],
-    "published": "1974",
-    "cover": { "src": "covers/le-fil-et-la-pierre.jpg", "alt": "" },
-    "note": "Exerce `published` à l'année seule — un timestamp aurait inventé un mois et un jour. Et le rôle `translator` dans `credits`, qui vaut pour une ŒUVRE traduite en entier, là où `translatedBy` vaut pour une traduction de citation.",
-    "added": "2026-08-29",
-    "concepts": ["labyrinthe", "patience"]
-  },
-
-  "cartes-blanches": {
+  "le-chant-des-sirenes": {
     "type": "vinyl",
-    "title": "Cartes blanches",
-    "credits": [{ "agent": "les-cartographes", "roles": ["performer"] }],
-    "published": "1998",
-    "cover": { "src": "covers/cartes-blanches.jpg", "alt": "" },
-    "note": "Exerce le trou que `Person` ne savait pas combler : Les Cartographes est un groupe. Dès qu'il y a des vinyls, une bonne part des crédits ne sont pas des personnes.",
+    "title": "Le Chant des Sirènes",
+    "credits": [{ "agent": "les-sirenes", "roles": ["performer"] }],
+    "cover": { "src": "covers/chant-des-sirenes.jpg", "alt": "" },
+    "note": "Un vinyle chez Ulysse est un anachronisme assumé : la fixture doit exercer le type, et un groupe est ce que « Person » ne savait pas représenter. Dès qu'il y a de la musique, une bonne part des crédits ne sont pas des personnes.",
     "added": "2026-08-29",
-    "concepts": ["orientation"]
+    "concepts": ["mer", "memoire"]
   },
 
-  "portrait-de-marguerite-vasseur": {
+  "portrait-d-athena": {
     "type": "video",
-    "title": "Portrait — Marguerite Vasseur",
+    "title": "Portrait — Athéna",
     "credits": [
-      { "agent": "marguerite-vasseur", "roles": ["subject"] },
-      { "agent": "theo-brandt", "roles": ["director"] },
-      { "agent": "radio-dedale", "roles": ["publisher"] }
+      { "agent": "athena", "roles": ["subject"] },
+      { "agent": "homere", "roles": ["director"] },
+      { "agent": "bibliotheque-d-alexandrie", "roles": ["publisher"] }
     ],
-    "note": "LE cas qui commande tout le modèle. Elle n'a pas contribué à cette vidéo, elle en est le SUJET — et elle doit pourtant apparaître sur sa page à côté de ses propres textes. La station est un agent `organization` crédité `publisher` : ni un champ à part, ni une personne.",
+    "note": "LE cas qui commande tout le modèle. Athéna n'a pas contribué à cet item, elle en est le SUJET — et elle doit pourtant apparaître sur sa page à côté de ce qu'elle dit ailleurs. La bibliothèque est un agent `organization` crédité `publisher` : ni un champ à part, ni une personne.",
     "added": "2026-08-29",
     "concepts": ["memoire"]
   },
 
-  "orso-contre-kettler": {
+  "ulysse-contre-ajax": {
     "type": "video",
-    "title": "Orso contre Kettler — deux façons de plier une carte",
+    "title": "Ulysse contre Ajax — la joute pour les armes",
     "credits": [
-      { "agent": "nadia-orso", "roles": ["performer", "interviewee"] },
-      { "agent": "sam-kettler", "roles": ["performer"] }
+      { "agent": "ulysse", "roles": ["performer", "interviewee"] },
+      { "agent": "ajax", "roles": ["performer"] }
     ],
-    "note": "Deux choses à la fois. `roles` au pluriel : Orso démontre ET parle, un rôle unique aurait forcé deux crédits pour la même personne, donc l'item deux fois sur sa page. Et l'ORDRE du tableau porte le billing : personne n'est le `subject` ici, les deux agissent.",
+    "note": "Deux choses à la fois. `roles` au pluriel : Ulysse plaide ET répond, un rôle unique aurait forcé deux crédits pour le même homme sur le même item — donc l'item deux fois sur sa page. Et l'ORDRE du tableau porte le billing : dans une joute, personne n'est le `subject`, les deux agissent.",
     "added": "2026-08-29",
-    "concepts": ["orientation", "patience"]
+    "concepts": ["ruse"]
   },
 
-  "faussement-attribuee": {
+  "faussement-attribuee-a-homere": {
     "type": "citation",
     "title": "Citation faussement attribuée",
     "credits": [],
-    "text": "On ne perd jamais le nord. On perd seulement l'envie de le chercher.",
+    "text": "Le voyage compte plus que la destination.",
     "lang": "fr",
-    "context": "Circule attribuée à plusieurs auteurs, sans qu'aucune source ne tienne.",
+    "context": "Circule attribuée à Homère, à Cavafy, à d'autres. Aucune source ne tient.",
     "attribution": "misattributed",
-    "sources": [{ "label": "Exemple de source", "url": "https://example.org/enquete" }],
-    "note": "Trois choses d'un coup : `credits` vide est légitime, `attribution` doit être une donnée et non une phrase en prose — sinon aucun filtre ne l'atteint —, et `sources` sert à étayer ou à démonter.",
+    "sources": [{ "label": "Exemple d'enquête", "url": "https://example.org/enquete" }],
+    "note": "Trois choses d'un coup : `credits` vide est légitime — le fonds réel en compte plusieurs —, `attribution` doit être une DONNÉE et non une phrase en prose, sans quoi aucun filtre ne l'atteint, et `sources` sert à étayer ou à démonter.",
     "added": "2026-08-29",
-    "concepts": ["orientation"]
+    "concepts": ["retour"]
   },
 
-  "anonyme-le-seuil": {
+  "anonyme-l-hote": {
     "type": "citation",
-    "title": "Le seuil",
+    "title": "L'hôte",
     "credits": [{ "agent": "anonyme", "roles": ["author"] }],
-    "text": "Un seuil n'est pas une porte : c'est l'endroit où l'on hésite.",
+    "text": "On ne demande pas son nom à celui qui frappe. On le lui demande après le repas.",
     "lang": "fr",
-    "note": "Exerce l'agent conventionnel `anonyme`, qui dit « quelqu'un a choisi de ne pas être nommé ». À distinguer de l'item précédent, sans crédit du tout, qui dit « on ne sait pas qui c'est ».",
+    "note": "Exerce l'agent conventionnel `anonyme`, qui dit « quelqu'un a choisi de ne pas être nommé ». À distinguer de l'item précédent, sans aucun crédit, qui dit « on ne sait pas qui c'est ». Deux choses différentes, et le fonds les sépare.",
     "added": "2026-08-29",
-    "concepts": ["seuil"]
+    "concepts": ["hospitalite"]
   }
 }

@@ -1,8 +1,9 @@
 {
-  "_comment": "Concepts de démonstration. Un concept est une entité comme un agent : référencé par slug, jamais par une chaîne libre — c'est ce qui fait qu'une faute de frappe est une erreur de build et non un 6ᵉ concept créé en silence.",
-  "labyrinthe": { "name": "Labyrinthe", "related": ["orientation", "seuil"] },
-  "orientation": { "name": "Orientation", "related": ["labyrinthe"] },
-  "memoire": { "name": "Mémoire" },
-  "seuil": { "name": "Seuil", "related": ["labyrinthe"] },
-  "patience": { "name": "Patience" }
+  "_comment": "Les thèmes du fonds d'Ulysse. Un concept est une entité comme un agent : référencé par slug, jamais par une chaîne libre — c'est ce qui fait qu'une faute de frappe devient une erreur de build, et non un concept de plus créé en silence.",
+  "retour": { "name": "Retour", "related": ["patience", "mer"] },
+  "ruse": { "name": "Ruse" },
+  "hospitalite": { "name": "Hospitalité" },
+  "memoire": { "name": "Mémoire", "related": ["retour"] },
+  "mer": { "name": "Mer", "related": ["retour"] },
+  "patience": { "name": "Patience", "related": ["retour"] }
 }

@@ -19,19 +19,28 @@
 npx tsx _draft/collection/check.ts
 ```
 
-## Les fixtures sont un fonds fictif
+## Les fixtures sont le site d'Ulysse
 
-Elles sont **entièrement inventées** : aucune de ces personnes n'existe, aucun de ces
-textes n'a été écrit par quiconque. C'est délibéré et c'est structurant — ce moteur est
-fait pour être forké, et livrer le fonds réel de quelqu'un ferait hériter ses goûts à
-celui qui le reprend.
+Plutôt qu'un jeu de données abstrait, elles montrent **à quoi ressemblerait le site
+de quelqu'un** — en l'occurrence Ulysse. C'est une démonstration complète : son
+inventaire (ce qui l'a formé), ses projets (le cheval, l'arc, le radeau), son
+journal, son Panthéon.
 
-Le thème du labyrinthe va avec slashome (ariane, knossos, daedalus) sans rien emprunter
-à personne, et chaque entrée existe pour exercer **un point précis du modèle**, indiqué
-dans sa `note` : le personnage de fiction qui prononce sans écrire, le groupe que
-`Person` ne savait pas représenter, la station qui n'est ni l'un ni l'autre, la
-traduction qui se met à côté de l'original, l'attribution fausse assumée, et la
+Le choix du domaine public évite tout problème de marque, et le registre va avec
+slashome — ariane, knossos, daedalus. **Aucun texte n'est mis dans la bouche
+d'Homère** : ce qui est prêté à des personnages est inventé, donc c'est de la
+fiction sur de la fiction et non une fausse attribution.
+
+Chaque entrée exerce **un point précis du modèle** et le dit dans sa `note` : le
+personnage qui prononce sans écrire, le groupe que `Person` ne savait pas
+représenter, l'organisation qui diffuse, la traduction posée à côté de l'original,
+`suggestedBy` qui survit à l'adoption, l'attribution fausse assumée, et la
 différence entre « anonyme » et « on ne sait pas ».
+
+Deux entrées exercent une **limite** du modèle au lieu de la cacher : `published`
+et `written` sont des dates ISO tronquées, qui ne savent pas dire « avant notre
+ère ». Le champ reste vide et la date vit dans `context` — inventer un `-0800`
+aurait cassé le tri lexicographique de tout le fonds pour une entrée.
 
 ## Les décisions prises, et pourquoi
 
