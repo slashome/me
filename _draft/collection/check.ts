@@ -10,6 +10,8 @@
 import agentsFixture from './fixtures/agents.json' with { type: 'json' };
 import conceptsRaw from './fixtures/concepts.json' with { type: 'json' };
 import itemsFixture from './fixtures/items.json' with { type: 'json' };
+import journalFixture from './fixtures/journal.json' with { type: 'json' };
+import projectsFixture from './fixtures/projects.json' with { type: 'json' };
 import {
   appearancesOfAgent,
   buildIndex,
@@ -18,8 +20,8 @@ import {
   rolesOfAgent,
 } from './index-builder';
 import { formatPartialDate } from './partial-date';
-import { fromKeyed, ROLE_LABELS, type Agent, type CollectionItem, type Concept, type Keyed } from './types';
-import { report, validate } from './validate';
+import { fromKeyed, ROLE_LABELS, type Agent, type CollectionItem, type Concept, type JournalEntry, type Keyed, type Project } from './types';
+import { report, validate, validateJournal, validateProjects } from './validate';
 
 /** `_comment` est une clé de documentation dans les fixtures, pas une entrée. */
 function withoutComment<T extends object>(record: Record<string, unknown>): Keyed<T> {
@@ -31,8 +33,14 @@ const agents = fromKeyed<Agent>(withoutComment<Agent>(agentsFixture));
 const items = fromKeyed<CollectionItem>(withoutComment<CollectionItem>(itemsFixture));
 
 const concepts = fromKeyed<Concept>(withoutComment<Concept>(conceptsRaw));
+const projects = fromKeyed<Project>(withoutComment<Project>(projectsFixture));
+const journal = fromKeyed<JournalEntry>(withoutComment<JournalEntry>(journalFixture));
 
-const { ok, text } = report(validate(agents, items, concepts));
+const { ok, text } = report([
+  ...validate(agents, items, concepts),
+  ...validateProjects(projects),
+  ...validateJournal(journal, concepts),
+]);
 console.log(text);
 /** Un throw suffit à sortir en code non nul, sans dépendre des types de Node. */
 if (!ok) throw new Error('Collection invalide — voir les erreurs ci-dessus.');
@@ -48,7 +56,7 @@ for (const agent of [...index.agents.values()].sort(compareAgents)) {
   );
 }
 
-for (const slug of ['simone-weil', 'dany-bill', 'massive-attack'] as const) {
+for (const slug of ['marguerite-vasseur', 'nadia-orso', 'les-cartographes'] as const) {
   const agent = index.agents.get(slug)!;
   const roles = rolesOfAgent(index, slug).map((r) => ROLE_LABELS[r]);
   console.log(`\n── ${agent.name} — ${roles.join(' · ')}`);

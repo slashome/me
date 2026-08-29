@@ -1,154 +1,61 @@
 {
-  "_comment": "Fixtures de travail. La clé EST le slug — voir Keyed<T> dans types.ts. Les faits viennent d'une recherche et restent à recouper ; ce qui est marqué ⚠️ est explicitement non vérifié.",
+  "_comment": "⚠️ FONDS DE DÉMONSTRATION — entièrement FICTIF. Aucune de ces personnes n'existe, aucun de ces textes n'a été écrit par quiconque. Le thème du labyrinthe est choisi pour aller avec slashome (ariane, knossos, daedalus) sans emprunter les goûts de personne : celui qui forke ce moteur doit voir tout de suite que ce n'est pas un contenu à garder. Chaque entrée existe pour exercer une partie précise du modèle.",
 
-  "simone-weil": {
+  "marguerite-vasseur": {
     "kind": "person",
-    "name": "Simone Weil",
-    "sortName": "Weil, Simone",
-    "born": "1909",
-    "died": "1943",
+    "name": "Marguerite Vasseur",
+    "sortName": "Vasseur, Marguerite",
+    "born": "1921",
+    "died": "1994",
     "gender": "f",
     "pantheon": true,
-    "bio": "Philosophe. Agrégée à vingt-deux ans, elle quitte l'enseignement pour l'usine puis les champs afin de partager la condition ouvrière, et meurt à trente-quatre ans en exil.",
-    "links": [{ "label": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Simone_Weil" }]
+    "bio": "Personnage fictif. Cartographe et essayiste — exerce le cas d'un agent auteur, sujet, et résident du Panthéon.",
+    "links": [{ "label": "Exemple", "url": "https://example.org/vasseur" }]
   },
 
-  "albert-camus": {
+  "theo-brandt": {
     "kind": "person",
-    "name": "Albert Camus",
-    "sortName": "Camus, Albert",
-    "born": "1913",
-    "died": "1960",
+    "name": "Theo Brandt",
+    "sortName": "Brandt, Theo",
     "gender": "m",
-    "links": [{ "label": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Albert_Camus" }]
+    "bio": "Personnage fictif. Traducteur et réalisateur — exerce `translatedBy` et le rôle `director`."
   },
 
-  "dany-bill": {
-    "kind": "person",
-    "name": "Dany Bill",
-    "sortName": "Bill, Dany",
-    "born": "1973-04-28",
-    "gender": "m",
-    "bio": "Boxeur camerounais, sept fois champion du monde de muay-thaï. En 1993, il devient le premier combattant venu de France à décrocher un titre mondial en Thaïlande.",
-    "nicknames": [
-      {
-        "lang": "fr",
-        "text": "l'Extraterrestre du Muay Thaï",
-        "note": "Forgé par le journaliste Pascal Iglicki dans Karaté Bushido, après le titre mondial de Bangkok en 1993 — Dany Bill le raconte lui-même. Circule aussi sous la variante « l'Extraterrestre des rings ».",
-        "translations": [{ "lang": "en", "text": "the Alien of Muay Thai" }]
-      },
-      {
-        "lang": "th",
-        "text": "ไอ้ดำพระกาฬ",
-        "note": "⚠️ Traduit « Black Monk » par Wikipédia anglophone (sans source), et repris partout. C'est très probablement un contresens : พระ est ici le préfixe honorifique des divinités, pas le mot « moine », et พระกาฬ (Phra Kan) désigne le seigneur de la Mort — Yama, du sanskrit Kāla. กาฬ vaut « noir » selon la Société royale de Thaïlande (cf. กาฬทวีป, « continent noir »). Sens plus fidèle : « le Noir de la Mort ». Aucune source thaïlandaise trouvée pour cette graphie : à confirmer par un locuteur thaï.",
-        "translations": [
-          { "lang": "fr", "text": "le Noir de la Mort" },
-          { "lang": "en", "text": "the Black One of the Death God" }
-        ]
-      },
-      {
-        "lang": "th",
-        "text": "สิงดำ อันตราย",
-        "note": "สิงห์ = lion, ดำ = noir, อันตราย = dangereux. Siam Fight Mag translittère « Singdam Anetaraï » et traduit simplement « le Lion noir », en omettant le qualificatif. Graphie thaïe attestée seulement par des sources occidentales.",
-        "translations": [
-          { "lang": "fr", "text": "le Lion noir dangereux" },
-          { "lang": "en", "text": "Dangerous Black Lion" }
-        ]
-      }
-    ],
-    "links": [
-      { "label": "Wikipédia (fr)", "url": "https://fr.wikipedia.org/wiki/Dany_Bill" },
-      { "label": "Wikipedia (en)", "url": "https://en.wikipedia.org/wiki/Dany_Bill" },
-      {
-        "label": "Siam Fight Mag — le magicien des rings",
-        "url": "https://www.siamfightmag.com/dany-bill-the-magician-of-the-ring/"
-      }
-    ]
-  },
-
-  "ramon-dekkers": {
-    "kind": "person",
-    "name": "Ramon Dekkers",
-    "sortName": "Dekkers, Ramon",
-    "gender": "m",
-    "bio": "Boxeur néerlandais, figure du muay-thaï occidental.",
-    "links": [{ "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Ramon_Dekkers" }]
-  },
-
-  "flow": {
-    "kind": "person",
-    "name": "Florian Boulestreau",
-    "sortName": "Boulestreau, Florian",
-    "born": "1981-06-16",
-    "gender": "m",
-    "bio": "Développeur. Garde des phrases depuis longtemps. Le reste ne tient pas dans une ligne.",
-    "nicknames": [
-      { "text": "slashome" },
-      { "text": "alucard" },
-      { "text": "majin" },
-      { "text": "majin alucard" },
-      { "text": "theneoshaman" },
-      { "text": "flow" },
-      { "text": "floflow" }
-    ],
-    "links": [{ "label": "slashome", "url": "https://github.com/slashome" }]
-  },
-
-  "ras-al-ghul": {
-    "kind": "character",
-    "name": "Ra's al Ghul",
-    "bio": "Personnage de Batman Begins. Il ne peut pas être l'auteur de sa réplique : il la prononce, quelqu'un l'a écrite."
-  },
-
-  "christopher-nolan": {
-    "kind": "person",
-    "name": "Christopher Nolan",
-    "sortName": "Nolan, Christopher",
-    "gender": "m",
-    "bio": "⚠️ fixture : co-scénariste de Batman Begins avec David S. Goyer, qui manque ici."
-  },
-
-  "massive-attack": {
+  "les-cartographes": {
     "kind": "group",
-    "name": "Massive Attack",
-    "bio": "Groupe britannique de trip-hop, formé à Bristol.",
-    "members": ["robert-del-naja", "grant-marshall", "andrew-vowles"],
-    "links": [{ "label": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Massive_Attack" }]
+    "name": "Les Cartographes",
+    "bio": "Groupe fictif. Exerce `kind: group` et ses membres — le cas que « Person » ne savait pas représenter.",
+    "members": ["nadia-orso", "sam-kettler"]
   },
-  "robert-del-naja": {
+  "nadia-orso": {
     "kind": "person",
-    "name": "Robert Del Naja",
-    "sortName": "Del Naja, Robert",
-    "gender": "m",
-    "nicknames": [{ "lang": "en", "text": "3D" }]
-  },
-  "grant-marshall": {
-    "kind": "person",
-    "name": "Grant Marshall",
-    "sortName": "Marshall, Grant",
-    "gender": "m",
-    "nicknames": [{ "lang": "en", "text": "Daddy G" }]
-  },
-  "andrew-vowles": {
-    "kind": "person",
-    "name": "Andrew Vowles",
-    "sortName": "Vowles, Andrew",
-    "gender": "m",
-    "nicknames": [{ "lang": "en", "text": "Mushroom" }]
-  },
-
-  "paroles-de-philosophes": {
-    "kind": "organization",
-    "name": "Paroles de philosophes",
-    "bio": "⚠️ fixture : chaîne YouTube inventée pour l'exemple. C'est la réponse à « le nom de la chaîne, on le stocke comment ? » — un agent, pas un champ."
-  },
-
-  "colette": {
-    "kind": "person",
-    "name": "Colette",
-    "legalName": "Sidonie-Gabrielle Colette",
+    "name": "Nadia Orso",
+    "sortName": "Orso, Nadia",
     "gender": "f",
-    "bio": "Le cas qui casse firstname/lastname : le nom d'usage est un mononyme, l'état civil est ailleurs.",
-    "links": [{ "label": "Wikipédia", "url": "https://fr.wikipedia.org/wiki/Colette" }]
+    "nicknames": [{ "text": "orso" }]
+  },
+  "sam-kettler": {
+    "kind": "person",
+    "name": "Sam Kettler",
+    "sortName": "Kettler, Sam",
+    "gender": "m"
+  },
+
+  "radio-dedale": {
+    "kind": "organization",
+    "name": "Radio Dédale",
+    "bio": "Station fictive. Exerce `kind: organization` et le rôle `publisher` — une chaîne n'est ni une personne ni un groupe."
+  },
+
+  "minotaure": {
+    "kind": "character",
+    "name": "le Minotaure",
+    "bio": "Personnage de fiction. Il prononce une réplique sans en être l'auteur : c'est tout l'objet de `kind: character` et du rôle `speaker`."
+  },
+
+  "anonyme": {
+    "kind": "person",
+    "name": "Anonyme",
+    "bio": "Agent conventionnel. Il porte ce qui est explicitement anonyme — quelqu'un qui a choisi de ne pas être nommé. À ne pas confondre avec un auteur INCONNU : dans ce cas l'item n'a aucun crédit."
   }
 }

@@ -1,234 +1,113 @@
 {
-  "_comment": "Fixtures de travail. La clé EST le slug. ⚠️ Le CONTENU n'est pas vérifié : citations, dates et attributions sont à contrôler avant toute publication. Plusieurs cas sont repris du corpus Notion réel (123 citations) : ce sont eux qui ont imposé `character`, `context` et `attribution`.",
-  "camus-sur-simone-weil": {
+  "_comment": "⚠️ FONDS DE DÉMONSTRATION — textes entièrement inventés, attribués à des personnes qui n'existent pas. Chaque entrée exerce un point précis du modèle, indiqué dans sa `note`.",
+
+  "vasseur-le-fil-ne-ment-pas": {
     "type": "citation",
-    "title": "Le seul grand esprit de notre temps",
-    "credits": [
+    "title": "Le fil ne ment pas",
+    "credits": [{ "agent": "marguerite-vasseur", "roles": ["author"] }],
+    "text": "Le fil ne dit pas où aller. Il dit seulement d'où l'on vient, et c'est déjà beaucoup.",
+    "lang": "fr",
+    "translations": [
       {
-        "agent": "albert-camus",
-        "roles": [
-          "author"
-        ]
-      },
-      {
-        "agent": "simone-weil",
-        "roles": [
-          "subject"
-        ]
+        "lang": "en",
+        "text": "The thread does not say where to go. It only says where one comes from, and that is already a great deal.",
+        "translatedBy": "theo-brandt",
+        "translatorNote": "« C'est déjà beaucoup » se rend mal : « that is already a great deal » garde la mesure, « that is plenty » aurait été plus vif mais plus sec."
       }
     ],
-    "text": "Simone Weil, je le sais encore maintenant, est le seul grand esprit de notre temps.",
-    "note": "⚠️ fixture : phrase largement rapportée, source primaire non retrouvée — c'est exactement le cas que `attribution: 'disputed'` est là pour dire au lieu de le taire. Démontre aussi `subject` sur une citation : elle n'a pas écrit cette phrase, elle en est l'objet, et elle doit donc apparaître sur sa page.",
-    "attribution": "disputed",
-    "added": "2026-08-28",
-    "concepts": [
-      "philosophie"
-    ]
+    "note": "Exerce `lang` et `translations` : l'original ne bouge jamais, la traduction se met à côté. Et `translatedBy` vit sur la traduction, parce qu'une citation peut en porter deux par deux personnes différentes.",
+    "published": "1974",
+    "added": "2026-08-29",
+    "concepts": ["labyrinthe", "memoire"]
   },
-  "weil-attention-generosite": {
+
+  "minotaure-au-centre": {
     "type": "citation",
-    "title": "L'attention, forme de la générosité",
+    "title": "Au centre, il n'y a personne",
     "credits": [
-      {
-        "agent": "simone-weil",
-        "roles": [
-          "author"
-        ]
-      }
+      { "agent": "minotaure", "roles": ["speaker"] },
+      { "agent": "marguerite-vasseur", "roles": ["author"] }
     ],
-    "text": "L'attention est la forme la plus rare et la plus pure de la générosité.",
-    "note": "⚠️ fixture : attribution très répandue mais à sourcer avant publication.",
-    "attribution": "disputed",
-    "added": "2026-08-28",
-    "concepts": [
-      "attention",
-      "morale"
-    ]
+    "text": "Au centre, il n'y a personne. C'est pour cela que tout le monde y va.",
+    "lang": "fr",
+    "context": "Le Minotaure, dans la pièce radiophonique diffusée par Radio Dédale.",
+    "note": "LE cas qui a imposé `kind: character`. Le personnage prononce (`speaker`), quelqu'un d'autre écrit (`author`). Trois agents pour une réplique, et un seul des trois existe.",
+    "added": "2026-08-29",
+    "concepts": ["labyrinthe", "seuil"]
   },
-  "la-pesanteur-et-la-grace": {
+
+  "le-fil-et-la-pierre": {
     "type": "livre",
-    "title": "La Pesanteur et la Grâce",
+    "title": "Le Fil et la Pierre",
     "credits": [
-      {
-        "agent": "simone-weil",
-        "roles": [
-          "author"
-        ]
-      }
+      { "agent": "marguerite-vasseur", "roles": ["author"] },
+      { "agent": "theo-brandt", "roles": ["translator"] }
     ],
-    "published": "1947",
-    "cover": {
-      "src": "covers/la-pesanteur-et-la-grace.jpg",
-      "alt": ""
-    },
-    "note": "⚠️ fixture. Démontre `published` à l'année seule : posthume, on ne connaît que 1947 — un timestamp aurait inventé un mois et un jour.",
-    "added": "2026-08-28",
-    "concepts": [
-      "philosophie",
-      "mystique"
-    ]
+    "published": "1974",
+    "cover": { "src": "covers/le-fil-et-la-pierre.jpg", "alt": "" },
+    "note": "Exerce `published` à l'année seule — un timestamp aurait inventé un mois et un jour. Et le rôle `translator` dans `credits`, qui vaut pour une ŒUVRE traduite en entier, là où `translatedBy` vaut pour une traduction de citation.",
+    "added": "2026-08-29",
+    "concepts": ["labyrinthe", "patience"]
   },
-  "ras-al-ghul-permissivite": {
-    "type": "citation",
-    "title": "La permissivité de la société",
+
+  "cartes-blanches": {
+    "type": "vinyl",
+    "title": "Cartes blanches",
+    "credits": [{ "agent": "les-cartographes", "roles": ["performer"] }],
+    "published": "1998",
+    "cover": { "src": "covers/cartes-blanches.jpg", "alt": "" },
+    "note": "Exerce le trou que `Person` ne savait pas combler : Les Cartographes est un groupe. Dès qu'il y a des vinyls, une bonne part des crédits ne sont pas des personnes.",
+    "added": "2026-08-29",
+    "concepts": ["orientation"]
+  },
+
+  "portrait-de-marguerite-vasseur": {
+    "type": "video",
+    "title": "Portrait — Marguerite Vasseur",
     "credits": [
-      {
-        "agent": "ras-al-ghul",
-        "roles": [
-          "speaker"
-        ]
-      },
-      {
-        "agent": "christopher-nolan",
-        "roles": [
-          "author"
-        ]
-      }
+      { "agent": "marguerite-vasseur", "roles": ["subject"] },
+      { "agent": "theo-brandt", "roles": ["director"] },
+      { "agent": "radio-dedale", "roles": ["publisher"] }
     ],
-    "text": "C'est la permissivité de la société qui incite les criminels à s'épanouir.",
-    "context": "Ra's al Ghul dans Batman Begins.",
-    "note": "Repris du corpus réel. C'est CE cas qui a imposé `kind: 'character'` : le personnage prononce (`speaker`), le scénariste écrit (`author`), l'acteur jouerait (`performer`). Trois agents pour une réplique, et un seul des trois existe.",
-    "added": "2026-08-28",
-    "concepts": [
-      "societe"
-    ]
+    "note": "LE cas qui commande tout le modèle. Elle n'a pas contribué à cette vidéo, elle en est le SUJET — et elle doit pourtant apparaître sur sa page à côté de ses propres textes. La station est un agent `organization` crédité `publisher` : ni un champ à part, ni une personne.",
+    "added": "2026-08-29",
+    "concepts": ["memoire"]
   },
-  "faussement-attribuee-bruce-lee": {
+
+  "orso-contre-kettler": {
+    "type": "video",
+    "title": "Orso contre Kettler — deux façons de plier une carte",
+    "credits": [
+      { "agent": "nadia-orso", "roles": ["performer", "interviewee"] },
+      { "agent": "sam-kettler", "roles": ["performer"] }
+    ],
+    "note": "Deux choses à la fois. `roles` au pluriel : Orso démontre ET parle, un rôle unique aurait forcé deux crédits pour la même personne, donc l'item deux fois sur sa page. Et l'ORDRE du tableau porte le billing : personne n'est le `subject` ici, les deux agissent.",
+    "added": "2026-08-29",
+    "concepts": ["orientation", "patience"]
+  },
+
+  "faussement-attribuee": {
     "type": "citation",
     "title": "Citation faussement attribuée",
     "credits": [],
-    "text": "— texte à reprendre du corpus —",
-    "context": "Faussement attribuée à Bruce Lee ou à Warren Buffett.",
+    "text": "On ne perd jamais le nord. On perd seulement l'envie de le chercher.",
+    "lang": "fr",
+    "context": "Circule attribuée à plusieurs auteurs, sans qu'aucune source ne tienne.",
     "attribution": "misattributed",
-    "sources": [
-      {
-        "label": "Quote Investigator",
-        "url": "https://quoteinvestigator.com/2019/07/26/allow/"
-      }
-    ],
-    "note": "Repris du corpus réel. Démontre trois choses d'un coup : `credits` vide est légitime (8 citations sur 123 n'ont aucun auteur), `attribution` doit être une donnée et non une phrase en prose, et `sources` sert à étayer — ou à démonter.",
-    "added": "2026-08-28"
+    "sources": [{ "label": "Exemple de source", "url": "https://example.org/enquete" }],
+    "note": "Trois choses d'un coup : `credits` vide est légitime, `attribution` doit être une donnée et non une phrase en prose — sinon aucun filtre ne l'atteint —, et `sources` sert à étayer ou à démonter.",
+    "added": "2026-08-29",
+    "concepts": ["orientation"]
   },
-  "cousteau-optimisme": {
+
+  "anonyme-le-seuil": {
     "type": "citation",
-    "title": "Sur l'optimisme",
-    "credits": [
-      {
-        "agent": "flow",
-        "roles": [
-          "author"
-        ]
-      }
-    ],
-    "text": "— texte à reprendre du corpus —",
-    "context": "⚠️ fixture. Dans le corpus, ce champ porte des choses comme « Réponse à la question d'une journaliste américaine : Capitaine, êtes-vous optimiste… » — les CIRCONSTANCES, pas la raison de garder la citation.",
-    "note": "Ce que `note` porte, c'est pourquoi TU la gardes. Les deux coexistent dans 17 items du corpus, d'où deux champs.",
-    "added": "2026-08-28"
-  },
-  "dany-bill-citation": {
-    "type": "citation",
-    "title": "Sur l'entraînement",
-    "credits": [
-      {
-        "agent": "dany-bill",
-        "roles": [
-          "author"
-        ]
-      }
-    ],
-    "text": "— texte à saisir —",
-    "context": "Dany Bill est appelé le génie technique de la boxe thaï ; son secret serait d'avoir aimé ce sport plus que les autres.",
-    "note": "⚠️ fixture : texte à reprendre du corpus, le contexte en vient.",
-    "added": "2026-08-28",
-    "concepts": [
-      "boxe"
-    ]
-  },
-  "dany-bill-vs-ramon-dekkers": {
-    "type": "video",
-    "title": "Dany Bill vs Ramon Dekkers",
-    "credits": [
-      {
-        "agent": "dany-bill",
-        "roles": [
-          "performer"
-        ]
-      },
-      {
-        "agent": "ramon-dekkers",
-        "roles": [
-          "performer"
-        ]
-      }
-    ],
-    "note": "⚠️ fixture, date et édition non vérifiées. Tu avais raison : l'adversaire est un agent crédité, pas une note. Et son rôle n'est pas `subject` — dans un combat personne n'est le sujet, les deux agissent, donc les deux sont `performer`. Qui est « le principal » est porté par l'ORDRE du tableau (le billing d'un générique), pas par un rôle inventé.",
-    "added": "2026-08-28",
-    "concepts": [
-      "boxe",
-      "muay-thai"
-    ]
-  },
-  "dany-bill-masterclass": {
-    "type": "video",
-    "title": "Masterclass — technique et vie de combattant",
-    "credits": [
-      {
-        "agent": "dany-bill",
-        "roles": [
-          "performer",
-          "interviewee"
-        ]
-      }
-    ],
-    "note": "⚠️ fixture. Démontre `roles: []` au pluriel : il DÉMONTRE (performer) et il PARLE (interviewee) dans la même vidéo. Un rôle unique aurait forcé deux crédits pour le même homme sur le même item, donc l'item deux fois sur sa page.",
-    "added": "2026-08-28",
-    "concepts": [
-      "boxe"
-    ]
-  },
-  "paroles-de-philosophes-simone-weil": {
-    "type": "video",
-    "title": "Paroles de philosophes — Simone Weil",
-    "credits": [
-      {
-        "agent": "simone-weil",
-        "roles": [
-          "subject"
-        ]
-      },
-      {
-        "agent": "paroles-de-philosophes",
-        "roles": [
-          "publisher"
-        ]
-      }
-    ],
-    "note": "⚠️ fixture : le cas qui commande tout le modèle. Elle n'a pas contribué à cette vidéo, elle en est le SUJET — et pourtant elle doit apparaître sur sa page à côté de ses citations. La chaîne YouTube est un agent `kind: 'organization'` crédité `publisher` : ni un champ à part, ni une personne. L'humain qui a réalisé la vidéo serait un troisième crédit, `director`.",
-    "added": "2026-08-28",
-    "concepts": [
-      "philosophie"
-    ]
-  },
-  "mezzanine": {
-    "type": "vinyl",
-    "title": "Mezzanine",
-    "credits": [
-      {
-        "agent": "massive-attack",
-        "roles": [
-          "performer"
-        ]
-      }
-    ],
-    "published": "1998",
-    "cover": {
-      "src": "covers/mezzanine.jpg",
-      "alt": ""
-    },
-    "note": "⚠️ fixture. Démontre le trou de `Person` : Massive Attack est un groupe. Dès qu'il y a des vinyls, la moitié des crédits ne sont pas des personnes.",
-    "added": "2026-08-28",
-    "concepts": [
-      "trip-hop"
-    ]
+    "title": "Le seuil",
+    "credits": [{ "agent": "anonyme", "roles": ["author"] }],
+    "text": "Un seuil n'est pas une porte : c'est l'endroit où l'on hésite.",
+    "lang": "fr",
+    "note": "Exerce l'agent conventionnel `anonyme`, qui dit « quelqu'un a choisi de ne pas être nommé ». À distinguer de l'item précédent, sans crédit du tout, qui dit « on ne sait pas qui c'est ».",
+    "added": "2026-08-29",
+    "concepts": ["seuil"]
   }
 }

@@ -1,0 +1,19 @@
+{
+  "_comment": "Projets de démonstration, fictifs. Séparés des items : l'inventaire dit ce qui m'a formé, les projets disent ce que je fabrique — les confondre ferait de mes propres dépôts des choses qui m'auraient influencé.",
+  "boussole": {
+    "name": "boussole",
+    "description": "Projet fictif. Une boussole en ligne de commande — exerce le cas d'un dépôt public.",
+    "repo": "https://example.org/boussole",
+    "tags": ["CLI"],
+    "language": "Rust",
+    "status": "actif",
+    "featured": true
+  },
+  "atelier": {
+    "name": "atelier",
+    "description": "Projet fictif dont le code est privé — exerce `links` sans `repo` : c'est ce qui permet de montrer un projet qu'on ne peut pas ouvrir.",
+    "links": [{ "label": "Site", "url": "https://example.org/atelier" }],
+    "tags": ["outillage"],
+    "status": "dormant"
+  }
+}

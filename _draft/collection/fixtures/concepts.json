@@ -1,33 +1,8 @@
 {
-  "_comment": "Concepts d'exemple. Un concept est une entité comme un agent : référencé par slug, jamais par une chaîne libre.",
-  "attention": {
-    "name": "Attention"
-  },
-  "boxe": {
-    "name": "Boxe"
-  },
-  "morale": {
-    "name": "Morale"
-  },
-  "muay-thai": {
-    "name": "Muay-thai"
-  },
-  "mystique": {
-    "name": "Mystique",
-    "related": [
-      "philosophie"
-    ]
-  },
-  "philosophie": {
-    "name": "Philosophie",
-    "related": [
-      "mystique"
-    ]
-  },
-  "societe": {
-    "name": "Société"
-  },
-  "trip-hop": {
-    "name": "Trip-hop"
-  }
+  "_comment": "Concepts de démonstration. Un concept est une entité comme un agent : référencé par slug, jamais par une chaîne libre — c'est ce qui fait qu'une faute de frappe est une erreur de build et non un 6ᵉ concept créé en silence.",
+  "labyrinthe": { "name": "Labyrinthe", "related": ["orientation", "seuil"] },
+  "orientation": { "name": "Orientation", "related": ["labyrinthe"] },
+  "memoire": { "name": "Mémoire" },
+  "seuil": { "name": "Seuil", "related": ["labyrinthe"] },
+  "patience": { "name": "Patience" }
 }

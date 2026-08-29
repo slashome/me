@@ -19,13 +19,19 @@
 npx tsx _draft/collection/check.ts
 ```
 
-## ⚠️ Les fixtures ne sont pas des données
+## Les fixtures sont un fonds fictif
 
-Les citations, dates et attributions des fixtures sont là pour **exercer le modèle**,
-pas pour être publiées. L'attribution de la phrase sur l'attention à Simone Weil est
-répandue mais non sourcée ici ; la citation de Dany Bill est un texte vide de sens
-faute de source. Chaque item concerné porte un `note` qui le dit. **À reprendre avant
-la moindre mise en ligne.**
+Elles sont **entièrement inventées** : aucune de ces personnes n'existe, aucun de ces
+textes n'a été écrit par quiconque. C'est délibéré et c'est structurant — ce moteur est
+fait pour être forké, et livrer le fonds réel de quelqu'un ferait hériter ses goûts à
+celui qui le reprend.
+
+Le thème du labyrinthe va avec slashome (ariane, knossos, daedalus) sans rien emprunter
+à personne, et chaque entrée existe pour exercer **un point précis du modèle**, indiqué
+dans sa `note` : le personnage de fiction qui prononce sans écrire, le groupe que
+`Person` ne savait pas représenter, la station qui n'est ni l'un ni l'autre, la
+traduction qui se met à côté de l'original, l'attribution fausse assumée, et la
+différence entre « anonyme » et « on ne sait pas ».
 
 ## Les décisions prises, et pourquoi
 

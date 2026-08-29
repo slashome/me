@@ -1,0 +1,12 @@
+{
+  "_comment": "Journal de démonstration. Un aphorisme est ce qu'on formule soi-même, une citation ce qu'on rapporte d'autrui — d'où un type sans `credits` : l'auteur est toujours le propriétaire du site.",
+  "sur-les-cartes": {
+    "kind": "aphorisme",
+    "title": "Sur les cartes",
+    "text": "Une carte est un aveu : elle dit ce qu'on a renoncé à voir.",
+    "lang": "fr",
+    "published": "2026-08-29",
+    "written": "2024",
+    "concepts": ["orientation"]
+  }
+}
