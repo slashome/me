@@ -55,3 +55,38 @@
     opacity: 1;
   }
 }
+
+.breadcrumb__home a {
+  display: block;
+  padding: 0.15rem 0.2rem;
+  opacity: 1;
+}
+
+.mark {
+  display: block;
+  height: clamp(1.15rem, 1rem + 0.9vw, 1.7rem);
+  width: auto;
+}
+
+.mark__lens {
+  fill: rgba(196, 40, 34, 0.5);
+  stroke: var(--scene-fg-strong);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 6px rgba(224, 60, 48, 0.7));
+}
+
+.mark__wire {
+  fill: none;
+  stroke: var(--scene-fg-strong);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.mark__eye {
+  fill: var(--scene-fg-strong);
+}
+
+.breadcrumb__home a:hover .mark__lens,
+.breadcrumb__home a:focus-visible .mark__lens {
+  fill: rgba(224, 60, 48, 0.75);
+}

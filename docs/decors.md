@@ -36,6 +36,20 @@ Trois, toutes en CSS, toutes coupées par `prefers-reduced-motion`.
 Le coup de pied est fait en `steps(1)` sur deux groupes qui s'échangent : deux
 images, pas d'interpolation. C'est ce qui le rend sec.
 
+## Modes d'animation
+
+Un décor déclare son mode par `data-anim`.
+
+| Mode | Ce qu'il fait |
+|---|---|
+| `draw` | **le trait se dessine** à l'arrivée, en 1,6 s, puis passe au repos. Chaque tracé porte `pathLength="1"`, donc un seul `stroke-dasharray: 1` suffit quelle que soit sa longueur réelle — pas de mesure en JavaScript, contrairement à Vivus |
+| `idle` | uniquement les micro-animations : respiration, fumée, coup de pied |
+| `vibrate` | tremblement permanent de moins d'un pixel, en `steps(2)` |
+
+`draw` est le défaut : il donne une entrée, puis s'efface au profit du repos. Les
+perles, les bagues et la teinte des verres apparaissent après le trait, dans cet
+ordre — on dessine d'abord, on remplit ensuite.
+
 ## Les décors, et leur registre
 
 L'intention est d'en avoir **plusieurs, tirés au hasard** à chaque visite. Un

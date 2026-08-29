@@ -1,5 +1,6 @@
 ---
 import './breadcrumb.css';
+import Mark from '../../entities/brand/Mark.astro';
 
 export interface Crumb {
   href?: string;
@@ -17,8 +18,10 @@ const { trail } = Astro.props;
   trail.length > 0 && (
     <nav class="breadcrumb" aria-label="Fil d'Ariane">
       <ol>
-        <li>
-          <a href="/">slashome</a>
+        <li class="breadcrumb__home">
+          <a href="/">
+            <Mark />
+          </a>
         </li>
         {trail.map(({ href, label }, i) => (
           <li aria-current={i === trail.length - 1 ? 'page' : undefined}>

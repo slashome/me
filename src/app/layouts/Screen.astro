@@ -13,6 +13,8 @@ interface Props {
 
 const { title, description, trail = [], preloadTitleFont = false } = Astro.props;
 
+const parent = trail.length > 1 ? trail[trail.length - 2]?.href : trail.length === 1 ? '/' : undefined;
+
 const path = Astro.url.pathname;
 const canonical = new URL(path, Astro.site);
 const fullTitle = path === '/' ? title : `${title} — slashome.me`;
@@ -45,7 +47,7 @@ const fullTitle = path === '/' ? title : `${title} — slashome.me`;
     <meta name="generator" content={Astro.generator} />
   </head>
 
-  <body class="scene">
+  <body class="scene" data-up={parent}>
     <div class="scene__decor" aria-hidden="true"></div>
     <Decor />
     <Breadcrumb trail={trail} />
@@ -53,5 +55,20 @@ const fullTitle = path === '/' ? title : `${title} — slashome.me`;
       <slot />
     </main>
     <div class="crt" aria-hidden="true"></div>
+
+    <p class="hint" data-hint aria-hidden="true">
+      <span data-hint-keys>WASD</span> déplacer · <span>◂</span> retour · <span>▸</span> valider
+    </p>
+
+    <script>
+      import { bindKeyboard, layoutHint } from '../../shared/lib/keyboard';
+
+      bindKeyboard();
+
+      layoutHint().then((keys) => {
+        const slot = document.querySelector('[data-hint-keys]');
+        if (slot) slot.textContent = keys;
+      });
+    </script>
   </body>
 </html>

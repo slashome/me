@@ -1,8 +1,16 @@
 ---
 import './decor.css';
 import Character from './Character.astro';
+
+export type DecorAnim = 'draw' | 'idle' | 'vibrate';
+
+interface Props {
+  anim?: DecorAnim;
+}
+
+const { anim = 'draw' } = Astro.props;
 ---
 
-<div class="decor-scene" aria-hidden="true">
+<div class="decor-scene" data-anim={anim} aria-hidden="true">
   <Character />
 </div>

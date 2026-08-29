@@ -1,0 +1,24 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg
+  class:list={['mark', className]}
+  viewBox="0 0 64 32"
+  width="46"
+  height="23"
+  role="img"
+  aria-label="slashome"
+>
+  <circle class="mark__lens" cx="18" cy="16" r="12" />
+  <circle class="mark__lens" cx="46" cy="16" r="12" />
+  <path class="mark__wire" d="M30 16h4" />
+  <circle class="mark__eye" cx="18" cy="13" r="1.8" />
+  <circle class="mark__eye" cx="46" cy="13" r="1.8" />
+  <path class="mark__wire" d="M12 20q6 6 12 0" />
+  <path class="mark__wire" d="M40 20q6 6 12 0" />
+</svg>
