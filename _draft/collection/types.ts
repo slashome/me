@@ -661,6 +661,65 @@ export interface Concept {
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
+   Journal — ce que j'écris
+   ──────────────────────────────────────────────────────────────────────────── */
+
+export const JOURNAL_KINDS = [
+  /** Un texte long, corps en Markdown. */
+  'article',
+  /**
+   * Une formule de moi.
+   *
+   * ⚠️ Un aphorisme n'est PAS une citation, et la distinction est le motif de
+   * ce type : une citation est ce qu'on rapporte de quelqu'un d'autre, un
+   * aphorisme est ce qu'on formule soi-même. Les vingt phrases de Florian dans
+   * le fonds Notion étaient au mauvais endroit — l'inventaire dit « ce qui m'a
+   * formé », or personne n'est formé par ses propres phrases.
+   */
+  'aphorisme',
+  /** Une note courte qui n'est ni l'un ni l'autre. */
+  'note',
+] as const;
+
+export type JournalKind = (typeof JOURNAL_KINDS)[number];
+
+/**
+ * Une entrée du journal.
+ *
+ * **Pas de `credits`, et c'est le point** : l'auteur est toujours le
+ * propriétaire du site. Un type qui n'a pas besoin de dire qui parle est un
+ * type plus simple, et c'est ce qui le sépare proprement de `CollectionItem`.
+ */
+export interface JournalEntry {
+  slug: Slug;
+  kind: JournalKind;
+  title: string;
+
+  /**
+   * Le texte. Pour un aphorisme, c'est tout ce qu'il y a.
+   * Pour un article, le corps vit en Markdown à côté.
+   */
+  text?: string;
+
+  lang?: Language;
+  translations?: Translation[];
+
+  /** Le jour où l'entrée paraît sur le site. Toujours connu. */
+  published: IsoDate;
+
+  /**
+   * Le jour où elle a été écrite, quand il est connu — souvent bien avant, et
+   * souvent seulement à l'année près. D'où une date partielle.
+   */
+  written?: PartialDate;
+
+  /** Les circonstances, comme pour un item. */
+  context?: string;
+
+  concepts?: Slug[];
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
    Projet — ce que je fabrique
    ──────────────────────────────────────────────────────────────────────────── */
 

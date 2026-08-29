@@ -11,12 +11,14 @@ import { isIsoDate, isPartialDate } from './partial-date';
 import {
   COLLECTION_ROLES,
   COLLECTION_TYPES,
+  JOURNAL_KINDS,
   LANGUAGES,
   RESERVED_AGENT_SLUGS,
   type Agent,
   type Attribution,
   type CollectionItem,
   type Concept,
+  type JournalEntry,
   type Project,
 } from './types';
 
@@ -355,6 +357,37 @@ export function validateProjects(projects: Project[]): Issue[] {
         where,
         message: 'ni dépôt public ni lien : rien à montrer au visiteur',
       });
+    }
+  }
+  return issues;
+}
+
+/** Règles du journal. Pas de crédits à vérifier : l'auteur est toujours le même. */
+export function validateJournal(entries: JournalEntry[], concepts: Concept[] = []): Issue[] {
+  const issues: Issue[] = [];
+  const seen = new Set<string>();
+  const conceptSlugs = new Set(concepts.map((c) => c.slug));
+  for (const e of entries) {
+    const where = `journal/${e.slug}`;
+    const error = (m: string) => issues.push({ severity: 'error', where, message: m });
+
+    if (!SLUG_RE.test(e.slug)) error('slug non conforme (minuscules, tirets)');
+    if (seen.has(e.slug)) error('slug en double');
+    seen.add(e.slug);
+
+    if (!JOURNAL_KINDS.includes(e.kind)) error(`type d'entrée inconnu : ${e.kind}`);
+    if (!e.title.trim()) error('titre vide');
+    if (!isIsoDate(e.published)) error(`published : « ${e.published} » doit être AAAA-MM-JJ`);
+    if (e.written && !isPartialDate(e.written)) {
+      error(`written : « ${e.written} » n'est pas une date ISO partielle`);
+    }
+    /** Un aphorisme sans son texte n'est rien : le texte EST l'entrée. */
+    if (e.kind === 'aphorisme' && !e.text?.trim()) error('un aphorisme doit porter son texte');
+    if (e.lang && !LANGUAGES.includes(e.lang)) error(`langue inconnue : « ${e.lang} »`);
+    if (concepts.length) {
+      for (const c of e.concepts ?? []) {
+        if (!conceptSlugs.has(c)) error(`concept inconnu : ${c}`);
+      }
     }
   }
   return issues;
