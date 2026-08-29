@@ -1,0 +1,25 @@
+{
+  "_comment": "Le journal d'Ulysse. Un aphorisme est ce qu'on formule soi-même, une citation ce qu'on rapporte d'autrui — d'où un type SANS `credits` : l'auteur est toujours le propriétaire du site. C'est cette distinction qui a sorti les aphorismes de l'inventaire, où ils prétendaient avoir formé celui qui les a écrits.",
+  "sur-le-retour": {
+    "kind": "aphorisme",
+    "title": "Sur le retour",
+    "text": "On ne rentre jamais chez soi. On rentre là où c'était.",
+    "lang": "fr",
+    "published": "2026-08-29",
+    "concepts": [
+      "retour",
+      "memoire"
+    ],
+    "context": "Écrit bien avant notre ère — `written` est une date ISO tronquée et ne sait pas le dire, comme pour L'Odyssée dans l'inventaire. La limite est assumée : elle vit dans `context` plutôt que d'être maquillée."
+  },
+  "sur-le-nom": {
+    "kind": "aphorisme",
+    "title": "Sur le nom",
+    "text": "Dire qu'on n'est personne, c'est encore répondre.",
+    "lang": "fr",
+    "published": "2026-08-29",
+    "concepts": [
+      "ruse"
+    ]
+  }
+}
