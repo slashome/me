@@ -1,0 +1,31 @@
+---
+import './breadcrumb.css';
+
+export interface Crumb {
+  href?: string;
+  label: string;
+}
+
+interface Props {
+  trail: Crumb[];
+}
+
+const { trail } = Astro.props;
+---
+
+{
+  trail.length > 0 && (
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <ol>
+        <li>
+          <a href="/">slashome</a>
+        </li>
+        {trail.map(({ href, label }, i) => (
+          <li aria-current={i === trail.length - 1 ? 'page' : undefined}>
+            {href && i < trail.length - 1 ? <a href={href}>{label}</a> : <span>{label}</span>}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}

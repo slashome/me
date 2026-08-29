@@ -1,0 +1,75 @@
+---
+import './inventory.css';
+import TypeGlyph from '../../entities/inventory/TypeGlyph.astro';
+import { TYPE_LABELS, TYPE_ORDER, type Agent, type Item } from '../../shared/lib/content';
+
+interface Props {
+  items: Item[];
+  agents: Map<string, Agent>;
+  counts: Record<string, number>;
+  activeType?: string;
+  capacity: number;
+}
+
+const { items, agents, counts, activeType, capacity } = Astro.props;
+
+const firstAgent = (item: Item) => {
+  const slug = item.credits[0]?.agent;
+  return slug ? (agents.get(slug)?.name ?? slug) : 'sans nom';
+};
+
+const total = Object.values(counts).reduce((a, b) => a + b, 0);
+const pct = Math.min(100, Math.round((total / capacity) * 100));
+---
+
+<div class="inventory">
+  <nav class="inventory__panel inventory__rail" aria-label="Types">
+    <ul>
+      <li>
+        <a href="/inventory/" aria-current={activeType ? undefined : 'page'}>
+          Tout
+          <span class="inventory__count">{total}</span>
+        </a>
+      </li>
+      {
+        TYPE_ORDER.map((type) => (
+          <li>
+            <a
+              href={type === 'citation' ? '/inventory/quotes/' : `/inventory/#${type}`}
+              aria-current={activeType === type ? 'page' : undefined}
+            >
+              <TypeGlyph type={type} />
+              {TYPE_LABELS[type]}
+              <span class="inventory__count">{counts[type] ?? 0}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <div>
+    <div class="inventory__grid">
+      {
+        items.map((item) => (
+          <a class="slot" href={`/inventory/quotes/${item.slug}/`}>
+            <TypeGlyph type={item.type} class="slot__glyph" />
+            <span class="slot__agent">{firstAgent(item)}</span>
+            <span class="slot__title">{item.title}</span>
+            {item.attribution && <span class="slot__flag">!</span>}
+          </a>
+        ))
+      }
+    </div>
+
+    <p class="gauge">
+      <span>Encombrement</span>
+      <span class="gauge__track">
+        <span class="gauge__fill" style={`width:${pct}%`}></span>
+      </span>
+      <span class="gauge__value">
+        {total} / {capacity}
+      </span>
+    </p>
+  </div>
+</div>

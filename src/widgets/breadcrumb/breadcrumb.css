@@ -1,0 +1,57 @@
+.breadcrumb {
+  position: relative;
+  z-index: 2;
+  padding: clamp(1rem, 0.6rem + 2vw, 2.2rem) clamp(1.2rem, 0.8rem + 3vw, 3.5rem) 0;
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: clamp(0.95rem, 0.85rem + 0.7vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.breadcrumb li + li::before {
+  content: '▸';
+  margin-right: 0.9rem;
+  color: var(--scene-ember);
+  opacity: 0.75;
+}
+
+.breadcrumb a {
+  color: var(--scene-fg);
+  text-decoration: none;
+  opacity: 0.72;
+  transition: opacity 0.14s ease, color 0.14s ease;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible {
+  opacity: 1;
+  color: var(--scene-fg-strong);
+}
+
+.breadcrumb a:focus-visible {
+  outline: 2px solid #0a0806;
+  box-shadow: 0 0 0 4px #f2e9d8;
+}
+
+.breadcrumb [aria-current='page'] span {
+  color: var(--scene-fg-strong);
+  text-shadow: 0 0 22px rgba(255, 214, 170, 0.28);
+}
+
+@media (forced-colors: active) {
+  .breadcrumb a {
+    color: LinkText;
+    opacity: 1;
+  }
+}

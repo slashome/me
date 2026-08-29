@@ -5,6 +5,7 @@
     "**/*"
   ],
   "exclude": [
+    "content",
     "dist"
   ],
   "compilerOptions": {

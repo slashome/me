@@ -1,5 +1,5 @@
 ---
-import Base from '../app/layouts/Base.astro';
+import Screen from '../app/layouts/Screen.astro';
 import ProjectCard from '../entities/project/ProjectCard.astro';
 import { projects } from '../entities/project/projects';
 
@@ -7,7 +7,7 @@ const featured = projects.filter((p) => p.featured);
 const rest = projects.filter((p) => !p.featured);
 ---
 
-<Base title="Projets" description="Les projets de Florian Boulestreau — des dépôts, pas des produits.">
+<Screen trail={[{ label: 'Projets' }]} title="Projets" description="Les projets de Florian Boulestreau — des dépôts, pas des produits.">
   <h1>Projets</h1>
   <p class="lede">Des dépôts, pas des produits. Certains vivent, d'autres dorment — c'est dit.</p>
 
@@ -29,4 +29,4 @@ const rest = projects.filter((p) => !p.featured);
       {rest.map((project) => <ProjectCard project={project} />)}
     </ul>
   </section>
-</Base>
+</Screen>

@@ -1,0 +1,20 @@
+---
+import Screen from '../../app/layouts/Screen.astro';
+import { agentsBySlug, items, TYPE_ORDER } from '../../shared/lib/content';
+import InventoryGrid from '../../widgets/inventory/InventoryGrid.astro';
+
+const all = items().sort((a, b) => (a.added < b.added ? 1 : -1));
+const agents = agentsBySlug();
+
+const counts = Object.fromEntries(
+  TYPE_ORDER.map((type) => [type, all.filter((i) => i.type === type).length]),
+);
+---
+
+<Screen
+  trail={[{ label: 'Inventaire' }]}
+  title="Inventaire"
+  description="Ce que je garde — citations, livres, vinyls, vidéos, films, articles."
+>
+  <InventoryGrid items={all} agents={agents} counts={counts} capacity={500} />
+</Screen>
