@@ -14,7 +14,7 @@ const blog = defineCollection({
 });
 
 const quotes = defineCollection({
-  loader: file('./src/data/quotes.json'),
+  loader: file('./src/entities/quote/quotes.json'),
   schema: z.object({
     text: z.string(),
     author: z.string(),

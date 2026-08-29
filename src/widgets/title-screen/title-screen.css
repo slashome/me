@@ -1,34 +1,15 @@
-/*
- * Écran-titre — référence : Project Zomboid et SCUM.
- *
- * Aucun JavaScript. Tout ce qui suit est du CSS : décor, scanlines, grain,
- * vignette, curseur de menu. La seule chose que le CSS ne sait pas faire est la
- * déformation par pixel (courbure d'écran, aberration chromatique globale) —
- * elle coûterait 1,1 ko de WebGL et n'est pas là.
- *
- * RÈGLE : on style la <nav>, on ne la double pas. Les entrées du menu SONT les
- * <a href>. Clavier, lecteur d'écran, sans-JS et indexation restent natifs, et
- * il n'y a rien à réparer.
- */
-
-/* ── Le logotype ─────────────────────────────────────────────────────────────
-   Sous-ensemble de Special Elite réduit aux huit lettres de « slashome » :
-   3764 octets, auto-hébergés — aucune requête vers un tiers. Le texte du
-   logotype ne change pas, donc le sous-ensemble ne peut pas manquer un glyphe.
-   Voir public/fonts/LICENSE.md. */
 @font-face {
   font-family: 'Special Elite Subset';
   src: url('/fonts/special-elite-slashome.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  /* La chute ne se produit que si le fichier manque : on borne quand même. */
+  
   unicode-range: U+61, U+65, U+68, U+6c-6d, U+6f, U+73;
 }
 
 .title-screen {
-  /* Une scène, pas un document : elle reste sombre même en thème clair.
-     Un écran-titre éclairé n'existe pas. */
+  
   --scene-bg: #0a0908;
   --scene-fg: #cfc6b2;
   --scene-fg-strong: #fff6e2;
@@ -44,9 +25,6 @@
   color: var(--scene-fg);
 }
 
-/* ── Décor : aucune image. Trois dégradés et une vignette. ────────────────────
-   L'étape suivante remplacera ça par une illustration ; en attendant, ceci pèse
-   quelques centaines d'octets et le premier rendu reste instantané. */
 .title-screen__decor {
   position: absolute;
   inset: 0;
@@ -58,8 +36,6 @@
     linear-gradient(170deg, #141210 0%, #0a0908 55%, #060505 100%);
 }
 
-/* La braise qui vacille. ⚠️ Sous 3 Hz et de faible amplitude : au-delà, un
-   grand aplat lumineux qui clignote est un risque photosensible (WCAG 2.3.1). */
 .title-screen__decor::after {
   content: '';
   position: absolute;
@@ -74,11 +50,6 @@
   61%      { opacity: 0.68; }
 }
 
-/* ── Le scrim : c'est LUI qui garantit le contraste ──────────────────────────
-   La luminance d'un décor varie d'un pixel à l'autre, donc le contraste du
-   texte posé dessus n'est pas calculable. Le voile borne le pire cas,
-   indépendamment de ce qu'il y a derrière. `text-shadow` aide à la perception
-   mais n'entre PAS dans le calcul WCAG — ne jamais compter dessus seul. */
 .title-screen::before {
   content: '';
   position: absolute;
@@ -89,9 +60,6 @@
     linear-gradient(to right, rgba(8, 7, 6, 0.86) 0%, transparent 58%);
 }
 
-/* ── Surimpression CRT ───────────────────────────────────────────────────────
-   `pointer-events: none` : elle n'intercepte ni clic ni focus.
-   `aria-hidden` côté markup : elle n'existe pas pour un lecteur d'écran. */
 .crt {
   position: fixed;
   inset: 0;
@@ -100,7 +68,6 @@
   mix-blend-mode: overlay;
 }
 
-/* Scanlines. `transform` est pris en charge par le compositeur : ~0 coût. */
 .crt::before {
   content: '';
   position: absolute;
@@ -113,9 +80,6 @@
   animation: crt-roll 9s linear infinite;
 }
 
-/* Grain. `background-position` REPEINT la couche — d'où `steps()` à 2 Hz plutôt
-   qu'une animation continue. C'est aussi plus juste : le grain de film saute,
-   il ne glisse pas. */
 .crt::after {
   content: '';
   position: absolute;
@@ -136,7 +100,6 @@
   75%  { background-position: -11px -29px; }
 }
 
-/* ── Le contenu ─────────────────────────────────────────────────────────────── */
 .title-screen__inner {
   position: relative;
   z-index: 2;
@@ -154,21 +117,18 @@
   line-height: 0.95;
   letter-spacing: 0.01em;
   color: var(--scene-fg-strong);
-  /* Deux ombres : une proche qui décolle du fond, une large qui l'assied. */
+  
   text-shadow:
     0 1px 0 rgba(0, 0, 0, 0.8),
     0 4px 38px rgba(0, 0, 0, 0.95);
 }
 
-/* ── Le menu ────────────────────────────────────────────────────────────────── */
 .title-menu ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* Les groupes du menu, comme chez Project Zomboid : ce qu'on consulte, puis ce
-   qui règle. Un blanc vaut mieux qu'un séparateur — il sépare sans meubler. */
 .title-menu ul + ul {
   margin-top: 1.6rem;
 }
@@ -178,9 +138,8 @@
 }
 
 .title-menu a {
-  display: block;                 /* toute la ligne devient la cible */
-  min-height: 44px;               /* WCAG 2.5.5 — une entrée en texte brut n'a
-                                     sinon que la largeur de ses glyphes */
+  display: block;                 
+  min-height: 44px;               
   padding: 0.5rem 1rem 0.5rem 2.3rem;
   font-family: var(--font-sans);
   font-size: clamp(1rem, 0.88rem + 0.7vw, 1.35rem);
@@ -197,8 +156,6 @@
     background-color 0.14s ease;
 }
 
-/* La bande de sélection : un dégradé qui s'éteint vers la droite, comme une
-   surbrillance de menu de jeu — et non un rectangle plein, qui ferait bouton. */
 .title-menu a::after {
   content: '';
   position: absolute;
@@ -249,15 +206,12 @@
   transform: none;
 }
 
-/* Focus clavier : contour DOUBLE. Un seul trait peut disparaître sur un décor
-   chargé — le sombre porte le clair, et l'un des deux survit toujours. */
 .title-menu a:focus-visible {
   outline: 2px solid #0a0806;
   box-shadow: 0 0 0 4px #f2e9d8;
   background: rgba(242, 233, 216, 0.14);
 }
 
-/* ── Les mentions de bas d'écran ────────────────────────────────────────────── */
 .title-screen__meta {
   display: flex;
   flex-wrap: wrap;
@@ -271,11 +225,6 @@
   opacity: 0.5;
 }
 
-/* ── Accessibilité ──────────────────────────────────────────────────────────── */
-
-/* La règle globale du site neutralise les DURÉES d'animation ; elle ne stoppe ni
-   une boucle rAF ni un `<video autoplay>`. Ici tout est CSS, mais on coupe
-   explicitement plutôt que de compter sur elle. */
 @media (prefers-reduced-motion: reduce) {
   .crt::before,
   .crt::after,
@@ -289,26 +238,20 @@
   }
 }
 
-/* Mode contraste forcé (Windows) : il supprime images et couleurs de fond. Sans
-   cette règle, le menu devient illisible sur un décor absent. */
 @media (forced-colors: active) {
   .title-screen__decor,
   .title-screen::before,
   .crt {
     display: none;
   }
-  /* ── Le logotype ─────────────────────────────────────────────────────────────
-   Sous-ensemble de Special Elite réduit aux huit lettres de « slashome » :
-   3764 octets, auto-hébergés — aucune requête vers un tiers. Le texte du
-   logotype ne change pas, donc le sous-ensemble ne peut pas manquer un glyphe.
-   Voir public/fonts/LICENSE.md. */
+  
 @font-face {
   font-family: 'Special Elite Subset';
   src: url('/fonts/special-elite-slashome.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  /* La chute ne se produit que si le fichier manque : on borne quand même. */
+  
   unicode-range: U+61, U+65, U+68, U+6c-6d, U+6f, U+73;
 }
 
