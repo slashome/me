@@ -4,14 +4,28 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  /**
+   * `document` : l'habillage habituel — en-tête, nav, pied de page.
+   * `screen`   : plein cadre, sans chrome. L'écran-titre porte sa propre
+   *              navigation ; en superposer une seconde la dédoublerait.
+   */
+  variant?: 'document' | 'screen';
 }
 
-const { title, description } = Astro.props;
+const { title, description, variant = 'document' } = Astro.props;
 
+/**
+ * Les chemins sont en anglais, les libellés en français.
+ *
+ * Décidé le 2026-08-29 : les noms de champs du modèle sont déjà en anglais, le
+ * moteur est fait pour être forké, et le site sera bilingue — garder UN jeu de
+ * chemins canoniques et localiser les libellés coûte cinq fois moins cher que
+ * deux jeux d'URL avec leurs redirections et leurs `hreflang`.
+ */
 const NAV = [
-  { href: '/projets/', label: 'Projets' },
-  { href: '/blog/', label: 'Journal' },
-  { href: '/citations/', label: 'Citations' },
+  { href: '/projects/', label: 'Projets' },
+  { href: '/journal/', label: 'Journal' },
+  { href: '/inventory/quotes/', label: 'Inventaire' },
 ];
 
 const path = Astro.url.pathname;
@@ -37,6 +51,7 @@ const fullTitle = path === '/' ? title : `${title} — slashome.me`;
     <meta name="generator" content={Astro.generator} />
   </head>
   <body>
+    {variant === 'document' && (
     <header class="site-header">
       <div class="shell site-header__inner">
         <a class="site-header__brand" href="/">slashome.me</a>
@@ -51,13 +66,19 @@ const fullTitle = path === '/' ? title : `${title} — slashome.me`;
         </nav>
       </div>
     </header>
+    )}
 
-    <main>
-      <div class="shell">
-        <slot />
-      </div>
-    </main>
+    {variant === 'document' ? (
+      <main>
+        <div class="shell">
+          <slot />
+        </div>
+      </main>
+    ) : (
+      <slot />
+    )}
 
+    {variant === 'document' && (
     <footer class="site-footer">
       <div class="shell">
         <p>
@@ -66,5 +87,6 @@ const fullTitle = path === '/' ? title : `${title} — slashome.me`;
         </p>
       </div>
     </footer>
+    )}
   </body>
 </html>

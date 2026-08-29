@@ -1,39 +1,69 @@
 ---
 import Base from '../layouts/Base.astro';
+import '../styles/title.css';
+
+/**
+ * Le numéro de build est une vraie donnée, pas un décor : il est lu au build,
+ * jamais dans le navigateur. Le `try` couvre le cas d'un build hors dépôt git.
+ */
+import { execSync } from 'node:child_process';
+let build = 'dev';
+try {
+  build = execSync('git rev-parse --short HEAD', { stdio: ['ignore', 'pipe', 'ignore'] })
+    .toString()
+    .trim();
+} catch {
+  /* pas de dépôt git : on garde « dev » */
+}
+
+/**
+ * Les chemins sont en anglais, les libellés en français.
+ * Un écran-titre de jeu affiche cinq à huit entrées sans le moindre inconfort —
+ * c'est sa forme canonique. La contrainte des « trois portes » du 2026-08-21
+ * valait pour une page de texte ; elle tombe avec le genre.
+ */
+const MENU = [
+  { href: '/projects/', label: 'Projets' },
+  { href: '/journal/', label: 'Journal' },
+  { href: '/inventory/quotes/', label: 'Inventaire' },
+];
 ---
 
 <Base
+  variant="screen"
   title="slashome.me"
-  description="Florian Boulestreau — qui je suis, ce que je construis, ce que j'écris."
+  description="Florian Boulestreau — ce que je construis, ce que j'écris, ce que je garde."
 >
-  <h1>Florian Boulestreau</h1>
+  <div class="title-screen">
+    <div class="title-screen__decor" aria-hidden="true"></div>
 
-  <nav class="doors" aria-label="Sections du site">
-    <a href="/projets/">
-      <strong>Projets</strong>
-      <span>ce que je construis</span>
-    </a>
-    <a href="/blog/">
-      <strong>Journal</strong>
-      <span>ce que j'écris</span>
-    </a>
-    <a href="/citations/">
-      <strong>Citations</strong>
-      <span>ce que je garde</span>
-    </a>
-  </nav>
+    <div class="title-screen__inner">
+      <h1 class="title-screen__brand">
+        slashome<span>Florian Boulestreau</span>
+      </h1>
 
-  {/*
-    « hors du clavier » et les compétences ne vivent plus ici : elles deviennent la
-    fiche de personnage de /a-propos/, avec ses statistiques. Voir la réflexion
-    « écran-titre et rendu » du nœud Ariane.
-  */}
+      <nav class="title-menu" aria-label="Menu principal">
+        <ul>
+          {
+            MENU.map(({ href, label }) => (
+              <li>
+                <a href={href}>{label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
 
-  <section class="id-block">
-    <h2>me joindre</h2>
-    <ul>
-      <li><a href="https://github.com/slashome">github.com/slashome</a></li>
-    </ul>
-    {/* À compléter : Instagram, Twitch, et ce que tu veux exposer publiquement. */}
-  </section>
+      <p class="title-screen__profile">
+        <a href="https://github.com/slashome">github.com/slashome</a>
+      </p>
+
+      <p class="title-screen__meta">
+        <span>build {build}</span>
+        <span>fr</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="crt" aria-hidden="true"></div>
 </Base>
