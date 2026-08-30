@@ -20,6 +20,7 @@ import {
   type Concept,
   type JournalEntry,
   type Project,
+  type Shelf,
 } from './types';
 
 export interface Issue {
@@ -31,6 +32,8 @@ export interface Issue {
 const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 const ATTRIBUTIONS: readonly Attribution[] = ['misattributed', 'disputed', 'altered'];
+
+const SHELVES: readonly Shelf[] = ['wanted', 'unread', 'reading', 'read'];
 
 const PROJECT_STATUSES: readonly Project['status'][] = ['actif', 'archive', 'dormant'];
 
@@ -176,6 +179,13 @@ export function validate(
       if (!/^https?:\/\//.test(source.url)) {
         error(where, `sources : « ${source.url} » doit être une URL absolue`);
       }
+    }
+    if (item.shelf && !SHELVES.includes(item.shelf)) {
+      error(where, `état de lecture inconnu : ${item.shelf}`);
+    }
+    /* Une citation ne se lit pas « en entier » : elle EST l'extrait. */
+    if (item.shelf && item.type === 'citation') {
+      warn(where, '`shelf` n\'a pas de sens sur une citation');
     }
     if (item.attribution && !ATTRIBUTIONS.includes(item.attribution)) {
       error(where, `attribution inconnue : ${item.attribution}`);
