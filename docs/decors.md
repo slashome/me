@@ -36,6 +36,26 @@ Trois, toutes en CSS, toutes coupées par `prefers-reduced-motion`.
 Le coup de pied est fait en `steps(1)` sur deux groupes qui s'échangent : deux
 images, pas d'interpolation. C'est ce qui le rend sec.
 
+## Le rig
+
+La figure est **articulée**, pas dessinée d'un bloc : chaque partie est un `<g>`
+avec son pivot déclaré en CSS (`transform-origin`).
+
+```
+rig
+├─ head        (crâne, chignon, bandana, lunettes, bouche) — pivot à la nuque
+├─ torso       (chemise, collier)                          — pivot aux hanches
+├─ arm × 2     └─ forearm └─ hand (+ bague)                — pivots épaule, coude, poignet
+└─ leg × 2     └─ shin    └─ foot                          — pivots hanche, genou, cheville
+```
+
+Le coup de pied thaï n'est plus un échange de deux calques mais une **rotation de
+la cuisse et du tibia** : c'est le rig qui bouge, donc n'importe quelle autre pose
+s'écrit de la même façon.
+
+Les membres du côté opposé sont à 68 % d'opacité — c'est ce qui donne la
+profondeur sans avoir à dessiner deux fois.
+
 ## Modes d'animation
 
 Un décor déclare son mode par `data-anim`.
@@ -58,7 +78,8 @@ octets de JavaScript le jour où il aura quelque chose à tirer.
 
 | Nom | État | Ce que c'est |
 |---|---|---|
-| `veille` | ✅ en place | Le personnage debout à droite, braise en bas à gauche |
+| `alley` | ✅ en place | De face, adossé à un mur, dans une ruelle. Deux murs en fuite, une lampe chaude, quelques accessoires au trait |
+| `veille` | ✅ en place | Le personnage debout à droite, braise en bas à gauche, sans décor construit |
 | `atelier` | ⏳ à faire | Assis, penché sur quelque chose |
 | `garde` | ⏳ à faire | En garde de boxe thaï, immobile |
 | `nuit` | ⏳ à faire | De dos, face à un horizon |

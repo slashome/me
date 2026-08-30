@@ -64,7 +64,7 @@
 
 .mark {
   display: block;
-  height: clamp(1.15rem, 1rem + 0.9vw, 1.7rem);
+  height: clamp(1.4rem, 1.15rem + 1.1vw, 2.1rem);
   width: auto;
 }
 
@@ -82,8 +82,10 @@
   stroke-linecap: round;
 }
 
-.mark__eye {
-  fill: var(--scene-fg-strong);
+.mark__face {
+  fill: rgba(10, 9, 8, 0.6);
+  stroke: var(--scene-fg-strong);
+  stroke-width: 3;
 }
 
 .breadcrumb__home a:hover .mark__lens,

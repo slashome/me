@@ -8,70 +8,83 @@ const { class: className } = Astro.props;
 
 <svg
   class:list={['figure', className]}
-  viewBox="0 0 220 560"
+  viewBox="0 0 240 600"
   role="img"
-  aria-label="Silhouette au trait : grand, fin, bandana, chignon, lunettes rondes à verres rouges"
+  aria-label="Silhouette au trait, adossée à un mur : grand, fin, bandana, chignon, lunettes rondes à verres rouges"
 >
-  <g class="figure__body">
-    <g class="figure__breath">
-      <ellipse class="ink" cx="110" cy="88" rx="27" ry="34"  pathLength="1" />
-      <path class="ink" d="M110 34c-7 0-12 5-12 11 0 5 5 9 12 9s12-4 12-9c0-6-5-11-12-11z"  pathLength="1" />
-      <path class="ink" d="M84 66q26 -12 52 0"  pathLength="1" />
-      <path class="ink" d="M136 66q16 3 22 12 q-13 1 -22 -4"  pathLength="1" />
-      <path class="ink" d="M136 72q14 8 16 18 q-12 -3 -18 -11"  pathLength="1" />
-
-      <circle class="lens" cx="97" cy="92" r="12"  pathLength="1" />
-      <circle class="lens" cx="125" cy="92" r="12"  pathLength="1" />
-      <path class="ink" d="M109 92h4"  pathLength="1" />
-
-      <path class="ink" d="M100 118v14"  pathLength="1" />
-      <path class="ink" d="M120 118v14"  pathLength="1" />
-
-      <path class="bead bead--light" d="M92 140a4 4 0 1 0 .1 0" />
-      <path class="bead bead--dark" d="M101 146a4 4 0 1 0 .1 0" />
-      <path class="bead bead--light" d="M110 148a4 4 0 1 0 .1 0" />
-      <path class="bead bead--metal" d="M110 158a5 5 0 1 0 .1 0" />
-      <path class="bead bead--dark" d="M119 146a4 4 0 1 0 .1 0" />
-      <path class="bead bead--light" d="M128 140a4 4 0 1 0 .1 0" />
-
-      <path class="ink" d="M88 134q22 26 44 0 l6 66 q-28 12 -56 0z"  pathLength="1" />
+  <g class="rig">
+    <g class="rig__leg rig__leg--far">
+      <path class="ink limb" d="M132 292 L146 396" pathLength="1" />
+      <g class="rig__shin rig__shin--far">
+        <path class="ink limb" d="M146 396 L150 470" pathLength="1" />
+        <g class="rig__foot rig__foot--far">
+          <path class="ink shoe" d="M146 470q-4 14 6 20 q16 8 30 -2 q6 -8 -4 -14 q-16 -6 -32 -4z" pathLength="1" />
+        </g>
+      </g>
     </g>
 
-    <path class="ink" d="M90 150q-16 26 -14 74"  pathLength="1" />
-    <path class="ink" d="M130 150q18 24 20 60"  pathLength="1" />
-
-    <g class="figure__hand figure__hand--left">
-      <path class="ink" d="M70 224q-6 10 0 18 q10 6 16 -2"  pathLength="1" />
-      <circle class="ring ring--silver" cx="70" cy="232" r="5" />
+    <g class="rig__arm rig__arm--far">
+      <path class="ink limb" d="M142 140 L156 198" pathLength="1" />
+      <g class="rig__forearm rig__forearm--far">
+        <path class="ink limb" d="M156 198 L152 248" pathLength="1" />
+        <g class="rig__hand rig__hand--far">
+          <path class="ink" d="M152 248q-8 6 -4 14 q8 8 16 0 q4 -10 -4 -14z" pathLength="1" />
+          <circle class="ring ring--obsidian" cx="147" cy="252" r="5" />
+          <path class="ink vape" d="M158 246 L172 232" pathLength="1" />
+        </g>
+      </g>
     </g>
 
-    <g class="figure__hand figure__hand--right">
-      <path class="ink" d="M150 210q8 8 4 18 q-9 6 -16 -1"  pathLength="1" />
-      <circle class="ring ring--obsidian" cx="151" cy="219" r="5" />
-      <path class="ink" d="M152 206l14 -12"  pathLength="1" />
+    <g class="rig__torso">
+      <path class="ink shirt" d="M96 136q24 -10 48 0 l6 90 q-30 14 -60 0z" pathLength="1" />
+      <g class="rig__necklace">
+        <path class="bead bead--light" d="M102 152a4 4 0 1 0 .1 0" />
+        <path class="bead bead--dark" d="M111 158a4 4 0 1 0 .1 0" />
+        <path class="bead bead--metal" d="M120 168a5 5 0 1 0 .1 0" />
+        <path class="bead bead--dark" d="M129 158a4 4 0 1 0 .1 0" />
+        <path class="bead bead--light" d="M138 152a4 4 0 1 0 .1 0" />
+        <path class="ink thread" d="M100 146q20 30 40 0" pathLength="1" />
+      </g>
     </g>
 
-    <g class="figure__smoke" aria-hidden="true">
-      <circle class="puff" cx="170" cy="188" r="4" />
-      <circle class="puff puff--2" cx="176" cy="180" r="5" />
-      <circle class="puff puff--3" cx="168" cy="172" r="6" />
+    <g class="rig__head">
+      <path class="ink neck" d="M120 112 L120 134" pathLength="1" />
+      <ellipse class="ink skull" cx="120" cy="80" rx="26" ry="32" pathLength="1" />
+      <path class="ink bun" d="M120 30q-11 0 -11 10 q0 8 11 8 q11 0 11 -8 q0 -10 -11 -10z" pathLength="1" />
+      <path class="ink bandana" d="M95 60q25 -12 50 0" pathLength="1" />
+      <path class="ink bandana" d="M145 60q16 4 21 13 q-13 1 -21 -5" pathLength="1" />
+      <path class="ink bandana" d="M145 66q13 9 15 19 q-12 -4 -17 -12" pathLength="1" />
+      <circle class="lens" cx="107" cy="84" r="12" pathLength="1" />
+      <circle class="lens" cx="133" cy="84" r="12" pathLength="1" />
+      <path class="ink" d="M119 84h2" pathLength="1" />
+      <path class="ink mouth" d="M112 102q8 5 16 0" pathLength="1" />
     </g>
 
-    <path class="ink" d="M84 262q-4 34 6 66"  pathLength="1" />
-    <path class="ink" d="M136 262q4 34 -6 66"  pathLength="1" />
-
-    <g class="figure__legs figure__legs--stand">
-      <path class="ink" d="M92 328q-4 62 -2 118"  pathLength="1" />
-      <path class="ink" d="M128 328q4 62 2 118"  pathLength="1" />
-      <path class="ink" d="M72 446q6 -8 20 -8 q14 0 16 10 q2 12 -18 12 q-22 0 -18 -14z"  pathLength="1" />
-      <path class="ink" d="M112 446q6 -8 20 -8 q14 0 16 10 q2 12 -18 12 q-22 0 -18 -14z"  pathLength="1" />
+    <g class="rig__leg rig__leg--near">
+      <path class="ink limb" d="M108 292 L102 400" pathLength="1" />
+      <g class="rig__shin rig__shin--near">
+        <path class="ink limb" d="M102 400 L100 508" pathLength="1" />
+        <g class="rig__foot rig__foot--near">
+          <path class="ink shoe" d="M78 508q6 -10 22 -10 q16 0 18 12 q2 14 -20 14 q-24 0 -20 -16z" pathLength="1" />
+        </g>
+      </g>
     </g>
 
-    <g class="figure__legs figure__legs--kick">
-      <path class="ink" d="M96 328q-4 62 -2 118"  pathLength="1" />
-      <path class="ink" d="M128 330q26 22 60 8"  pathLength="1" />
-      <path class="ink" d="M76 446q6 -8 20 -8 q14 0 16 10 q2 12 -18 12 q-22 0 -18 -14z"  pathLength="1" />
-      <path class="ink" d="M186 328q10 4 14 12 q-8 8 -18 4 q-6 -8 4 -16z"  pathLength="1" />
+    <g class="rig__arm rig__arm--near">
+      <path class="ink limb" d="M98 140 L86 198" pathLength="1" />
+      <g class="rig__forearm rig__forearm--near">
+        <path class="ink limb" d="M86 198 L90 250" pathLength="1" />
+        <g class="rig__hand rig__hand--near">
+          <path class="ink" d="M90 250q-8 6 -4 14 q8 8 16 0 q4 -10 -4 -14z" pathLength="1" />
+          <circle class="ring ring--silver" cx="85" cy="254" r="5" />
+        </g>
+      </g>
+    </g>
+
+    <g class="rig__smoke" aria-hidden="true">
+      <circle class="puff" cx="176" cy="224" r="4" />
+      <circle class="puff puff--2" cx="182" cy="216" r="5" />
+      <circle class="puff puff--3" cx="174" cy="208" r="6" />
     </g>
   </g>
 </svg>

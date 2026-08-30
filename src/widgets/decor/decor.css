@@ -47,14 +47,67 @@
 .ring--silver    { stroke: #cfd4d8; }
 .ring--obsidian  { stroke: #2a2530; }
 
-.figure__breath {
-  transform-origin: 110px 150px;
-  animation: breathe 5.2s ease-in-out infinite;
+.limb {
+  stroke-width: 7;
+}
+
+.shoe {
+  fill: rgba(10, 9, 8, 0.9);
+}
+
+.shirt {
+  fill: rgba(10, 9, 8, 0.55);
+}
+
+.skull {
+  fill: rgba(10, 9, 8, 0.75);
+}
+
+.thread {
+  stroke-width: 2.5;
+  opacity: 0.75;
+}
+
+.mouth {
+  stroke-width: 3;
+}
+
+.vape {
+  stroke-width: 3.5;
+}
+
+.rig__leg--far .limb,
+.rig__arm--far .limb {
+  opacity: 0.68;
+}
+
+.rig__head       { transform-origin: 120px 112px; }
+.rig__torso      { transform-origin: 120px 226px; }
+.rig__arm--near  { transform-origin: 98px 140px; }
+.rig__arm--far   { transform-origin: 142px 140px; }
+.rig__forearm--near { transform-origin: 86px 198px; }
+.rig__forearm--far  { transform-origin: 156px 198px; }
+.rig__hand--near { transform-origin: 90px 250px; }
+.rig__hand--far  { transform-origin: 152px 248px; }
+.rig__leg--near  { transform-origin: 108px 292px; }
+.rig__leg--far   { transform-origin: 132px 292px; }
+.rig__shin--near { transform-origin: 102px 400px; }
+.rig__shin--far  { transform-origin: 146px 396px; }
+.rig__foot--near { transform-origin: 100px 508px; }
+.rig__foot--far  { transform-origin: 150px 470px; }
+
+.rig__torso { animation: breathe 5.2s ease-in-out infinite; }
+.rig__head  { animation: head-bob 8.4s ease-in-out infinite; }
+
+@keyframes head-bob {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  40%      { transform: rotate(-1.4deg) translateY(-1.5px); }
+  72%      { transform: rotate(0.8deg); }
 }
 
 @keyframes breathe {
-  0%, 100% { transform: scaleY(1) translateY(0); }
-  45%      { transform: scaleY(1.018) translateY(-2px); }
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  45%      { transform: scaleY(1.02) scaleX(0.994); }
 }
 
 .puff {
@@ -72,32 +125,29 @@
   100%      { opacity: 0; transform: translateY(-46px) scale(1.9); }
 }
 
-.figure__legs--kick { display: none; }
+.rig__leg--far  { animation: kick-thigh 17s steps(1) infinite; }
+.rig__shin--far { animation: kick-shin 17s steps(1) infinite; }
 
-.figure__legs--stand { animation: stand 17s steps(1) infinite; }
-.figure__legs--kick  { animation: kick 17s steps(1) infinite; display: block; }
-
-@keyframes stand {
-  0%, 96%   { opacity: 1; }
-  96.5%, 98% { opacity: 0; }
-  98.5%, 100% { opacity: 1; }
+@keyframes kick-thigh {
+  0%, 96%     { transform: rotate(0deg); }
+  96.4%, 97.6% { transform: rotate(-72deg); }
+  98%, 100%   { transform: rotate(0deg); }
 }
 
-@keyframes kick {
-  0%, 96%   { opacity: 0; }
-  96.5%, 98% { opacity: 1; }
-  98.5%, 100% { opacity: 0; }
+@keyframes kick-shin {
+  0%, 96%     { transform: rotate(0deg); }
+  96.4%, 97.6% { transform: rotate(22deg); }
+  98%, 100%   { transform: rotate(0deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .figure__breath,
-  .puff,
-  .figure__legs--stand,
-  .figure__legs--kick {
+  .rig__torso,
+  .rig__head,
+  .rig__leg--far,
+  .rig__shin--far,
+  .puff {
     animation: none;
   }
-  .figure__legs--kick { opacity: 0; }
-  .figure__legs--stand { opacity: 1; }
   .puff { opacity: 0; }
 }
 
@@ -116,8 +166,7 @@
   animation: draw 1.6s ease-out forwards;
 }
 
-.decor-scene[data-anim='draw'] .figure__body > *,
-.decor-scene[data-anim='draw'] .figure__breath > * {
+.decor-scene[data-anim='draw'] .rig > * {
   animation-delay: calc(var(--i, 0) * 45ms);
 }
 
@@ -135,7 +184,10 @@
     fill-lens 0.8s ease-out 1.4s forwards;
 }
 
-.decor-scene[data-anim='draw'] .figure__breath {
+.decor-scene[data-anim='draw'] .rig__torso,
+.decor-scene[data-anim='draw'] .rig__head,
+.decor-scene[data-anim='draw'] .rig__leg--far,
+.decor-scene[data-anim='draw'] .rig__shin--far {
   animation-delay: 2.1s;
 }
 
@@ -171,4 +223,61 @@
   .decor-scene[data-anim='draw'] .lens { fill: rgba(196, 40, 34, 0.55); }
   .decor-scene[data-anim='draw'] .bead,
   .decor-scene[data-anim='draw'] .ring { opacity: 1; }
+}
+
+.alley {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.alley__back {
+  fill: url(#alley-sky);
+}
+
+.alley__wall {
+  fill: #100d0b;
+  stroke: rgba(207, 198, 178, 0.1);
+  stroke-width: 2;
+}
+
+.alley__wall--right {
+  fill: #0c0a09;
+}
+
+.alley__ground {
+  fill: #0a0908;
+}
+
+.alley__lines path,
+.alley__props path,
+.alley__props rect {
+  fill: none;
+  stroke: rgba(207, 198, 178, 0.13);
+  stroke-width: 2;
+}
+
+.alley__lamp {
+  fill: url(#alley-lamp);
+  mix-blend-mode: screen;
+}
+
+.alley__glow {
+  fill: rgba(224, 150, 80, 0.07);
+}
+
+.decor-scene[data-scene='alley'] .figure {
+  right: auto;
+  left: clamp(4%, 9vw, 16%);
+  height: min(74vh, 600px);
+  transform: rotate(-3.5deg);
+  transform-origin: 120px 560px;
+}
+
+@media (max-width: 46rem) {
+  .decor-scene[data-scene='alley'] .figure {
+    left: -6%;
+    opacity: 0.4;
+  }
 }
