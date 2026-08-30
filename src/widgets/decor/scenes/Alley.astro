@@ -1,20 +1,15 @@
 ---
-interface Props {
-  class?: string;
-}
-
-const { class: className } = Astro.props;
+import Character from '../Character.astro';
 ---
 
 <svg
-  class:list={['alley', className]}
+  class="alley"
   viewBox="0 0 1600 900"
   preserveAspectRatio="xMidYMax slice"
   aria-hidden="true"
 >
   <defs>
     <linearGradient id="alley-sky" x1="0" y1="0" x2="0" y2="1">
-      <linearGradient />
       <stop offset="0" stop-color="#1a1512" />
       <stop offset="1" stop-color="#3a2a1c" />
     </linearGradient>
@@ -44,10 +39,15 @@ const { class: className } = Astro.props;
     <path d="M292 300 h16" />
     <rect x="1180" y="300" width="150" height="190" rx="4" />
     <path d="M700 630 h200" />
+  </g>
+
+  <g class="alley__bin">
     <rect x="1010" y="520" width="130" height="110" rx="3" />
-    <path d="M1010 552 h130" />
+    <path class="alley__lid" d="M1002 520 h146" />
   </g>
 
   <circle class="alley__lamp" cx="620" cy="470" r="300" />
   <path class="alley__glow" d="M620 630 L980 630 L1120 900 L470 900 Z" />
 </svg>
+
+<Character />

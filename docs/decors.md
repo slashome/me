@@ -56,30 +56,36 @@ s'écrit de la même façon.
 Les membres du côté opposé sont à 68 % d'opacité — c'est ce qui donne la
 profondeur sans avoir à dessiner deux fois.
 
-## Modes d'animation
+## L'animation reste à concevoir
 
-Un décor déclare son mode par `data-anim`.
+Les trois modes `draw`, `idle` et `vibrate` ont été retirés. Ils traitaient
+l'animation comme un réglage global, alors que la scène demande l'inverse : une
+**orchestration**. Un chat qui pousse le couvercle d'une poubelle, une bouffée de
+vapeur, un coup de pied — ce sont des évènements qui se répondent et se décalent,
+pas trois boucles qui tournent chacune dans son coin.
 
-| Mode | Ce qu'il fait |
-|---|---|
-| `draw` | **le trait se dessine** à l'arrivée, en 1,6 s, puis passe au repos. Chaque tracé porte `pathLength="1"`, donc un seul `stroke-dasharray: 1` suffit quelle que soit sa longueur réelle — pas de mesure en JavaScript, contrairement à Vivus |
-| `idle` | uniquement les micro-animations : respiration, fumée, coup de pied |
-| `vibrate` | tremblement permanent de moins d'un pixel, en `steps(2)` |
+Ce qui reste en place aujourd'hui — respiration, fumée, coup de pied — est
+**provisoire**, et c'est bien de trois boucles indépendantes qu'il s'agit. Une
+étude est en cours sur la bonne chaîne : timeline, anticipation, retour
+d'équilibre, intervalles non mécaniques, interaction au survol, et ce qu'une
+bibliothèque apporterait par rapport au CSS.
 
-`draw` est le défaut : il donne une entrée, puis s'efface au profit du repos. Les
-perles, les bagues et la teinte des verres apparaissent après le trait, dans cet
-ordre — on dessine d'abord, on remplit ensuite.
+Ce qui est déjà tranché : la scène reste **entièrement décorative**, elle est
+coupée par `prefers-reduced-motion`, et le site est complet sans elle.
 
 ## Les décors, et leur registre
 
-L'intention est d'en avoir **plusieurs, tirés au hasard** à chaque visite. Un
-seul existe aujourd'hui, donc le tirage n'est pas encore posé : il coûtera ~150
-octets de JavaScript le jour où il aura quelque chose à tirer.
+Une seule scène pour l'accueil aujourd'hui. D'autres viendront ; le tirage entre
+elles n'est pas posé, il n'aurait rien à tirer.
+
+Une scène est un composant complet — décor **et** personnage — sous
+`scenes/`. Ce n'est pas un fond auquel on ajoute une figure : la pose du
+personnage dépend du décor, et les deux s'écrivent ensemble.
 
 | Nom | État | Ce que c'est |
 |---|---|---|
 | `alley` | ✅ en place | De face, adossé à un mur, dans une ruelle. Deux murs en fuite, une lampe chaude, quelques accessoires au trait |
-| `veille` | ✅ en place | Le personnage debout à droite, braise en bas à gauche, sans décor construit |
+
 | `atelier` | ⏳ à faire | Assis, penché sur quelque chose |
 | `garde` | ⏳ à faire | En garde de boxe thaï, immobile |
 | `nuit` | ⏳ à faire | De dos, face à un horizon |

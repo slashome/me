@@ -151,78 +151,8 @@
   .puff { opacity: 0; }
 }
 
-@media (max-width: 46rem) {
-  .figure { opacity: 0.32; right: -8%; }
-}
-
 @media (forced-colors: active) {
   .decor-scene { display: none; }
-}
-
-.decor-scene[data-anim='draw'] .ink,
-.decor-scene[data-anim='draw'] .lens {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: draw 1.6s ease-out forwards;
-}
-
-.decor-scene[data-anim='draw'] .rig > * {
-  animation-delay: calc(var(--i, 0) * 45ms);
-}
-
-.decor-scene[data-anim='draw'] .bead,
-.decor-scene[data-anim='draw'] .ring,
-.decor-scene[data-anim='draw'] .puff {
-  opacity: 0;
-  animation: appear 0.6s ease-out 1.5s forwards;
-}
-
-.decor-scene[data-anim='draw'] .lens {
-  fill: transparent;
-  animation:
-    draw 1.6s ease-out forwards,
-    fill-lens 0.8s ease-out 1.4s forwards;
-}
-
-.decor-scene[data-anim='draw'] .rig__torso,
-.decor-scene[data-anim='draw'] .rig__head,
-.decor-scene[data-anim='draw'] .rig__leg--far,
-.decor-scene[data-anim='draw'] .rig__shin--far {
-  animation-delay: 2.1s;
-}
-
-@keyframes draw {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes appear {
-  to { opacity: 1; }
-}
-
-@keyframes fill-lens {
-  to { fill: rgba(196, 40, 34, 0.55); }
-}
-
-.decor-scene[data-anim='vibrate'] .figure {
-  animation: vibrate 0.14s steps(2) infinite;
-}
-
-@keyframes vibrate {
-  0%   { transform: translate(0, 0); }
-  50%  { transform: translate(0.9px, -0.7px); }
-  100% { transform: translate(0, 0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .decor-scene[data-anim] .ink,
-  .decor-scene[data-anim] .lens,
-  .decor-scene[data-anim] .figure {
-    animation: none;
-    stroke-dashoffset: 0;
-  }
-  .decor-scene[data-anim='draw'] .lens { fill: rgba(196, 40, 34, 0.55); }
-  .decor-scene[data-anim='draw'] .bead,
-  .decor-scene[data-anim='draw'] .ring { opacity: 1; }
 }
 
 .alley {
@@ -267,7 +197,7 @@
   fill: rgba(224, 150, 80, 0.07);
 }
 
-.decor-scene[data-scene='alley'] .figure {
+.decor-scene .figure {
   right: auto;
   left: clamp(4%, 9vw, 16%);
   height: min(74vh, 600px);
@@ -276,7 +206,7 @@
 }
 
 @media (max-width: 46rem) {
-  .decor-scene[data-scene='alley'] .figure {
+  .decor-scene .figure {
     left: -6%;
     opacity: 0.4;
   }
