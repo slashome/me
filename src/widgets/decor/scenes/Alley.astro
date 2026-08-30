@@ -41,9 +41,13 @@ import Character from '../Character.astro';
     <path d="M700 630 h200" />
   </g>
 
-  <g class="alley__bin">
-    <rect x="1010" y="520" width="130" height="110" rx="3" />
-    <path class="alley__lid" d="M1002 520 h146" />
+  <g class="prop prop__bin">
+    <rect class="prop__bin__hit" x="990" y="496" width="170" height="140" />
+    <rect class="prop__bin__body" x="1010" y="520" width="130" height="110" rx="3" />
+    <g class="prop__bin__lid">
+      <path d="M1002 520 h146" />
+      <path d="M1060 512 v-10" />
+    </g>
   </g>
 
   <circle class="alley__lamp" cx="620" cy="470" r="300" />

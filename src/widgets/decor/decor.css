@@ -1,9 +1,40 @@
 .decor-scene {
+  --cycle: 47s;
+
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+}
+
+.prop {
+  pointer-events: auto;
+}
+
+.prop__bin__hit {
+  fill: transparent;
+}
+
+.prop__bin__body,
+.prop__bin__lid path {
+  fill: none;
+  stroke: rgba(207, 198, 178, 0.13);
+  stroke-width: 2;
+}
+
+.prop__bin__lid {
+  transform-origin: 1002px 520px;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.prop__bin:hover .prop__bin__lid {
+  transform: translateY(-16px) rotate(-7deg);
+}
+
+.prop__bin:hover .prop__bin__body,
+.prop__bin:hover .prop__bin__lid path {
+  stroke: rgba(224, 150, 80, 0.5);
 }
 
 .figure {
@@ -125,19 +156,25 @@
   100%      { opacity: 0; transform: translateY(-46px) scale(1.9); }
 }
 
-.rig__leg--far  { animation: kick-thigh 17s steps(1) infinite; }
-.rig__shin--far { animation: kick-shin 17s steps(1) infinite; }
+.rig__leg--far  { animation: kick-thigh var(--cycle) linear infinite; }
+.rig__shin--far { animation: kick-shin var(--cycle) linear infinite; }
 
 @keyframes kick-thigh {
-  0%, 96%     { transform: rotate(0deg); }
-  96.4%, 97.6% { transform: rotate(-72deg); }
-  98%, 100%   { transform: rotate(0deg); }
+  0%, 95%  { transform: rotate(0deg); animation-timing-function: cubic-bezier(0.4, 0, 0.9, 0.3); }
+  95.3%    { transform: rotate(9deg); animation-timing-function: cubic-bezier(0.9, 0, 1, 0.4); }
+  95.55%   { transform: rotate(-74deg); }
+  95.7%    { transform: rotate(-68deg); animation-timing-function: cubic-bezier(0.2, 0, 0.3, 1); }
+  96.2%    { transform: rotate(4deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  96.6%, 100% { transform: rotate(0deg); }
 }
 
 @keyframes kick-shin {
-  0%, 96%     { transform: rotate(0deg); }
-  96.4%, 97.6% { transform: rotate(22deg); }
-  98%, 100%   { transform: rotate(0deg); }
+  0%, 95.05% { transform: rotate(0deg); }
+  95.35%     { transform: rotate(-6deg); }
+  95.6%      { transform: rotate(26deg); }
+  95.75%     { transform: rotate(20deg); }
+  96.3%      { transform: rotate(-3deg); }
+  96.7%, 100% { transform: rotate(0deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {

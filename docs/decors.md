@@ -56,22 +56,85 @@ s'écrit de la même façon.
 Les membres du côté opposé sont à 68 % d'opacité — c'est ce qui donne la
 profondeur sans avoir à dessiner deux fois.
 
-## L'animation reste à concevoir
+## L'orchestration
 
-Les trois modes `draw`, `idle` et `vibrate` ont été retirés. Ils traitaient
-l'animation comme un réglage global, alors que la scène demande l'inverse : une
-**orchestration**. Un chat qui pousse le couvercle d'une poubelle, une bouffée de
-vapeur, un coup de pied — ce sont des évènements qui se répondent et se décalent,
-pas trois boucles qui tournent chacune dans son coin.
+Le défaut d'origine a un nom : la **dérive de phase**. Trois animations en
+`infinite` de durées différentes sont trois horloges libres — leur composition ne
+se répète qu'au PPCM des périodes, et entre-temps elles produisent des
+coïncidences non voulues. C'est ce qui donne la sensation d'écran de veille.
 
-Ce qui reste en place aujourd'hui — respiration, fumée, coup de pied — est
-**provisoire**, et c'est bien de trois boucles indépendantes qu'il s'agit. Une
-étude est en cours sur la bonne chaîne : timeline, anticipation, retour
-d'équilibre, intervalles non mécaniques, interaction au survol, et ce qu'une
-bibliothèque apporterait par rapport au CSS.
+Un jeu 2D ne fait jamais ça : il a des **clips** finis et nommés, des **canaux**
+(un clip actif au maximum par canal), et un **ordonnanceur**. La scène reprend
+cette structure.
 
-Ce qui est déjà tranché : la scène reste **entièrement décorative**, elle est
-coupée par `prefers-reduced-motion`, et le site est complet sans elle.
+### Le cycle maître
+
+```css
+.decor-scene { --cycle: 47s; }
+```
+
+Tout ce qui est un **évènement remarquable** partage cette durée : le coup de
+pied, et demain le chat. Même durée = phase verrouillée = aucune dérive, et la
+chorégraphie est exacte sans une ligne de JavaScript. 47 s est premier et plus
+long qu'une visite ordinaire : le cycle ne se répète quasiment jamais devant
+quelqu'un.
+
+Ce qui est de l'**ambiance** — respiration, vapeur — reste en boucles libres. La
+dérive y est un atout : ce sont des textures, pas des évènements, et leur
+périodicité ne se remarque pas.
+
+> **Règle : ambiance = boucles libres. Évènement = phase verrouillée.**
+
+### Trois temps, jamais un
+
+Un clip crédible a une **anticipation**, une **action**, un **retour d'équilibre**.
+Le coup de pied recule de 9° avant de partir, dépasse à -74°, tient une image à
+-68°, revient en dépassant le repos à +4°, puis se pose. Une articulation qui
+s'arrête pile à sa cible a l'air d'un servomoteur.
+
+`animation-timing-function` se déclare **dans** un keyframe et s'applique au
+segment qui suit — c'est ce qui permet un easing par segment sans découper
+l'animation.
+
+### Les canaux
+
+| Canal | Ce qu'il possède |
+|---|---|
+| `body` | jambes, tibias, pieds, torse |
+| `head` | tête |
+| `arm` | bras, avant-bras, main |
+| `props` | poubelle, chat |
+| `fx` | vapeur |
+
+Un clip actif au maximum par canal, sinon deux animations écrivent le même
+`transform` et l'une écrase l'autre — l'artefact le plus difficile à
+diagnostiquer.
+
+### Ce qui viendra en JavaScript, et ce qui n'en dépendra pas
+
+Un ordonnanceur d'environ un kilo-octet ajoutera la seule chose que le CSS ne
+sait pas faire : **l'imprévisibilité**. Intervalles tirés selon une loi
+exponentielle — un processus sans mémoire, donc sans cadence audible, là où un
+tirage uniforme s'entend encore comme un rythme — et jitter sur la pose et le
+tempo.
+
+**Il améliore, il ne porte pas.** Sans lui, la scène retombe sur le cycle maître,
+qui est déjà juste. C'est la propriété la plus importante de l'architecture.
+
+## L'interaction
+
+Le décor est en `pointer-events: none`. On rouvre **chirurgicalement**, jamais
+globalement : `.prop { pointer-events: auto }`.
+
+Deux pièges :
+
+- un tracé en `fill: none` n'est survolable que sur son trait, à quelques pixels
+  près. D'où un rectangle `__hit` en **`fill: transparent`** — `transparent`
+  reçoit les évènements, `none` ne les reçoit pas ;
+- le décor est `aria-hidden`. Y placer un élément focusable fabriquerait un arrêt
+  de tabulation muet. **Rien n'est donc focusable** : le survol est un bonus
+  souris, et l'animation périodique montre la même chose à tout le monde. Rien
+  n'est perdu, puisque rien de ce que montre le décor n'est une information.
 
 ## Les décors, et leur registre
 
