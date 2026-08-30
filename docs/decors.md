@@ -29,36 +29,129 @@ Trois, toutes en CSS, toutes coupées par `prefers-reduced-motion`.
 
 | Animation | Durée | Ce qu'elle fait |
 |---|---|---|
-| **Respiration** | 5,2 s, en boucle | le buste se dilate de 1,8 % et remonte de 2 px |
+| **Respiration** | 5,2 s, en boucle libre | le buste se dilate de 2 % |
 | **Fumée de cigarette électronique** | 6 s, trois bouffées décalées | trois disques montent, grossissent et s'effacent |
-| **Coup de pied thaï** | 17 s, deux images | la jambe part et revient en 1,5 % du cycle, soit ~250 ms |
+| **Couvercle de la poubelle** | au survol | se soulève de 16 px en dépassant, puis se pose |
 
-Le coup de pied est fait en `steps(1)` sur deux groupes qui s'échangent : deux
-images, pas d'interpolation. C'est ce qui le rend sec.
+⚠️ **Le coup de pied thaï est abandonné**, et probablement définitivement. C'était
+la seule animation qui exigeait des images dessinées en plus du rig, pour deux
+dixièmes de seconde qu'on ne voit qu'une fois par visite. Le rapport coût/effet
+ne tenait pas. Le rig des jambes reste articulé : il ne coûte rien et servira à
+une pose, pas à un mouvement.
 
-## Modes d'animation
+## Le rig
 
-Un décor déclare son mode par `data-anim`.
+La figure est **articulée**, pas dessinée d'un bloc : chaque partie est un `<g>`
+avec son pivot déclaré en CSS (`transform-origin`).
 
-| Mode | Ce qu'il fait |
+```
+rig
+├─ head        (crâne, chignon, bandana, lunettes, bouche) — pivot à la nuque
+├─ torso       (chemise, collier)                          — pivot aux hanches
+├─ arm × 2     └─ forearm └─ hand (+ bague)                — pivots épaule, coude, poignet
+└─ leg × 2     └─ shin    └─ foot                          — pivots hanche, genou, cheville
+```
+
+Le coup de pied thaï n'est plus un échange de deux calques mais une **rotation de
+la cuisse et du tibia** : c'est le rig qui bouge, donc n'importe quelle autre pose
+s'écrit de la même façon.
+
+Les membres du côté opposé sont à 68 % d'opacité — c'est ce qui donne la
+profondeur sans avoir à dessiner deux fois.
+
+## L'orchestration
+
+Le défaut d'origine a un nom : la **dérive de phase**. Trois animations en
+`infinite` de durées différentes sont trois horloges libres — leur composition ne
+se répète qu'au PPCM des périodes, et entre-temps elles produisent des
+coïncidences non voulues. C'est ce qui donne la sensation d'écran de veille.
+
+Un jeu 2D ne fait jamais ça : il a des **clips** finis et nommés, des **canaux**
+(un clip actif au maximum par canal), et un **ordonnanceur**. La scène reprend
+cette structure.
+
+### Le cycle maître
+
+```css
+.decor-scene { --cycle: 47s; }
+```
+
+Tout ce qui est un **évènement remarquable** partage cette durée. Aucun ne
+l'utilise aujourd'hui — le chat sera le premier. Même durée = phase verrouillée = aucune dérive, et la
+chorégraphie est exacte sans une ligne de JavaScript. 47 s est premier et plus
+long qu'une visite ordinaire : le cycle ne se répète quasiment jamais devant
+quelqu'un.
+
+Ce qui est de l'**ambiance** — respiration, vapeur — reste en boucles libres. La
+dérive y est un atout : ce sont des textures, pas des évènements, et leur
+périodicité ne se remarque pas.
+
+> **Règle : ambiance = boucles libres. Évènement = phase verrouillée.**
+
+### Trois temps, jamais un
+
+Un clip crédible a une **anticipation**, une **action**, un **retour d'équilibre**.
+Le couvercle de la poubelle dépasse sa position avant de s'y poser, et c'est ce
+dépassement qui donne le poids. Une articulation qui s'arrête pile à sa cible a
+l'air d'un servomoteur.
+
+`animation-timing-function` se déclare **dans** un keyframe et s'applique au
+segment qui suit — c'est ce qui permet un easing par segment sans découper
+l'animation.
+
+### Les canaux
+
+| Canal | Ce qu'il possède |
 |---|---|
-| `draw` | **le trait se dessine** à l'arrivée, en 1,6 s, puis passe au repos. Chaque tracé porte `pathLength="1"`, donc un seul `stroke-dasharray: 1` suffit quelle que soit sa longueur réelle — pas de mesure en JavaScript, contrairement à Vivus |
-| `idle` | uniquement les micro-animations : respiration, fumée, coup de pied |
-| `vibrate` | tremblement permanent de moins d'un pixel, en `steps(2)` |
+| `body` | jambes, tibias, pieds, torse |
+| `head` | tête |
+| `arm` | bras, avant-bras, main |
+| `props` | poubelle, chat |
+| `fx` | vapeur |
 
-`draw` est le défaut : il donne une entrée, puis s'efface au profit du repos. Les
-perles, les bagues et la teinte des verres apparaissent après le trait, dans cet
-ordre — on dessine d'abord, on remplit ensuite.
+Un clip actif au maximum par canal, sinon deux animations écrivent le même
+`transform` et l'une écrase l'autre — l'artefact le plus difficile à
+diagnostiquer.
+
+### Ce qui viendra en JavaScript, et ce qui n'en dépendra pas
+
+Un ordonnanceur d'environ un kilo-octet ajoutera la seule chose que le CSS ne
+sait pas faire : **l'imprévisibilité**. Intervalles tirés selon une loi
+exponentielle — un processus sans mémoire, donc sans cadence audible, là où un
+tirage uniforme s'entend encore comme un rythme — et jitter sur la pose et le
+tempo.
+
+**Il améliore, il ne porte pas.** Sans lui, la scène retombe sur le cycle maître,
+qui est déjà juste. C'est la propriété la plus importante de l'architecture.
+
+## L'interaction
+
+Le décor est en `pointer-events: none`. On rouvre **chirurgicalement**, jamais
+globalement : `.prop { pointer-events: auto }`.
+
+Deux pièges :
+
+- un tracé en `fill: none` n'est survolable que sur son trait, à quelques pixels
+  près. D'où un rectangle `__hit` en **`fill: transparent`** — `transparent`
+  reçoit les évènements, `none` ne les reçoit pas ;
+- le décor est `aria-hidden`. Y placer un élément focusable fabriquerait un arrêt
+  de tabulation muet. **Rien n'est donc focusable** : le survol est un bonus
+  souris, et l'animation périodique montre la même chose à tout le monde. Rien
+  n'est perdu, puisque rien de ce que montre le décor n'est une information.
 
 ## Les décors, et leur registre
 
-L'intention est d'en avoir **plusieurs, tirés au hasard** à chaque visite. Un
-seul existe aujourd'hui, donc le tirage n'est pas encore posé : il coûtera ~150
-octets de JavaScript le jour où il aura quelque chose à tirer.
+Une seule scène pour l'accueil aujourd'hui. D'autres viendront ; le tirage entre
+elles n'est pas posé, il n'aurait rien à tirer.
+
+Une scène est un composant complet — décor **et** personnage — sous
+`scenes/`. Ce n'est pas un fond auquel on ajoute une figure : la pose du
+personnage dépend du décor, et les deux s'écrivent ensemble.
 
 | Nom | État | Ce que c'est |
 |---|---|---|
-| `veille` | ✅ en place | Le personnage debout à droite, braise en bas à gauche |
+| `alley` | ✅ en place | De face, adossé à un mur, dans une ruelle. Deux murs en fuite, une lampe chaude, quelques accessoires au trait |
+
 | `atelier` | ⏳ à faire | Assis, penché sur quelque chose |
 | `garde` | ⏳ à faire | En garde de boxe thaï, immobile |
 | `nuit` | ⏳ à faire | De dos, face à un horizon |

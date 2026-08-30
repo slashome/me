@@ -1,16 +1,16 @@
 ---
 import './decor.css';
-import Character from './Character.astro';
+import Alley from './scenes/Alley.astro';
 
-export type DecorAnim = 'draw' | 'idle' | 'vibrate';
+export type DecorScene = 'alley';
 
 interface Props {
-  anim?: DecorAnim;
+  scene?: DecorScene;
 }
 
-const { anim = 'draw' } = Astro.props;
+const { scene = 'alley' } = Astro.props;
 ---
 
-<div class="decor-scene" data-anim={anim} aria-hidden="true">
-  <Character />
+<div class="decor-scene" data-scene={scene} aria-hidden="true">
+  {scene === 'alley' && <Alley />}
 </div>

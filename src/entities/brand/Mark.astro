@@ -8,17 +8,17 @@ const { class: className } = Astro.props;
 
 <svg
   class:list={['mark', className]}
-  viewBox="0 0 64 32"
-  width="46"
-  height="23"
+  viewBox="0 0 64 64"
+  width="30"
+  height="30"
   role="img"
   aria-label="slashome"
 >
-  <circle class="mark__lens" cx="18" cy="16" r="12" />
-  <circle class="mark__lens" cx="46" cy="16" r="12" />
-  <path class="mark__wire" d="M30 16h4" />
-  <circle class="mark__eye" cx="18" cy="13" r="1.8" />
-  <circle class="mark__eye" cx="46" cy="13" r="1.8" />
-  <path class="mark__wire" d="M12 20q6 6 12 0" />
-  <path class="mark__wire" d="M40 20q6 6 12 0" />
+  <circle class="mark__face" cx="32" cy="32" r="27" />
+  <path class="mark__wire" d="M32 41q7 6 14 0" />
+  <circle class="mark__lens" cx="21" cy="27" r="9.5" />
+  <circle class="mark__lens" cx="43" cy="27" r="9.5" />
+  <path class="mark__wire" d="M30.5 27h3" />
+  <path class="mark__wire" d="M11.5 27q-4 -1 -6 -4" />
+  <path class="mark__wire" d="M52.5 27q4 -1 6 -4" />
 </svg>
