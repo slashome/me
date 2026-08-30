@@ -29,12 +29,15 @@ Trois, toutes en CSS, toutes coupées par `prefers-reduced-motion`.
 
 | Animation | Durée | Ce qu'elle fait |
 |---|---|---|
-| **Respiration** | 5,2 s, en boucle | le buste se dilate de 1,8 % et remonte de 2 px |
+| **Respiration** | 5,2 s, en boucle libre | le buste se dilate de 2 % |
 | **Fumée de cigarette électronique** | 6 s, trois bouffées décalées | trois disques montent, grossissent et s'effacent |
-| **Coup de pied thaï** | 17 s, deux images | la jambe part et revient en 1,5 % du cycle, soit ~250 ms |
+| **Couvercle de la poubelle** | au survol | se soulève de 16 px en dépassant, puis se pose |
 
-Le coup de pied est fait en `steps(1)` sur deux groupes qui s'échangent : deux
-images, pas d'interpolation. C'est ce qui le rend sec.
+⚠️ **Le coup de pied thaï est abandonné**, et probablement définitivement. C'était
+la seule animation qui exigeait des images dessinées en plus du rig, pour deux
+dixièmes de seconde qu'on ne voit qu'une fois par visite. Le rapport coût/effet
+ne tenait pas. Le rig des jambes reste articulé : il ne coûte rien et servira à
+une pose, pas à un mouvement.
 
 ## Le rig
 
@@ -73,8 +76,8 @@ cette structure.
 .decor-scene { --cycle: 47s; }
 ```
 
-Tout ce qui est un **évènement remarquable** partage cette durée : le coup de
-pied, et demain le chat. Même durée = phase verrouillée = aucune dérive, et la
+Tout ce qui est un **évènement remarquable** partage cette durée. Aucun ne
+l'utilise aujourd'hui — le chat sera le premier. Même durée = phase verrouillée = aucune dérive, et la
 chorégraphie est exacte sans une ligne de JavaScript. 47 s est premier et plus
 long qu'une visite ordinaire : le cycle ne se répète quasiment jamais devant
 quelqu'un.
@@ -88,9 +91,9 @@ périodicité ne se remarque pas.
 ### Trois temps, jamais un
 
 Un clip crédible a une **anticipation**, une **action**, un **retour d'équilibre**.
-Le coup de pied recule de 9° avant de partir, dépasse à -74°, tient une image à
--68°, revient en dépassant le repos à +4°, puis se pose. Une articulation qui
-s'arrête pile à sa cible a l'air d'un servomoteur.
+Le couvercle de la poubelle dépasse sa position avant de s'y poser, et c'est ce
+dépassement qui donne le poids. Une articulation qui s'arrête pile à sa cible a
+l'air d'un servomoteur.
 
 `animation-timing-function` se déclare **dans** un keyframe et s'applique au
 segment qui suit — c'est ce qui permet un easing par segment sans découper
