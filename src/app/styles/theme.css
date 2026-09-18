@@ -1,0 +1,22 @@
+/* Le mécanisme de thème, et rien d'autre.
+ *
+ * Le thème est un attribut sur `<html>`, jamais une prop passée de couche en
+ * couche : aucun widget n'a donc à connaître la notion de thème, et aucune
+ * arête d'import n'est créée. Le CSS de chaque tranche répond à l'attribut.
+ *
+ * `[data-theme-only]` marque un élément qui n'appartient qu'à un thème — un
+ * fond d'écran, une figure décorative. Une ligne par thème du registre
+ * (`shared/config/themes.ts`) : le CSS ne sait pas comparer deux attributs
+ * entre eux, l'énumération est donc inévitable. */
+
+[data-theme-only] {
+  display: none;
+}
+
+/* `revert` et non `block` : l'élément retrouve le `display` de l'agent
+   utilisateur, donc un `<span>` de libellé reste en ligne et une figure
+   retrouve le sien. Une seule règle sert les deux. */
+:root[data-theme='zomboid'] [data-theme-only='zomboid'],
+:root[data-theme='existence'] [data-theme-only='existence'] {
+  display: revert;
+}

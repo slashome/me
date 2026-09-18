@@ -1,0 +1,173 @@
+/* Thème `existence` — la géométrie du graphe.
+ *
+ * Elle vit dans la tranche qui la porte, et non dans `app/styles/`, pour que la
+ * couche `app` n'ait pas à connaître les entrailles d'un widget.
+ *
+ * Le menu reste exactement la même `<nav>` de `<a href>` : on ne dessine pas un
+ * graphe à côté de la navigation, on dispose la navigation en graphe. Les
+ * `<ul>` passent en `display: contents` pour que les `<li>` des deux groupes
+ * partagent une seule grille — d'où le `role="list"` posé sur les `<ul>`, qui
+ * leur rend la sémantique que `display: contents` retire dans certains
+ * navigateurs.
+ *
+ * La figure reprend la composition du projet tatouage : un centre indivisible,
+ * deux couples qui se font face à la même hauteur, un sommet et un socle.
+ *
+ *                     agents            ← le sommet
+ *        projets   ·     ∞     ·  journal
+ *     inventaire   ·           ·  profil
+ *                    options           ← le socle
+ *
+ * L'affectation d'une entrée à une place tient en une ligne de ce fichier : les
+ * `<li>` portent `data-nav="<key>"`, et rien du DOM ne dépend du thème. */
+
+:root[data-theme='existence'] .title-screen {
+  margin-block: auto;
+  justify-items: center;
+  text-align: center;
+}
+
+:root[data-theme='existence'] .title-menu {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(4rem, 9rem) minmax(0, 1fr);
+  grid-template-areas:
+    '.     crown .'
+    'wingl core  wingr'
+    'legl  core  legr'
+    '.     root  .';
+  align-items: center;
+  justify-items: center;
+  gap: clamp(0.4rem, 0.2rem + 1vw, 1.2rem) clamp(0.8rem, 0.4rem + 2.5vw, 2.6rem);
+}
+
+:root[data-theme='existence'] .title-menu ul {
+  display: contents;
+}
+
+:root[data-theme='existence'] .title-menu ul + ul {
+  margin-top: 0;
+}
+
+/* Les places. Une ligne par entrée : c'est ici qu'on déplace une section.
+ *
+ * ⚠️ L'affectation suit l'ordre du DOM — sommet, puis chaque rang de gauche à
+ * droite, puis le socle. C'est ce qui fait que **l'ordre de tabulation suit la
+ * figure** : une grille réordonne ce qu'on voit, jamais ce que le clavier
+ * parcourt. Déplacer une entrée ici sans toucher à `navigation.ts` désynchronise
+ * les deux, et c'est précisément ce que la règle « le clavier reste natif »
+ * interdit. Pour mettre Agents au sommet, c'est `navigation.ts` qu'il faut
+ * réordonner — mais cela change aussi l'ordre du menu de `zomboid`. */
+:root[data-theme='existence'] [data-nav='projects'] { grid-area: crown; }
+:root[data-theme='existence'] [data-nav='journal'] { grid-area: wingl; justify-self: end; }
+:root[data-theme='existence'] [data-nav='inventory'] { grid-area: wingr; justify-self: start; }
+:root[data-theme='existence'] [data-nav='agents'] { grid-area: legl; justify-self: end; }
+:root[data-theme='existence'] [data-nav='profile'] { grid-area: legr; justify-self: start; }
+:root[data-theme='existence'] [data-nav='options'] { grid-area: root; }
+
+/* Le repère de lecture de `zomboid` est une flèche à gauche ; dans une figure
+   symétrique elle désigne un bord qui n'existe plus. On la retire et la lueur
+   de survol rayonne depuis le centre de l'entrée. */
+:root[data-theme='existence'] .title-menu a {
+  padding: 0.5rem 0.9rem;
+  text-align: center;
+}
+
+:root[data-theme='existence'] .title-menu a::before {
+  content: none;
+}
+
+:root[data-theme='existence'] .title-menu a::after {
+  background: radial-gradient(
+    64% 120% at 50% 50%,
+    rgba(224, 167, 90, 0.22),
+    rgba(224, 167, 90, 0.05) 52%,
+    transparent 74%
+  );
+  transform: scale(0.94);
+  transform-origin: center;
+}
+
+:root[data-theme='existence'] .title-menu a:hover,
+:root[data-theme='existence'] .title-menu a:focus-visible,
+:root[data-theme='existence'] .title-menu a[aria-current='page'] {
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.95),
+    0 0 22px rgba(224, 167, 90, 0.4);
+}
+
+/* Le centre : la lemniscate barrée. Troisième boucle libre, de période première
+   avec celles de la bougie (13 s contre 7 s et 11 s) : aucune cadence commune
+   ne s'installe. C'est de l'ambiance, pas un évènement. */
+:root[data-theme='existence'] .title-menu__core {
+  grid-area: core;
+  width: clamp(4.2rem, 2.8rem + 7vw, 7.5rem);
+  height: auto;
+  overflow: visible;
+}
+
+.title-menu__core-loop,
+.title-menu__core-bar {
+  fill: none;
+  stroke: var(--scene-ember);
+  stroke-linecap: round;
+}
+
+.title-menu__core-loop {
+  stroke-width: 2;
+  opacity: 0.62;
+  animation: core-breath 13s ease-in-out infinite;
+}
+
+.title-menu__core-bar {
+  stroke-width: 2.6;
+  opacity: 0.42;
+}
+
+@keyframes core-breath {
+  0%,
+  100% {
+    opacity: 0.62;
+  }
+  34% {
+    opacity: 0.78;
+  }
+  67% {
+    opacity: 0.55;
+  }
+}
+
+/* Sous cette largeur, une figure à trois colonnes ne tient pas : le graphe
+   retombe sur une colonne, le centre passe au-dessus. La navigation est la
+   même, elle n'est pas réimplémentée. */
+@media (max-width: 46rem) {
+  :root[data-theme='existence'] .title-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    grid-template-columns: none;
+    grid-template-areas: none;
+  }
+
+  :root[data-theme='existence'] .title-menu li {
+    grid-area: auto;
+    justify-self: center;
+  }
+
+  :root[data-theme='existence'] .title-menu__core {
+    order: -1;
+    margin-block-end: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title-menu__core-loop {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  :root[data-theme='existence'] .title-menu__core {
+    display: none;
+  }
+}

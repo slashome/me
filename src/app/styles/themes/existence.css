@@ -1,0 +1,23 @@
+/* Thème `existence` — la part globale : les jetons de la scène, et la mise en
+ * retrait du décor de `zomboid`. La géométrie du graphe, elle, vit dans la
+ * tranche qui la porte (`widgets/title-screen`), pas ici. */
+
+:root[data-theme='existence'] .scene {
+  --scene-bg: #07070a;
+  --scene-fg: #c3b9a4;
+  --scene-fg-strong: #f6ecd6;
+  --scene-ember: #e0a75a;
+  --scene-panel: rgba(16, 15, 18, 0.84);
+  --scene-line: rgba(195, 185, 164, 0.16);
+}
+
+/* Le fond de `zomboid` est peint par `.scene__decor` dans `scene.css` ; dans
+ * `existence`, c'est le composant `Candle` qui éclaire, et une seule source
+ * suffit. On éteint donc l'autre au lieu de superposer deux lumières. */
+:root[data-theme='existence'] .scene__decor {
+  background: none;
+}
+
+:root[data-theme='existence'] .scene__decor::after {
+  content: none;
+}

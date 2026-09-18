@@ -1,6 +1,8 @@
 ---
 import './title-screen.css';
+import './title-screen.existence.css';
 import type { NavItem } from '../../shared/config/navigation';
+import { THEMES } from '../../shared/config/themes';
 
 interface Props {
   build: string;
@@ -16,15 +18,40 @@ const { build, menu } = Astro.props;
   <nav class="title-menu" data-menu aria-label="Menu principal">
     {
       menu.map((groupe) => (
-        <ul>
-          {groupe.map(({ href, label }) => (
-            <li>
-              <a href={href}>{label}</a>
+        <ul role="list">
+          {groupe.map(({ key, href, label }) => (
+            <li data-nav={key}>
+              {/* Un libellé par thème, le CSS n'en montre qu'un. Le libellé
+                  masqué est en `display: none`, donc il ne compte pas dans le
+                  nom accessible du lien : un lecteur d'écran en lit un seul. */}
+              <a href={href}>
+                {THEMES.map((theme) => (
+                  <span data-theme-only={theme.id}>{theme.labels?.[key] ?? label}</span>
+                ))}
+              </a>
             </li>
           ))}
         </ul>
       ))
     }
+
+    {/* Le centre du graphe du thème `existence` : une lemniscate barrée en son
+        croisement — l'« ouroboros infini coupé d'une barre au milieu » du projet
+        tatouage, dont la barre est déjà celle d'une balance. Purement décoratif,
+        et masqué dans les autres thèmes. */}
+    <svg
+      class="title-menu__core"
+      data-theme-only="existence"
+      viewBox="0 0 100 100"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        class="title-menu__core-loop"
+        d="M50 50C35 30 10 30 10 50C10 70 35 70 50 50C65 30 90 30 90 50C90 70 65 70 50 50Z"
+      />
+      <path class="title-menu__core-bar" d="M50 24V76" />
+    </svg>
   </nav>
 
   <p class="title-screen__meta">
@@ -32,4 +59,3 @@ const { build, menu } = Astro.props;
     <span>fr</span>
   </p>
 </div>
-

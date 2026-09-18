@@ -1,8 +1,11 @@
 ---
 import '../styles/global.css';
 import '../styles/scene.css';
+import '../styles/theme.css';
+import '../styles/themes/existence.css';
 import Breadcrumb, { type Crumb } from '../../widgets/breadcrumb/Breadcrumb.astro';
 import Decor from '../../widgets/decor/Decor.astro';
+import { DEFAULT_THEME, THEME_IDS, THEME_STORAGE_KEY } from '../../shared/config/themes';
 
 interface Props {
   title: string;
@@ -20,7 +23,7 @@ const canonical = new URL(path, Astro.site);
 const fullTitle = path === '/' ? title : `${title} — slashome.me`;
 ---
 
-<html lang="fr">
+<html lang="fr" data-theme={DEFAULT_THEME}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,6 +48,21 @@ const fullTitle = path === '/' ? title : `${title} — slashome.me`;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta name="generator" content={Astro.generator} />
+
+    {/* Résolution du thème avant le premier rendu : c'est ce qui évite le flash
+        d'un thème sur l'autre. Sans JavaScript, le thème servi reste celui du
+        HTML, et le site est complet. `?theme=<id>` bascule et persiste. */}
+    <script is:inline define:vars={{ ids: THEME_IDS, storageKey: THEME_STORAGE_KEY }}>
+      try {
+        const asked = new URLSearchParams(window.location.search).get('theme');
+        if (asked && ids.includes(asked)) localStorage.setItem(storageKey, asked);
+
+        const chosen = localStorage.getItem(storageKey);
+        if (chosen && ids.includes(chosen)) document.documentElement.dataset.theme = chosen;
+      } catch {
+        /* Stockage indisponible : le thème par défaut tient. */
+      }
+    </script>
   </head>
 
   <body class="scene" data-up={parent}>
