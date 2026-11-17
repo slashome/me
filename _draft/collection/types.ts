@@ -134,6 +134,28 @@ export type Attribution =
   /** Le texte a dérivé de l'original en circulant. */
   | 'altered';
 
+/**
+ * Où en est cet exemplaire, et où en est sa lecture.
+ *
+ * Deux axes qu'on pourrait séparer — possession et progression — mais les quatre
+ * valeurs qui servent réellement les couvrent sans ambiguïté, et un seul champ
+ * se saisit sans réfléchir. Un livre emprunté et lu se note `read` : la
+ * possession n'est pas ce qui compte, la lecture l'est.
+ *
+ * ⚠️ Un item `wanted` ou `unread` **n'a pas encore formé son propriétaire**.
+ * C'est en tension avec ce que l'inventaire annonce, et c'est assumé : le champ
+ * existe justement pour que la vue puisse le dire au lieu de le taire.
+ */
+export type Shelf =
+  /** Pas encore acquis. */
+  | 'wanted'
+  /** Là, sur l'étagère, jamais ouvert. */
+  | 'unread'
+  /** En cours. */
+  | 'reading'
+  | 'read';
+
+
 /* ────────────────────────────────────────────────────────────────────────────
    Agent — celui qu'on peut cliquer
    ──────────────────────────────────────────────────────────────────────────── */
@@ -571,6 +593,21 @@ export interface CollectionItem {
    * elle mérite d'être affichée comme telle, pas cachée.
    */
   attribution?: Attribution;
+
+  /**
+   * L'état de lecture. N'a de sens que pour ce qui se lit ou s'écoute en entier
+   * — un livre, un film, un article. Une citation n'en a pas.
+   */
+  shelf?: Shelf;
+
+  /**
+   * Épinglé en tête de sa vue.
+   *
+   * Un jugement, pas une conséquence : ce qu'on met en avant ne se déduit pas de
+   * `shelf: 'reading'`, parce qu'on peut lire trois choses à la fois et n'en
+   * mettre qu'une en tête.
+   */
+  pinned?: boolean;
 
   /** Ce qui étaie (ou démonte) l'attribution : quoteinvestigator, une édition… */
   sources?: Link[];
