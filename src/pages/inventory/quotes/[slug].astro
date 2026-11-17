@@ -2,6 +2,7 @@
 import Screen from '../../../app/layouts/Screen.astro';
 import TypeGlyph from '../../../entities/inventory/TypeGlyph.astro';
 import QuoteText from '../../../entities/quote/QuoteText.astro';
+import { quoteDescription } from '../../../entities/quote/translations';
 import { agentsBySlug, conceptsBySlug, items, type Item } from '../../../shared/lib/content';
 import { languageName } from '../../../shared/lib/language';
 import './item.css';
@@ -43,10 +44,10 @@ const ATTRIBUTION_LABELS: Record<string, string> = {
   trail={[
     { href: '/inventory/', label: 'Inventaire' },
     { href: '/inventory/quotes/', label: 'Citations' },
-    { label: item.title },
+    { label: item.title, lang: item.lang },
   ]}
   title={item.title}
-  description={item.text ?? item.title}
+  description={quoteDescription(item)}
 >
   <article class="item">
     <div class="item__panel">

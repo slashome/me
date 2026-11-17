@@ -23,3 +23,8 @@ export function quoteReading(item: Pick<Item, 'text' | 'lang' | 'translations'>)
     others: translations.filter((t) => t !== beside),
   };
 }
+
+export function quoteDescription(item: Pick<Item, 'title' | 'text' | 'lang' | 'translations'>): string {
+  const reading = quoteReading(item);
+  return reading?.beside?.text ?? reading?.original.text ?? item.title;
+}

@@ -5,6 +5,7 @@ import Mark from '../../entities/brand/Mark.astro';
 export interface Crumb {
   href?: string;
   label: string;
+  lang?: string;
 }
 
 interface Props {
@@ -23,9 +24,15 @@ const { trail } = Astro.props;
             <Mark />
           </a>
         </li>
-        {trail.map(({ href, label }, i) => (
+        {trail.map(({ href, label, lang }, i) => (
           <li aria-current={i === trail.length - 1 ? 'page' : undefined}>
-            {href && i < trail.length - 1 ? <a href={href}>{label}</a> : <span>{label}</span>}
+            {href && i < trail.length - 1 ? (
+              <a href={href} lang={lang}>
+                {label}
+              </a>
+            ) : (
+              <span lang={lang}>{label}</span>
+            )}
           </li>
         ))}
       </ol>
