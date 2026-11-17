@@ -1,4 +1,7 @@
 import { readFileSync, existsSync } from 'node:fs';
+import type { Translation } from '../../../_draft/collection/types';
+
+export type { Translation };
 
 const ROOT = 'content/data';
 
@@ -30,6 +33,7 @@ export interface Item {
   credits: Credit[];
   text?: string;
   lang?: string;
+  translations?: Translation[];
   context?: string;
   note?: string;
   attribution?: string;

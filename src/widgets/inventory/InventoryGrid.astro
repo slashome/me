@@ -55,7 +55,9 @@ const pct = Math.min(100, Math.round((total / capacity) * 100));
           <a class="slot" href={`/inventory/quotes/${item.slug}/`}>
             <TypeGlyph type={item.type} class="slot__glyph" />
             <span class="slot__agent">{firstAgent(item)}</span>
-            <span class="slot__title">{item.title}</span>
+            <span class="slot__title" lang={item.lang}>
+              {item.title}
+            </span>
             {item.attribution && <span class="slot__flag">!</span>}
           </a>
         ))

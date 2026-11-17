@@ -1,0 +1,24 @@
+---
+import type { Agent, Translation } from '../../shared/lib/content';
+
+interface Props {
+  translation: Translation;
+  agents: Map<string, Agent>;
+}
+
+const { translation, agents } = Astro.props;
+const translator = translation.translatedBy
+  ? (agents.get(translation.translatedBy)?.name ?? translation.translatedBy)
+  : undefined;
+---
+
+{
+  (translator || translation.source) && (
+    <p class="quote-text__credit">
+      {translator && <>traduit par {translator}</>}
+      {translator && translation.source && ' · '}
+      {translation.source && <a href={translation.source.url}>{translation.source.label}</a>}
+    </p>
+  )
+}
+{translation.translatorNote && <p class="quote-text__note">{translation.translatorNote}</p>}
