@@ -73,11 +73,6 @@ Projets à référencer au départ (repos GitHub `slashome/*`) : karaokay, kosmo
 - 3–4 citations
 - Liste de projets remplie
 
-## Notes / à trancher plus tard
-
-- **LICENSE** : GPL v3 est inhabituel pour un site perso (MIT pour le code, CC-BY pour le contenu serait plus courant) — à changer si souhaité
-- La page d'accueil (Projets vs présentation) pourra pivoter facilement, c'est juste `index.astro`
-
 ## Vérification
 
 1. `npm run dev` → toutes les pages rendent sans erreur
