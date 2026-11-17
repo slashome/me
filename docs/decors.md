@@ -108,6 +108,7 @@ l'animation.
 | `arm` | bras, avant-bras, main |
 | `props` | poubelle, chat |
 | `fx` | vapeur |
+| `light` | la lumière du fond : halo et vacillement du thème `existence` |
 
 Un clip actif au maximum par canal, sinon deux animations écrivent le même
 `transform` et l'une écrase l'autre — l'artefact le plus difficile à
@@ -148,9 +149,19 @@ Une scène est un composant complet — décor **et** personnage — sous
 `scenes/`. Ce n'est pas un fond auquel on ajoute une figure : la pose du
 personnage dépend du décor, et les deux s'écrivent ensemble.
 
-| Nom | État | Ce que c'est |
-|---|---|---|
-| `alley` | ✅ en place | De face, adossé à un mur, dans une ruelle. Deux murs en fuite, une lampe chaude, quelques accessoires au trait |
+Depuis les thèmes, le registre porte deux choses qu'il faut distinguer :
+
+- une **scène** est un composant complet — décor **et** personnage — sous `scenes/` ;
+- un **fond** n'a pas de personnage et se contente d'éclairer, sous `backgrounds/`.
+
+Un thème déclare **un** de ces fonds ou scènes dans `shared/config/themes.ts`. Tous
+les fonds déclarés sont rendus, et le CSS n'en montre qu'un selon `data-theme` : c'est
+ce qui permet la bascule sans re-rendu, et c'est pourquoi un fond doit rester léger.
+
+| Nom | Type | Thème | État | Ce que c'est |
+|---|---|---|---|---|
+| `alley` | scène | `zomboid` | ✅ en place | De face, adossé à un mur, dans une ruelle. Deux murs en fuite, une lampe chaude, quelques accessoires au trait |
+| `candle` | fond | `existence` | ✅ en place | Une nuit et une seule source chaude au centre. **Zéro image** : trois dégradés superposés. Une respiration de 11 s et un vacillement de 7 s, deux boucles libres de périodes premières entre elles — c'est de l'ambiance, donc la dérive de phase est un atout. Coupé par `prefers-reduced-motion` |
 
 | `atelier` | ⏳ à faire | Assis, penché sur quelque chose |
 | `garde` | ⏳ à faire | En garde de boxe thaï, immobile |

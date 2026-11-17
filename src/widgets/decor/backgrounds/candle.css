@@ -1,0 +1,93 @@
+/* Canal `light` — voir docs/decors.md.
+   Deux boucles libres, de périodes premières entre elles (7 s et 11 s) : leur
+   dérive de phase est ici un atout, puisque c'est de l'ambiance et non un
+   évènement. Aucun ordonnanceur n'est nécessaire ; s'il arrive un jour, il
+   améliorera le vacillement, il ne le portera pas. */
+
+.candle {
+  position: absolute;
+  inset: 0;
+}
+
+.candle__night,
+.candle__halo,
+.candle__flame {
+  position: absolute;
+  inset: 0;
+}
+
+.candle__night {
+  background:
+    radial-gradient(120% 90% at 50% 46%, transparent 18%, rgba(0, 0, 0, 0.86) 100%),
+    linear-gradient(176deg, #0b0a0d 0%, #07070a 58%, #050406 100%);
+}
+
+/* La respiration : lente, ample, elle déplace la lumière de très peu. */
+.candle__halo {
+  background: radial-gradient(
+    46% 38% at 50% 46%,
+    rgba(224, 167, 90, 0.26),
+    rgba(224, 167, 90, 0.07) 46%,
+    transparent 72%
+  );
+  will-change: opacity, transform;
+  animation: candle-breath 11s ease-in-out infinite;
+}
+
+/* Le vacillement : court, irrégulier, avec un creux marqué à 29 % et un sursaut
+   à 53 %. Les paliers sont volontairement inégaux — une cadence régulière
+   s'entend, et une flamme n'a pas de tempo. */
+.candle__flame {
+  background: radial-gradient(
+    16% 13% at 50% 47%,
+    rgba(255, 214, 150, 0.4),
+    rgba(240, 170, 90, 0.14) 52%,
+    transparent 76%
+  );
+  will-change: opacity, transform;
+  animation: candle-flicker 7s ease-in-out infinite;
+}
+
+@keyframes candle-breath {
+  0%,
+  100% {
+    opacity: 0.56;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  31% {
+    opacity: 0.67;
+    transform: scale(1.03) translate3d(0.5%, -0.4%, 0);
+  }
+  58% {
+    opacity: 0.58;
+    transform: scale(0.99) translate3d(-0.4%, 0.3%, 0);
+  }
+  79% {
+    opacity: 0.63;
+    transform: scale(1.02) translate3d(0.3%, 0.4%, 0);
+  }
+}
+
+@keyframes candle-flicker {
+  0%   { opacity: 0.82; transform: scale(1); }
+  7%   { opacity: 0.95; transform: scale(1.03); }
+  13%  { opacity: 0.74; transform: scale(0.985); }
+  22%  { opacity: 0.9;  transform: scale(1.02); }
+  29%  { opacity: 0.69; transform: scale(0.97); }
+  37%  { opacity: 0.93; transform: scale(1.04); }
+  46%  { opacity: 0.8;  transform: scale(1); }
+  53%  { opacity: 0.97; transform: scale(1.05); }
+  61%  { opacity: 0.72; transform: scale(0.98); }
+  70%  { opacity: 0.88; transform: scale(1.01); }
+  78%  { opacity: 0.78; transform: scale(0.995); }
+  87%  { opacity: 0.94; transform: scale(1.03); }
+  100% { opacity: 0.82; transform: scale(1); }
+}
+
+/* Une lumière qui vacille n'est pas un effet cosmétique : elle se coupe. */
+@media (prefers-reduced-motion: reduce) {
+  .candle__halo,
+  .candle__flame {
+    animation: none;
+  }
+}

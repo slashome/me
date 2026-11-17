@@ -1,16 +1,25 @@
 ---
 import './decor.css';
 import Alley from './scenes/Alley.astro';
-
-export type DecorScene = 'alley';
-
-interface Props {
-  scene?: DecorScene;
-}
-
-const { scene = 'alley' } = Astro.props;
+import Candle from './backgrounds/Candle.astro';
+import { THEMES } from '../../shared/config/themes';
 ---
 
-<div class="decor-scene" data-scene={scene} aria-hidden="true">
-  {scene === 'alley' && <Alley />}
-</div>
+{/* Tous les fonds déclarés au registre des thèmes sont rendus ; le CSS n'en
+    montre qu'un, selon `data-theme` sur `<html>`. C'est ce qui permet au
+    visiteur de basculer de thème sans re-rendu, et c'est le prix de ce choix :
+    le balisage des deux fonds est servi. Il reste petit ici — `candle` est en
+    dégradés purs et n'ajoute aucune image. */}
+{
+  THEMES.map((theme) => (
+    <div
+      class="decor-scene"
+      data-background={theme.background}
+      data-theme-only={theme.id}
+      aria-hidden="true"
+    >
+      {theme.background === 'alley' && <Alley />}
+      {theme.background === 'candle' && <Candle />}
+    </div>
+  ))
+}
