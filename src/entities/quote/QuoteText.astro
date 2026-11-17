@@ -1,0 +1,58 @@
+---
+import './quote-text.css';
+import TranslationCredit from './TranslationCredit.astro';
+import type { Agent, Item } from '../../shared/lib/content';
+import { languageName } from '../../shared/lib/language';
+import { quoteReading } from './translations';
+
+interface Props {
+  item: Pick<Item, 'text' | 'lang' | 'translations'>;
+  agents: Map<string, Agent>;
+}
+
+const { item, agents } = Astro.props;
+const reading = quoteReading(item);
+const othersCount = reading?.others.length ?? 0;
+const othersLabel = reading?.beside
+  ? othersCount === 1
+    ? 'Une autre traduction'
+    : `${othersCount} autres traductions`
+  : othersCount === 1
+    ? 'Une traduction'
+    : `${othersCount} traductions`;
+---
+
+{
+  reading && (
+    <div class="quote-text">
+      <blockquote class="quote-text__original" lang={reading.original.lang}>
+        {reading.original.text}
+      </blockquote>
+
+      {reading.beside && (
+        <div class="quote-text__beside">
+          <p class="quote-text__label">traduction · {languageName(reading.beside.lang)}</p>
+          <p class="quote-text__translation" lang={reading.beside.lang}>
+            {reading.beside.text}
+          </p>
+          <TranslationCredit translation={reading.beside} agents={agents} />
+        </div>
+      )}
+
+      {reading.others.length > 0 && (
+        <details class="quote-text__others">
+          <summary>{othersLabel}</summary>
+          {reading.others.map((t) => (
+            <div class="quote-text__other">
+              <p class="quote-text__label">{languageName(t.lang)}</p>
+              <p class="quote-text__translation" lang={t.lang}>
+                {t.text}
+              </p>
+              <TranslationCredit translation={t} agents={agents} />
+            </div>
+          ))}
+        </details>
+      )}
+    </div>
+  )
+}

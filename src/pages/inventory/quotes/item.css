@@ -36,14 +36,6 @@
   opacity: 0.55;
 }
 
-.item__text {
-  margin: 0;
-  font-size: clamp(1.15rem, 1rem + 1.1vw, 1.9rem);
-  line-height: 1.45;
-  color: var(--scene-fg-strong);
-  text-wrap: balance;
-}
-
 .item__flag {
   margin: 1.4rem 0 0;
   padding: 0.6rem 0.8rem;

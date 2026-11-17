@@ -1,7 +1,9 @@
 ---
 import Screen from '../../../app/layouts/Screen.astro';
 import TypeGlyph from '../../../entities/inventory/TypeGlyph.astro';
+import QuoteText from '../../../entities/quote/QuoteText.astro';
 import { agentsBySlug, conceptsBySlug, items, type Item } from '../../../shared/lib/content';
+import { languageName } from '../../../shared/lib/language';
 import './item.css';
 
 export function getStaticPaths() {
@@ -51,10 +53,10 @@ const ATTRIBUTION_LABELS: Record<string, string> = {
       <p class="item__type">
         <TypeGlyph type={item.type} />
         {item.type}
-        {item.lang && <span class="item__lang">{item.lang}</span>}
+        {item.lang && <span class="item__lang">{languageName(item.lang)}</span>}
       </p>
 
-      {item.text && <blockquote class="item__text">{item.text}</blockquote>}
+      <QuoteText item={item} agents={agents} />
 
       {
         item.attribution && (
